@@ -1,0 +1,16 @@
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Theoretical model grid}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Stellar models and input physics}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Oscillation models and seismic }{section.2}% 4
+\BOOKMARK [1][-]{section.3}{GPR model}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Discussion about kernels}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Selection of GPR Model Inputs}{section.3}% 7
+\BOOKMARK [1][-]{section.4}{Model Augmentation with GPR Models}{}% 8
+\BOOKMARK [2][-]{subsection.4.1}{Training GPR Models}{section.4}% 9
+\BOOKMARK [2][-]{subsection.4.2}{The GPR model with Five-demission Inputs}{section.4}% 10
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 11
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 12
+\BOOKMARK [1][-]{section.A1}{Validation and prediction of GPR models }{}% 13
+\BOOKMARK [2][-]{subsection.A1.1}{GPR model with 3-D inputs}{section.A1}% 14
+\BOOKMARK [2][-]{subsection.A1.2}{GPR model with 4-D inputs}{section.A1}% 15
+\BOOKMARK [2][-]{subsection.A1.3}{GPR model with 5-D inputs}{section.A1}% 16

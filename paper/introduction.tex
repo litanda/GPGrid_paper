@@ -1,0 +1,24 @@
+\section{Introduction}
+
+This will be the intro.
+
+% Set the context of the work.
+% Cite relevant earlier studies
+
+%% Lots of work on estimating stellar properties where observables are compared with stellar models.  Typical approach is grid based.  Lots of citations.  
+
+%% Observables can come from all over.  Spectroscopic surveys (APOGEE, Galah, LAMOST, Gaia ESO, +), Astrometric Gaia, Photometric variability CoRoT, Kepler, K2, TESS, soon PLATO.
+
+%% Lots of different models available with lots of different flavours - ask Tanda ...
+
+%% Typical parameters to vary can refer to the star (mass, age, [Fe/H], Y_i) or they can refer to the model (MLT, overshoot, diffusion).  Most studies, certainly for field stars, treat all parameters as being independent.  
+
+% Describe the problem we aim to solve
+
+%% Plenty of work exists on HBM models in astro (cite fest).  By pooling together parameters we can win - for example EB's/cluster age, chemical comp.  But also we could pool parameters of the models MLT, Ov.  If we take a Bayesian approach the pooled constraint on MLT or Ov has the ability to constrain stellar parameters (e.g., age, mass).  The posterior distribution is a joint distribution!
+
+%% Curent limitation is that this is all very tricky computationally.  Great news though - breakthroughs in machine learning, sampling methods, and GPU implementation means we now have a shot at doing this.  In this paper we give a deminstration of principle for one way of proceeding.
+
+% Layout of this paper ...
+
+%% In this paper we describe the computation of a representitative, but not ideal, grid for the purpose of estimating stellar parameters.  We then teach a NN to learn this grid, to act a function approximator.  We then implement the NN in a hierarchical model leveraging the NN backpropagation that allows use to use a gradient based NUTS sampling technique.  We demostrate the methods ability to recover stellar properties and model properties for a set of stars taken from the grid of models used.  Finally we discuss the limitations of this approach and highlight areas where improvements can be found in the near future.

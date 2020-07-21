@@ -1,0 +1,80 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{2011ApJS..192....3P,2013ApJS..208....4P,2015ApJS..220...15P}
+\citation{2009ARA&A..47..481A}
+\citation{2002ApJ...576.1064R}
+\citation{2005ApJ...623..585F}
+\citation{2018ApJS..234...34P,2019ApJS..243...10P}
+\citation{2013MNRAS.435.3406T}
+\citation{2011ApJ...743..161W}
+\newlabel{firstpage}{{}{1}{}{Doc-Start}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}Theoretical model grid}{1}{section.2}\protected@file@percent }
+\newlabel{sec:grid}{{2}{1}{Theoretical model grid}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Stellar models and input physics}{1}{subsection.2.1}\protected@file@percent }
+\newlabel{subsec:stellar_model}{{2.1}{1}{Stellar models and input physics}{subsection.2.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Oscillation models and seismic $\Delta \nu $}{1}{subsection.2.2}\protected@file@percent }
+\newlabel{subsec:seismo_model}{{2.2}{1}{Oscillation models and seismic $\Delta \nu $}{subsection.2.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Stellar model computations for training and validating sets.}}{2}{table.1}\protected@file@percent }
+\newlabel{tab:grid}{{1}{2}{Stellar model computations for training and validating sets}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}GPR model}{2}{section.3}\protected@file@percent }
+\newlabel{GPR}{{3}{2}{GPR model}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Discussion about kernels}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Selection of GPR Model Inputs}{2}{subsection.3.2}\protected@file@percent }
+\newlabel{gprmodel}{{3}{2}{Selection of GPR Model Inputs}{equation.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Model Augmentation with GPR Models}{2}{section.4}\protected@file@percent }
+\newlabel{aug}{{4}{2}{Model Augmentation with GPR Models}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Training GPR Models}{2}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.1}Step1: Selecting Training, Testing, and Validating Data}{2}{subsubsection.4.1.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces The comparison between GPR model predictions with two different input age indices ($t/t_{\rm  max}$ and $10^{(t/t_{\rm  max})}$) for a 1.1$M_{\odot }$ track. Top: the GPR model of the effective temperature as a function of $t/t_{\rm  max}$. The adopted kernel is MLP. Middle: same as the top, but the GPR model input is $10^{(t/t_{\rm  max})}$). Bottom: residuals between true values and GPR model predictions. }}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:selection_of_t}{{1}{3}{The comparison between GPR model predictions with two different input age indices ($t/t_{\rm max}$ and $10^{(t/t_{\rm max})}$) for a 1.1$M_{\odot }$ track. Top: the GPR model of the effective temperature as a function of $t/t_{\rm max}$. The adopted kernel is MLP. Middle: same as the top, but the GPR model input is $10^{(t/t_{\rm max})}$). Bottom: residuals between true values and GPR model predictions}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Selected training and testing data for the GPR model with 2-demission inputs on the $T_{\rm  eff}$ - $\qopname  \relax o{log}g$ (Top) and $M$ - $t_{\rm  frac}$ (bottom) diagrams. Black and red dots represent training and testing data. }}{3}{figure.2}\protected@file@percent }
+\newlabel{fig:data_on_hrd}{{2}{3}{Selected training and testing data for the GPR model with 2-demission inputs on the $T_{\rm eff}$ - $\log g$ (Top) and $M$ - $t_{\rm frac}$ (bottom) diagrams. Black and red dots represent training and testing data}{figure.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.2}Step 2: Training the Primary GPR Model with the MLP Kernel}{3}{subsubsection.4.1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.3}Step3: Training GPR Models for Residuals}{3}{subsubsection.4.1.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Top: The GPR model (using the MLP kernel) for the effective temperature ($T_{\rm  eff}$) as a function of mass ($M$) and age index ($t'$). Grey counters describes the original grid and coloured counters are GPR predictions. Note that grey counters are interpolated based on the model grid, hence they are not very smooth. Bottom: Residuals of the GPR model on the $T_{\rm  eff} - \qopname  \relax o{log}g$ diagram.}}{4}{figure.3}\protected@file@percent }
+\newlabel{fig:gpmodel}{{3}{4}{Top: The GPR model (using the MLP kernel) for the effective temperature ($T_{\rm eff}$) as a function of mass ($M$) and age index ($t'$). Grey counters describes the original grid and coloured counters are GPR predictions. Note that grey counters are interpolated based on the model grid, hence they are not very smooth. Bottom: Residuals of the GPR model on the $T_{\rm eff} - \log g$ diagram}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Validation (on-grid) for the GPR model.}}{4}{figure.4}\protected@file@percent }
+\newlabel{fig:validation0l}{{4}{4}{Validation (on-grid) for the GPR model}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.4}Validating the GPR Model and Estimating Systematical Uncertainty}{4}{subsubsection.4.1.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Training data for the first and second order residuals.}}{4}{figure.5}\protected@file@percent }
+\newlabel{fig:residualsl}{{5}{4}{Training data for the first and second order residuals}{figure.5}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {4.1.5}Summary of the Work Flow}{4}{subsubsection.4.1.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}The GPR model with Five-demission Inputs}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{4}{section.5}\protected@file@percent }
+\bibstyle{mnras}
+\bibdata{ref}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Training and validating for the 5D GPR models}}{5}{table.2}\protected@file@percent }
+\newlabel{tab:gpdetails}{{2}{5}{Training and validating for the 5D GPR models}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces On-grid validations.}}{5}{figure.6}\protected@file@percent }
+\newlabel{fig:on-grid_validation}{{6}{5}{On-grid validations}{figure.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Conclusions}{5}{section.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Off-grid validations.}}{5}{figure.7}\protected@file@percent }
+\newlabel{fig:off-grid_validation}{{7}{5}{Off-grid validations}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces MESA grid models (sparse) and GP predictions (non-sparse) on the $T_{\rm  eff}$ - $\qopname  \relax o{log}g$ diagram.}}{5}{figure.8}\protected@file@percent }
+\newlabel{fig:gpmodel}{{8}{5}{MESA grid models (sparse) and GP predictions (non-sparse) on the $T_{\rm eff}$ - $\log g$ diagram}{figure.8}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {A}Validation and prediction of GPR models }{6}{section.A1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A1}GPR model with 3-D inputs}{6}{subsection.A1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A2}GPR model with 4-D inputs}{6}{subsection.A1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {A3}GPR model with 5-D inputs}{6}{subsection.A1.3}\protected@file@percent }
+\newlabel{lastpage}{{A3}{6}{GPR model with 5-D inputs}{figure.A1.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A1}{\ignorespaces Validations for 4D inputs GPR models before and after chunking.}}{7}{figure.A1.1}\protected@file@percent }
+\newlabel{fig:4d_vali1}{{A1}{7}{Validations for 4D inputs GPR models before and after chunking}{figure.A1.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {A2}{\ignorespaces Validations for 5D inputs GPR models before and after chunking.}}{8}{figure.A1.2}\protected@file@percent }
+\newlabel{fig:4d_vali1}{{A2}{8}{Validations for 5D inputs GPR models before and after chunking}{figure.A1.2}{}}
