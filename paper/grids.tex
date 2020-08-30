@@ -1,6 +1,6 @@
 \section{Theoretical  model grid}\label{sec:grid}
 
-We built up a model grid as the base data of GP model. In this work, we aimed cover stars with approximate solar mass on main-sequence and subgiant phases. Thus, the mass range is set up as 0.8 -- 1.2$M_{\odot}$, and we computed each stellar evolutionary track from the Hayashi line and to the base of red-giant branch where $/log g$ = 3.5 dex. The gird includes four independent model inputs: stellar mass (M), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]), and the mixing-length parameter ($\alpha_{\rm MLT}$).  Ranges and grid steps of the four model inputs are summarized in Table \ref{tab:grid}.
+We built up a model grid as the training data for GPR models.  We aimed to cover stars with approximate solar mass on the main-sequence and the subgiant phases. Thus, the mass range is set up as 0.8 -- 1.2$M_{\odot}$, and we computed each stellar evolutionary track from the Hayashi line and terminated at the base of red-giant branch where $\log g$ = 3.6 dex. The gird includes four independent model inputs: stellar mass (M), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]), and the mixing-length parameter ($\alpha_{\rm MLT}$). Details of the computations are summarised in Table \ref{tab:grid}. Input parameters of our primary training data is uniformly spaced except the input metallicity, which is double dense above 0.2 $dex$. We also computed an extra grid that fit in between the primary training data for $M > 1.05M_{\odot}$. Because evolutionary tracks in this mass range have the so-called 'hook' at the late main-sequence stage and relatively difficult to model. Lastly, we computed 4,880 tracks with input parameters that are randomly sampled in the grid ranges for validating GPR models. The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity. We also saved structural models for computing theoretical oscillation models.
 
 \begin{table*}
 	\centering
@@ -8,31 +8,32 @@ We built up a model grid as the base data of GP model. In this work, we aimed co
 	\label{tab:grid}
 	\begin{tabular}{llll} % four columns, alignment for each
 		\hline
-		\multicolumn{4}{c}{Training model set (Grid-based)}\\
+		\multicolumn{4}{c}{Primary Grid}\\
 		\hline
-		Input Parameter & Range & Increment & $N_{\rm track}$\\
+		Input Parameter & Range & Increment \\
         \hline
 	$M$ [$M_{\odot}$]  & 0.80 -- 1.20 &  0.01&\\
-        $\rm{[Fe/H]}$ [dex] & -0.5 -- 0.2/0.2 -- 0.5 & 0.1/0.05 & 15,375\\
+        $\rm{[Fe/H]}$ [dex] & -0.5 -- 0.2/0.2 -- 0.5 & 0.1/0.05\\
         	$Y_{\rm init}$ & 0.24 -- 0.32 & 0.02&\\
         $\alpha_{\rm{MLT}}$  & 1.7 -- 2.5&  0.2&\\
         \hline
-        \multicolumn{3}{c}{Validating model set (Randomly computed in above parameter ranges)}\\
+       \multicolumn{4}{c}{Extra Grid}\\
 	\hline
-	GPR model & Varying parameters & Fixed parameters& $N_{\rm track}$\\
-	\hline
-	2D& $M$, $t_{\rm frac}$ & $\rm{[Fe/H]}$ = 0.0,  $Y_{\rm init}$ = 0.28, $\alpha_{\rm{MLT}}$  = 2.1&15\\
-	3D& $M$, $t_{\rm frac}$, $\rm{[Fe/H]}$ &$Y_{\rm init}$ = 0.28, $\alpha_{\rm{MLT}}$  = 2.1&200\\
-	4D& $M$, $t_{\rm frac}$, $\rm{[Fe/H]}$, $Y_{\rm init}$ & $\alpha_{\rm{MLT}}$  = 2.1&1,000\\
-	5D& $M$, $t_{\rm frac}$, $\rm{[Fe/H]}$, $Y_{\rm init}$, $\alpha_{\rm{MLT}}$ & - &4,000\\
+	Input Parameter & Range & Increment \\
         \hline
-
+	$M$ [$M_{\odot}$]  & 1.055 -- 1.195 &  0.01&\\
+        $\rm{[Fe/H]}$ [dex] & 0.25 -- 0.45 & 0.1\\
+        	$Y_{\rm init}$ & 0.25 -- 0.31 & 0.02&\\
+        $\alpha_{\rm{MLT}}$  & 1.8-- 2.4&  0.2&\\
         %Other physics & \multicolumn{2}{Scheme}\\
         %\hline
         %Diffusion & \multicolumn{2}{Yes}\\
         %Overshooting & \multicolumn{2}{N/A}\\
-        %\hline
-%     \multicolumn{3}{p{.4\textwidth}}{$^{\rm a}Y_0$ = 0.249 and $\frac{\Delta Y}{\Delta Z}$ = 1.33 was adopted.}  
+        \hline
+        \multicolumn{4}{c}{Off-grid Models}\\
+        \hline
+        \multicolumn{4}{c}{4880 tracks with random input parameters }\\
+	\hline
 	\end{tabular}
 \end{table*}
 
@@ -54,16 +55,10 @@ supplemented by low-temperature opacity \citep{2005ApJ...623..585F}.
 The MESA ‘simple’ photosphere were used as the set of boundary conditions for modelling the atmosphere.
 The mixing-length theory of convection was implemented, where 
 $\alpha_{\rm MLT} = \ell_{\rm MLT}/H_p$ is the mixing-length parameter.
-We also applied the \textsc{MESA} predictive mixing scheme \citep{2018ApJS..234...34P,2019ApJS..243...10P}  in the model computation.  The \textsc{MESA} inlist used for the computation is available on \url{https://github.com/litanda/mesa_inlist}.  
-
-
-The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity.
-We saved one structural model at every time step at main sequence and every two steps after central hydrogen exhaustion. For each evolutionary track, we obtained $\sim$100 at the main-sequence stage and $500-700$ at evolved stages.  
+We also applied the \textsc{MESA} predictive mixing scheme \citep{2018ApJS..234...34P,2019ApJS..243...10P}  in the model computation. The \textsc{MESA} inlist used for the computation is available on \url{https://github.com/litanda/mesa_inlist}.  
 
 \subsection{Oscillation models and seismic $\Delta \nu$}\label{subsec:seismo_model}
 
 Theoretical stellar oscillations were calculated with the \textsc{GYRE} code (version 5.1), which was developed by \citet{2013MNRAS.435.3406T}. And we computed radial modes (for $\ell$ = 0) by solving the adiabatic stellar pulsation equations with the structural models generated by \textsc{MESA}. We computed a seismic large separation($\Delta \nu$) for each model with theoretical radial modes to avoid the systematic offset of the scaling relation. We derived $\Delta \nu$ with the approach given by \citet{2011ApJ...743..161W}, which is a weighted least-squares fit to the radial frequencies as a function of $n$.  
-
-
 
 

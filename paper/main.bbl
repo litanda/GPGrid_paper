@@ -1,0 +1,88 @@
+\begin{thebibliography}{}
+\makeatletter
+\relax
+\def\mn@urlcharsother{\let\do\@makeother \do\$\do\&\do\#\do\^\do\_\do\%\do\~}
+\def\mn@doi{\begingroup\mn@urlcharsother \@ifnextchar [ {\mn@doi@}
+  {\mn@doi@[]}}
+\def\mn@doi@[#1]#2{\def\@tempa{#1}\ifx\@tempa\@empty \href
+  {http://dx.doi.org/#2} {doi:#2}\else \href {http://dx.doi.org/#2} {#1}\fi
+  \endgroup}
+\def\mn@eprint#1#2{\mn@eprint@#1:#2::\@nil}
+\def\mn@eprint@arXiv#1{\href {http://arxiv.org/abs/#1} {{\tt arXiv:#1}}}
+\def\mn@eprint@dblp#1{\href {http://dblp.uni-trier.de/rec/bibtex/#1.xml}
+  {dblp:#1}}
+\def\mn@eprint@#1:#2:#3:#4\@nil{\def\@tempa {#1}\def\@tempb {#2}\def\@tempc
+  {#3}\ifx \@tempc \@empty \let \@tempc \@tempb \let \@tempb \@tempa \fi \ifx
+  \@tempb \@empty \def\@tempb {arXiv}\fi \@ifundefined
+  {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
+  mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
+
+\bibitem[\protect\citeauthoryear{{Asplund}, {Grevesse}, {Sauval}  \&
+  {Scott}}{{Asplund} et~al.}{2009}]{2009ARA&A..47..481A}
+{Asplund} M.,  {Grevesse} N.,  {Sauval} A.~J.,   {Scott} P.,  2009, \mn@doi
+  [Annual Review of Astronomy and Astrophysics]
+  {10.1146/annurev.astro.46.060407.145222}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2009ARA&A..47..481A} {47, 481}
+
+\bibitem[\protect\citeauthoryear{{Ferguson}, {Alexander}, {Allard}, {Barman},
+  {Bodnarik}, {Hauschildt}, {Heffner-Wong}  \& {Tamanai}}{{Ferguson}
+  et~al.}{2005}]{2005ApJ...623..585F}
+{Ferguson} J.~W.,  {Alexander} D.~R.,  {Allard} F.,  {Barman} T.,  {Bodnarik}
+  J.~G.,  {Hauschildt} P.~H.,  {Heffner-Wong} A.,   {Tamanai} A.,  2005,
+  \mn@doi [\apj] {10.1086/428642}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2005ApJ...623..585F} {623, 585}
+
+\bibitem[\protect\citeauthoryear{{GPy}}{{GPy}}{2012}]{gpy2014}
+{GPy} since 2012, {GPy}: A Gaussian process framework in python,
+  \url{http://github.com/SheffieldML/GPy}
+
+\bibitem[\protect\citeauthoryear{{Paxton}, {Bildsten}, {Dotter}, {Herwig},
+  {Lesaffre}  \& {Timmes}}{{Paxton} et~al.}{2011}]{2011ApJS..192....3P}
+{Paxton} B.,  {Bildsten} L.,  {Dotter} A.,  {Herwig} F.,  {Lesaffre} P.,
+  {Timmes} F.,  2011, \mn@doi [The Astrophysical Journal Supplement Series]
+  {10.1088/0067-0049/192/1/3}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2011ApJS..192....3P} {192, 3}
+
+\bibitem[\protect\citeauthoryear{{Paxton} et~al.,}{{Paxton}
+  et~al.}{2013}]{2013ApJS..208....4P}
+{Paxton} B.,  et~al., 2013, \mn@doi [The Astrophysical Journal Supplement
+  Series] {10.1088/0067-0049/208/1/4}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2013ApJS..208....4P} {208, 4}
+
+\bibitem[\protect\citeauthoryear{{Paxton} et~al.,}{{Paxton}
+  et~al.}{2015}]{2015ApJS..220...15P}
+{Paxton} B.,  et~al., 2015, \mn@doi [The Astrophysical Journal Supplement
+  Series] {10.1088/0067-0049/220/1/15}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2015ApJS..220...15P} {220, 15}
+
+\bibitem[\protect\citeauthoryear{{Paxton} et~al.,}{{Paxton}
+  et~al.}{2018}]{2018ApJS..234...34P}
+{Paxton} B.,  et~al., 2018, \mn@doi [\apjs] {10.3847/1538-4365/aaa5a8}, \href
+  {https://ui.adsabs.harvard.edu/abs/2018ApJS..234...34P} {234, 34}
+
+\bibitem[\protect\citeauthoryear{{Paxton} et~al.,}{{Paxton}
+  et~al.}{2019}]{2019ApJS..243...10P}
+{Paxton} B.,  et~al., 2019, \mn@doi [\apjs] {10.3847/1538-4365/ab2241}, \href
+  {https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P} {243, 10}
+
+\bibitem[\protect\citeauthoryear{{Rogers} \& {Nayfonov}}{{Rogers} \&
+  {Nayfonov}}{2002}]{2002ApJ...576.1064R}
+{Rogers} F.~J.,  {Nayfonov} A.,  2002, \mn@doi [\apj] {10.1086/341894}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2002ApJ...576.1064R} {576, 1064}
+
+\bibitem[\protect\citeauthoryear{{Townsend} \& {Teitler}}{{Townsend} \&
+  {Teitler}}{2013}]{2013MNRAS.435.3406T}
+{Townsend} R.~H.~D.,  {Teitler} S.~A.,  2013, \mn@doi [\mnras]
+  {10.1093/mnras/stt1533}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2013MNRAS.435.3406T} {435, 3406}
+
+\bibitem[\protect\citeauthoryear{{White}, {Bedding}, {Stello},
+  {Christensen-Dalsgaard}, {Huber}  \& {Kjeldsen}}{{White}
+  et~al.}{2011}]{2011ApJ...743..161W}
+{White} T.~R.,  {Bedding} T.~R.,  {Stello} D.,  {Christensen-Dalsgaard} J.,
+  {Huber} D.,   {Kjeldsen} H.,  2011, \mn@doi [\apj]
+  {10.1088/0004-637X/743/2/161}, \href
+  {https://ui.adsabs.harvard.edu/abs/2011ApJ...743..161W} {743, 161}
+
+\makeatother
+\end{thebibliography}

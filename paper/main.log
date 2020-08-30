@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  21 JUL 2020 21:43
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  30 AUG 2020 15:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -447,9 +447,6 @@ File: l3backend-pdfmode.def 2020-03-12 L3 backend support: PDF mode
 )
 (./main.aux
 
-LaTeX Warning: Label `fig:gpmodel' multiply defined.
-
-
 LaTeX Warning: Label `fig:4d_vali1' multiply defined.
 
 )
@@ -667,206 +664,172 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 8.0pt on input line 7.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 9.0pt on input line 42.
-
-
-Package natbib Warning: Citation `2011ApJS..192....3P' on page 1 undefined on i
-nput line 44.
-
-
-Package natbib Warning: Citation `2013ApJS..208....4P' on page 1 undefined on i
-nput line 44.
-
-
-Package natbib Warning: Citation `2015ApJS..220...15P' on page 1 undefined on i
-nput line 44.
-
-
-Package natbib Warning: Citation `2009ARA&A..47..481A' on page 1 undefined on i
-nput line 46.
-
-
-Package natbib Warning: Citation `2002ApJ...576.1064R' on page 1 undefined on i
-nput line 52.
-
-
-Package natbib Warning: Citation `2005ApJ...623..585F' on page 1 undefined on i
-nput line 53.
-
-
-Package natbib Warning: Citation `2018ApJS..234...34P' on page 1 undefined on i
-nput line 57.
-
-
-Package natbib Warning: Citation `2019ApJS..243...10P' on page 1 undefined on i
-nput line 57.
-
+(Font)              scaled to size 9.0pt on input line 43.
 LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 
-57.
+58.
+
 (/usr/local/texlive/2020/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 9.0pt on input line 57.
+(Font)              scaled to size 9.0pt on input line 58.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
+(hyperref)                removing `math shift' on input line 60.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\Delta' on input line 63.
+(hyperref)                removing `\Delta' on input line 60.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\nu' on input line 63.
+(hyperref)                removing `\nu' on input line 60.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 63.
+(hyperref)                removing `math shift' on input line 60.
 
 
-Package natbib Warning: Citation `2013MNRAS.435.3406T' on page 1 undefined on i
-nput line 65.
+Underfull \vbox (badness 1776) has occurred while \output is active []
 
-
-Package natbib Warning: Citation `2011ApJ...743..161W' on page 1 undefined on i
-nput line 65.
-
-) (./GPmodel.tex
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 1.
+(Font)              scaled to size 6.2pt on input line 63.
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
-e 1.
+e 63.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 1.
+(Font)              scaled to size 8.0pt on input line 63.
  [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]
-LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 13.
-<selection_of_t.pdf, id=99, 722.7pt x 1445.4pt>
+]) (./GPmodel.tex
+<selection_of_t.pdf, id=135, 722.7pt x 1445.4pt>
 File: selection_of_t.pdf Graphic file (type pdf)
 <use selection_of_t.pdf>
-Package pdftex.def Info: selection_of_t.pdf  used on input line 34.
+Package pdftex.def Info: selection_of_t.pdf  used on input line 48.
 (pdftex.def)             Requested size: 240.0pt x 480.00502pt.
-)
-(./augmentation.tex
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 8.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 11.
+(Font)              scaled to size 12.0pt on input line 56.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 11.
- [2pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
-has been already used, duplicate ignored
+(Font)              scaled to size 12.0pt on input line 56.
+
+[2pdfTeX warning (ext4): destination with the same identifier (name{table.1}) h
+as been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.11 
+l.56 
      ]
-<2D_data_on_HR.pdf, id=111, 722.7pt x 650.43pt>
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 9.0pt on input line 57.
+
+
+LaTeX Warning: Reference `grid' on page 3 undefined on input line 59.
+
+<2D_data_on_HR.pdf, id=150, 722.7pt x 650.43pt>
 File: 2D_data_on_HR.pdf Graphic file (type pdf)
 <use 2D_data_on_HR.pdf>
-Package pdftex.def Info: 2D_data_on_HR.pdf  used on input line 16.
-(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
-<2d_gpmodel_MLP.pdf, id=113, 794.97pt x 722.7pt>
-File: 2d_gpmodel_MLP.pdf Graphic file (type pdf)
-<use 2d_gpmodel_MLP.pdf>
-Package pdftex.def Info: 2d_gpmodel_MLP.pdf  used on input line 32.
-(pdftex.def)             Requested size: 240.0pt x 218.17908pt.
-<M0_ongrid_validation.pdf, id=114, 722.7pt x 650.43pt>
-File: M0_ongrid_validation.pdf Graphic file (type pdf)
-<use M0_ongrid_validation.pdf>
-Package pdftex.def Info: M0_ongrid_validation.pdf  used on input line 41.
+Package pdftex.def Info: 2D_data_on_HR.pdf  used on input line 84.
 (pdftex.def)             Requested size: 240.0pt x 216.00224pt.
 
+Underfull \vbox (badness 2409) has occurred while \output is active []
 
-LaTeX Warning: Reference `fig:residuals' on page 3 undefined on input line 52.
-
-
-LaTeX Warning: Reference `fig:residual' on page 3 undefined on input line 52.
-
-<M1_data.pdf, id=115, 722.7pt x 650.43pt>
-File: M1_data.pdf Graphic file (type pdf)
-<use M1_data.pdf>
-Package pdftex.def Info: M1_data.pdf  used on input line 58.
-(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
-<M2_data.pdf, id=116, 722.7pt x 650.43pt>
-File: M2_data.pdf Graphic file (type pdf)
-<use M2_data.pdf>
-Package pdftex.def Info: M2_data.pdf  used on input line 59.
-(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
-<all_validations.pdf, id=117, 794.97pt x 722.7pt>
-File: all_validations.pdf Graphic file (type pdf)
-<use all_validations.pdf>
-Package pdftex.def Info: all_validations.pdf  used on input line 68.
-(pdftex.def)             Requested size: 240.0pt x 218.17908pt.
-
-LaTeX Warning: Reference `fig:2d_validation' on page 3 undefined on input line 
-75.
-
-[3pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
+ [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.76 
+l.93 
      pdfTeX warning (ext4): destination with the same identifier (name{figure.2
 }) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.76 
+l.93 
       <./selection_of_t.pdf> <./2D_data_on_HR.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./2D_data_on_HR.pdf): PDF in
 clusion: multiple pdfs with page group included in a single page
 >]
-<off_validation_hr.pdf, id=224, 794.97pt x 722.7pt>
-File: off_validation_hr.pdf Graphic file (type pdf)
-<use off_validation_hr.pdf>
-Package pdftex.def Info: off_validation_hr.pdf  used on input line 81.
-(pdftex.def)             Requested size: 240.0pt x 218.17908pt.
-<2d_hrd_compare.pdf, id=225, 867.24pt x 722.7pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<2d_gpmodel_MLP.pdf, id=260, 867.24pt x 722.7pt>
+File: 2d_gpmodel_MLP.pdf Graphic file (type pdf)
+<use 2d_gpmodel_MLP.pdf>
+Package pdftex.def Info: 2d_gpmodel_MLP.pdf  used on input line 103.
+(pdftex.def)             Requested size: 240.0pt x 199.99474pt.
+<M0_data.pdf, id=261, 722.7pt x 650.43pt>
+File: M0_data.pdf Graphic file (type pdf)
+<use M0_data.pdf>
+Package pdftex.def Info: M0_data.pdf  used on input line 113.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<M1_data.pdf, id=262, 722.7pt x 650.43pt>
+File: M1_data.pdf Graphic file (type pdf)
+<use M1_data.pdf>
+Package pdftex.def Info: M1_data.pdf  used on input line 114.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<M2_data.pdf, id=263, 722.7pt x 650.43pt>
+File: M2_data.pdf Graphic file (type pdf)
+<use M2_data.pdf>
+Package pdftex.def Info: M2_data.pdf  used on input line 115.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<M0_test.pdf, id=264, 722.7pt x 650.43pt>
+File: M0_test.pdf Graphic file (type pdf)
+<use M0_test.pdf>
+Package pdftex.def Info: M0_test.pdf  used on input line 116.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<M1_test.pdf, id=265, 722.7pt x 650.43pt>
+File: M1_test.pdf Graphic file (type pdf)
+<use M1_test.pdf>
+Package pdftex.def Info: M1_test.pdf  used on input line 117.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<M2_test.pdf, id=266, 722.7pt x 650.43pt>
+File: M2_test.pdf Graphic file (type pdf)
+<use M2_test.pdf>
+Package pdftex.def Info: M2_test.pdf  used on input line 118.
+(pdftex.def)             Requested size: 166.32092pt x 149.68507pt.
+<off_validation.pdf, id=271, 722.7pt x 650.43pt>
+File: off_validation.pdf Graphic file (type pdf)
+<use off_validation.pdf>
+Package pdftex.def Info: off_validation.pdf  used on input line 141.
+(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.144 \end{figure}
+                   <./2d_gpmodel_MLP.pdf>]
+Underfull \vbox (badness 2261) has occurred while \output is active []
+
+<2d_hrd_compare.pdf, id=326, 867.24pt x 722.7pt>
 File: 2d_hrd_compare.pdf Graphic file (type pdf)
 <use 2d_hrd_compare.pdf>
-Package pdftex.def Info: 2d_hrd_compare.pdf  used on input line 93.
+Package pdftex.def Info: 2d_hrd_compare.pdf  used on input line 153.
 (pdftex.def)             Requested size: 240.0pt x 199.99474pt.
-
-Underfull \vbox (badness 1960) has occurred while \output is active []
-
 )
-(./discussion.tex) (./conclusions.tex) [4pdfTeX warning (ext4): destination wit
-h the same identifier (name{figure.3}) has been already used, duplicate ignored
+(./augmentation.tex
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.109 \section
-              *{Acknowledgements}pdfTeX warning (ext4): destination with the sa
-me identifier (name{figure.4}) has been already used, duplicate ignored
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.109 \section
-              *{Acknowledgements}pdfTeX warning (ext4): destination with the sa
-me identifier (name{figure.5}) has been already used, duplicate ignored
+l.18 \item W
+            e hence need to divide the grid into small chunks and train each...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) ha
+s been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.109 \section
-              *{Acknowledgements} <./2d_gpmodel_MLP.pdf> <./M0_ongrid_validatio
-n.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M0_ongrid_validation.pdf):
- PDF inclusion: multiple pdfs with page group included in a single page
-> <./M1_data.pdf
+l.18 \item W
+            e hence need to divide the grid into small chunks and train each...
+ <./M0_data.pdf> <./M1_data.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M1_data.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
@@ -874,70 +837,65 @@ n: multiple pdfs with page group included in a single page
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M2_data.pdf): PDF inclusio
 n: multiple pdfs with page group included in a single page
->]
-No file main.bbl.
+> <./M0_test.pdf
 
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M0_test.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./M1_test.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M1_test.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./M2_test.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./M2_test.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+> <./off_validation.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./off_validation.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>]) (./discussion.tex) (./conclusions.tex) (./main.bbl
+LaTeX Info: Redefining \VAN on input line 1.
+LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
+(Font)              scaled to size 8.0pt on input line 37.
+) [6pdfTeX warning (ext4): destination with the same identifier (name{figure.6}
+) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.130 \onecolumn
+                 <./2d_hrd_compare.pdf>]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [5pdfTeX warning (ext4): destination with the same identifier (name{table.2}) 
+ [7pdfTeX warning (ext4): destination with the same identifier (name{table.2}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
 l.130 \onecolumn
-                pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.130 \onecolumn
-                pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.7}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.130 \onecolumn
-                pdfTeX warning (ext4): destination with the same identifier (na
-me{figure.8}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.130 \onecolumn
-                 <./all_validations.pdf> <./off_validation_hr.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./off_validation_hr.pdf): PD
-F inclusion: multiple pdfs with page group included in a single page
-> <./2d_hrd_compare.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./2d_hrd_compare.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
->] (./appendix.tex
-<4d_validation_x.pdf, id=602, 1806.75pt x 722.7pt>
+                ] (./appendix.tex
+<4d_validation_x.pdf, id=787, 1806.75pt x 722.7pt>
 File: 4d_validation_x.pdf Graphic file (type pdf)
 <use 4d_validation_x.pdf>
 Package pdftex.def Info: 4d_validation_x.pdf  used on input line 24.
 (pdftex.def)             Requested size: 504.0pt x 201.59372pt.
-<4d_2chunks_validation_x.pdf, id=603, 1806.75pt x 722.7pt>
+<4d_2chunks_validation_x.pdf, id=788, 1806.75pt x 722.7pt>
 File: 4d_2chunks_validation_x.pdf Graphic file (type pdf)
 <use 4d_2chunks_validation_x.pdf>
 Package pdftex.def Info: 4d_2chunks_validation_x.pdf  used on input line 25.
 (pdftex.def)             Requested size: 504.0pt x 201.59372pt.
-<5d_validation_x.pdf, id=604, 1806.75pt x 722.7pt>
+<5d_validation_x.pdf, id=789, 1806.75pt x 722.7pt>
 File: 5d_validation_x.pdf Graphic file (type pdf)
 <use 5d_validation_x.pdf>
 Package pdftex.def Info: 5d_validation_x.pdf  used on input line 41.
 (pdftex.def)             Requested size: 504.0pt x 201.59372pt.
 )
-
-Package natbib Warning: There were undefined citations.
-
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 139.
-[6
+ [8
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [7pdfTeX warning (ext4): destination with the same identifier (name{figure.A1.
+ [9pdfTeX warning (ext4): destination with the same identifier (name{figure.A1.
 1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
@@ -950,8 +908,8 @@ f): PDF inclusion: multiple pdfs with page group included in a single page
 >]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8pdfTeX warning (ext4): destination with the same identifier (name{figure.A1.
-2}) has been already used, duplicate ignored
+ [10pdfTeX warning (ext4): destination with the same identifier (name{figure.A1
+.2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
@@ -962,7 +920,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 139.
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 139.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 139.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: A37A88E1364E846F98CEFA7016C63E62;1088.
+(rerunfilecheck)             Checksum: AE445568FF8F330B74845206302974EF;1243.
 
 
 LaTeX Font Warning: Size substitutions with differences
@@ -977,13 +935,13 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 139.
  ) 
 Here is how much of TeX's memory you used:
- 10209 strings out of 480608
- 141980 string characters out of 5903630
- 409056 words of memory out of 5000000
- 25792 multiletter control sequences out of 15000+600000
- 628825 words of font info for 162 fonts, out of 8000000 for 9000
+ 10277 strings out of 480608
+ 143290 string characters out of 5903630
+ 412348 words of memory out of 5000000
+ 25841 multiletter control sequences out of 15000+600000
+ 628771 words of font info for 162 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,40p,1167b,349s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,15n,40p,3265b,405s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1003,10 +961,10 @@ blic/newtx/txmiaX.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/ne
 wtx/txsys.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/newtx/ztmb
 .pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></us
 r/local/texlive/2020/texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (8 pages, 2514028 bytes).
+Output written on main.pdf (10 pages, 2780114 bytes).
 PDF statistics:
- 872 PDF objects out of 1000 (max. 8388607)
- 327 compressed objects within 4 object streams
- 47 named destinations out of 1000 (max. 500000)
- 189 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1059 PDF objects out of 1200 (max. 8388607)
+ 451 compressed objects within 5 object streams
+ 62 named destinations out of 1000 (max. 500000)
+ 215 words of extra memory for PDF output out of 10000 (max. 10000000)
 
