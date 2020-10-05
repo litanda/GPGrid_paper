@@ -1,23 +1,10 @@
-\section{GPR Models for the 5-demission MESA grid}\label{sec:augmentation}
-In this section, we demonstrated our training process for the 5-demission \textsc{MESA} grid.
+\section{Augmentation of Stellar Grid}\label{sec:augmentation}
+In this section, we demonstrate our training process for a 3-demission and a 5-demission grid.  
 
-\subsection{Training GPR Models}
+\subsection{GPR models with 3D inputs}
 
-\subsection{Validating GPR models and Estimating Systematical Uncertainties}
+\subsection{GPR models with 5D inputs}
 
-\subsection{Modelling with GPR Models}
-
-\subsubsection{Three Fake Stars}
-
-\subsubsection{The Sun}
-
-\subsubsection{Six {\em Kepler} Dwarfs and Subgiants}
-
-\begin{itemize}
-\item Accuracy goes down. Because the multiple-demission space size increase while the training dataset has a limitation of 10,000 points.  
-\item We hence need to divide the grid into small chunks and train each chunk separately.  (illustrate how chunks are divided)
-\item  show training and validation results in a fancy way. 
-\end{itemize}
 
 
 \begin{table*}
@@ -26,7 +13,7 @@ In this section, we demonstrated our training process for the 5-demission \texts
 	\label{tab:gpdetails}
 	\begin{tabular}{lcll} % four columns, alignment for each
 		\hline
-		 GPR model input &\multicolumn{1}{l}{GPR model output} & \multicolumn{1}{c}{Model combination and kernels}& 
+		 GPR model input &\multicolumn{1}{l}{GPR model output} & \multicolumn{1}{c}{GPR model combination and kernels}& 
 		  \multicolumn{1}{c}{Validation errors (\%)}\\ 
 		 \hline
 		 $M$, $t_{\rm frac}$, [Fe/H]$_{\rm init}$, $Y_{\rm init}$, $\alpha_{\rm MLT}$ & $T_{\rm eff}$ (K) &M0(MLP)+M1(MLP)& 0.05/0.3/1\\
@@ -38,6 +25,25 @@ In this section, we demonstrated our training process for the 5-demission \texts
        \hline
 	\end{tabular}
 \end{table*}
+
+
+\section{Systematical Uncertainties of GPR Models}\label{sec:sys}
+
+\section{Modeling stars with GPR models}
+
+%\subsubsection{Three Fake Stars}
+
+%\subsubsection{The Sun}
+
+%\subsubsection{Six {\em Kepler} Dwarfs and Subgiants}
+
+\begin{itemize}
+\item Accuracy goes down. Because the multiple-demission space size increase while the training dataset has a limitation of 10,000 points.  
+\item We hence need to divide the grid into small chunks and train each chunk separately.  (illustrate how chunks are divided)
+\item  show training and validation results in a fancy way. 
+\end{itemize}
+
+
 
 
 

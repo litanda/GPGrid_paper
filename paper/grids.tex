@@ -55,7 +55,14 @@ supplemented by low-temperature opacity \citep{2005ApJ...623..585F}.
 The MESA ‘simple’ photosphere were used as the set of boundary conditions for modelling the atmosphere.
 The mixing-length theory of convection was implemented, where 
 $\alpha_{\rm MLT} = \ell_{\rm MLT}/H_p$ is the mixing-length parameter.
-We also applied the \textsc{MESA} predictive mixing scheme \citep{2018ApJS..234...34P,2019ApJS..243...10P}  in the model computation. The \textsc{MESA} inlist used for the computation is available on \url{https://github.com/litanda/mesa_inlist}.  
+We also applied the \textsc{MESA} predictive mixing scheme \citep{2018ApJS..234...34P,2019ApJS..243...10P}  in the model computation. 
+Atomic diffusion of helium and 
+heavy elements was also taken into account. MESA calculates particle diffusion and gravitational settling by solving Burger's equations using the method
+and diffusion coefficients of \citet{Thoul94}. 
+%We considered 8 classes of species (H1, He3, He4, C12, N14, O16, Ne20, and Mg24) We considered 8 classes of species (H1, He3, He4, C12, N14, O16, Ne20, and Mg24)
+We considered eight elements (${}^1{\rm H}, {}^3{\rm He}, {}^4{\rm He}, {}^{12}{\rm C}, {}^{14}{\rm N}, {}^{16}{\rm O}, {}^{20}{\rm Ne}$, and ${}^{24}{\rm Mg}$)
+for diffusion calculations, and had the charge calculated by the MESA ionization module, which estimates the typical ionic charge as a function of $T$, $\rho$, and free electrons per nucleon from \citet{Paquette1986}.
+The \textsc{MESA} inlist used for the computation is available on \url{https://github.com/litanda/mesa_inlist}.  
 
 \subsection{Oscillation models and seismic $\Delta \nu$}\label{subsec:seismo_model}
 
