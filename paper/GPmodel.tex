@@ -1,10 +1,63 @@
-\section{Training GPR models}\label{GPR}
+\section{Gaussian Process regression}\label{GPR}
 
-We adopted the GPy package \citep{gpy2014}, which is a Gaussian Process framework developed by the Sheffield machine learning group, to train GPR models for the \textsc{MESA} Grid. 
+We adopted the GPy package \citep{gpy2014}, which is a Gaussian Process (GP) framework developed by the Sheffield machine learning group, to train GP models for the \textsc{MESA} Grid. 
 
-I am going to add some stuff here ...
+\subsection{Gaussian process model}
 
-\subsection{GPR kernels}
+GP models can be applied as probabilistic models to regression problems.  Here we will use the GP model to generalise a grid of stellar models to a continuous and probabilistic function that maps inputs (i.e., initial mass, composition, age, ...) to observable quantities (i.e., effective temperature, radius, $\Delta \nu$, ... ).  We aim to use the GP model as a non-parametric emulator, that is emulating the comparatively slow calls to models of stellar evolution. 
+
+\subsubsection{Gaussian process application}
+
+We start with a grid of stellar models containing $N$ models with a label we  want to learn, for example model effective temperature, which we will denote with the general symbol $\bf y$, and a set of input labels $\bf X$ (e.g., mass, age, and metallicity).  We can use a GP to make predictions of the effective temperature (or $y$) for additional input values given by $\bf X_{\star}$.  The vector $\bf y$ is arranged ${\bf y} = \left(y_{i}, ... ,y_{N} \right)^{T}$ where the subscript label references the stellar model.  The input labels are arranged into a $N \times D$ matrix where $D$ is the number of input dimensions (e.g., $D=3$ for mass, age, and metallicity) so that ${\bf X} = ({\bf x}_{1}, ..., {\bf x}_{N})^{T}$ where ${\bf x_{i}} = (x_{1, i}, ..., x_{D, i})^{T}$.  The matrix of additional inputs $\bf X_{\star}$ has the same form as $\bf X$ but size $N_{\star} \times D$.
+
+Rasmussen and Williams (!REF!), from which our description below is based, define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms, GP's may be written as
+\begin{equation}
+y({\bf x}) \sim \mathcal{GP}\left( m({\bf x}), {\bf \Sigma}\right),
+\end{equation}
+where $m({\bf x})$ is some mean function, and ${\bf \Sigma}$ is some covariance matrix.  The mean function controls the deterministic part of the regression and the covariance controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
+\begin{equation}
+{\bf \Sigma}_{n, m} = k({\bf x}_{n}, {\bf x}_{m}),
+\end{equation}
+where the inputs ${\bf x}_{i}$ are $D$-dimensional vectors and the output is a scalar covariance.
+
+As a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the joint probability of our data $\bf y$ is
+\begin{equation}
+p({\bf y} | {\bf X, \phi, \theta}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}).
+\end{equation}
+If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$ the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by
+\begin{equation}
+p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} {\bf X} \\ {\bf X_{\star}} \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
+\end{equation}
+where the covariance matrices $\bf \Sigma$ and $\bf K$ are computed using the kernel function so that
+\begin{equation}
+{\bf \Sigma}_{n, m} = k({\bf X}_{n}, \, {\bf X}_{m}),
+\end{equation}
+which is an $N \times N$ matrix.
+\begin{equation}
+{\bf K}_{\star \, n, m} = k({\bf X}_{n}, \, { \bf X}_{\star \, m}),
+\end{equation}
+which is an $N \times N_{\star}$ matrix, and finally
+\begin{equation}
+{\bf K}_{\star \star \, n, m} = k({\bf X}_{\star \, n},  {\bf X}_{\star \,m}),
+\end{equation}
+which is an $N_{\star} \times N_{\star}$ matrix.
+The predictions of $\bf y_{\star}$ are again a Gaussian distribution so that,
+\begin{equation}
+{\bf y}_{\star} \sim \mathcal{N}(\bf \hat{y}_{\star}, \, \bf C),
+\label{eq:pred}
+\end{equation}
+where 
+\begin{equation}
+{\bf \hat{y}}_{\star} = m({\bf X}_{\star}) + {\bf K}_{\star}^{T} \, {\bf \Sigma}^{-1} \, ({\bf y} - m(\bf X)),
+\end{equation}
+and 
+\begin{equation}
+{\bf C} = {\bf K}_{\star \star} - {\bf K}_{\star}^{T} \, {\bf \Sigma}^{-1} \, {\bf K_{\star}}.
+\end{equation}
+
+At point we can make predictions on model properties given a grid of stellar models using equation \ref{eq:pred}.  But these predictions will be poor unless we select sensible values for the form and hyperparameters of the mean function and covariance function.  In the following section we detail a number of kernel functions that will be tested against the data.  We will then discuss the method for determining the values of the hyperparameters to be used.
+
+\subsubsection{GPR kernels}
 The analysing is mainly based on the MLP kernel because of the following points (ask Guy to write some words about the MLP kernel).
 We also use other couple kernels to improve the GPR model, particularly for the residuals of the MLP-kernel model.  
 The kernels involved in this works are listed below:
@@ -16,6 +69,10 @@ The kernels involved in this works are listed below:
 \item EXP: Exponential Kernel
 \item Mat32: Matern 3/2 kernel
 \end{itemize}
+
+\subsubsection{Gaussian process likelihood function}
+
+TODO
 
 \subsection{GPR Model Inputs}
 We aim to derive stellar parameters based on fundamental inputs of the model grid. As mentioned in Section~\ref{sec:grid}, our model grid has five independent fundamental inputs, says, mass, initial metallicity, initial helium fraction, mixing-length parameter, and the age.
