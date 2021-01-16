@@ -1,8 +1,10 @@
 \section{Theoretical  model grid}\label{sec:grid}
 
-We built up a model grid as the training data for GPR models.  We aimed to cover stars with approximate solar mass on the main-sequence and the subgiant phases. Thus, the mass range is set up as 0.8 -- 1.2$M_{\odot}$, and we computed each stellar evolutionary track from the Hayashi line and terminated at the base of red-giant branch where $\log g$ = 3.6 dex. The gird includes four independent model inputs: stellar mass (M), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]), and the mixing-length parameter ($\alpha_{\rm MLT}$). Details of the computations are summarised in Table \ref{tab:grid}. Input parameters of our primary training data is uniformly spaced except the input metallicity, which is double dense above 0.2 $dex$. We also computed an extra grid that fit in between the primary training data for $M > 1.05M_{\odot}$. Because evolutionary tracks in this mass range have the so-called 'hook' at the late main-sequence stage and relatively difficult to model. Lastly, we computed 4,880 tracks with input parameters that are randomly sampled in the grid ranges for validating GPR models. The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity. We also saved structural models for computing theoretical oscillation models.
+We built up a model grid as the training data for GPR models.  We aimed to cover stars with approximate solar mass on the main-sequence and the subgiant phases. Thus, the mass range is set up as 0.8 -- 1.2$M_{\odot}$, and we computed each stellar evolutionary track from the Hayashi line and terminated at the base of red-giant branch where $\log g$ = 3.6 dex. However, we only use models after the zero-age-main-sequence (ZAMS), which is defined as where the core hydrogen burning contributes over 99.9 percent of total luminosity of the star. 
+%
+The gird includes four independent model inputs: stellar mass (M), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]), and the mixing-length parameter ($\alpha_{\rm MLT}$). Details of the computations are summarised in Table \ref{tab:grid}. Input parameters of our primary training data is uniformly spaced except the input metallicity, which is double dense above 0.2 $dex$. We also computed an extra grid that fit in between the primary training data for $M > 1.05M_{\odot}$. Because evolutionary tracks in this mass range have the so-called 'hook' at the late main-sequence stage and relatively difficult to model. Lastly, we computed 4,880 tracks with input parameters that are randomly sampled in the grid ranges for validating GPR models. The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity. We also saved structural models for computing theoretical oscillation models.
 
-\begin{table*}
+\begin{table}
 	\centering
 	\caption{Stellar model computations for training and validating sets.}
 	\label{tab:grid}
@@ -17,7 +19,7 @@ We built up a model grid as the training data for GPR models.  We aimed to cover
         	$Y_{\rm init}$ & 0.24 -- 0.32 & 0.02&\\
         $\alpha_{\rm{MLT}}$  & 1.7 -- 2.5&  0.2&\\
         \hline
-       \multicolumn{4}{c}{Extra Grid}\\
+       \multicolumn{4}{c}{Additional Grid}\\
 	\hline
 	Input Parameter & Range & Increment \\
         \hline
@@ -32,10 +34,14 @@ We built up a model grid as the training data for GPR models.  We aimed to cover
         \hline
         \multicolumn{4}{c}{Off-grid Models}\\
         \hline
-        \multicolumn{4}{c}{4880 tracks with random input parameters }\\
+        GP Model & \multicolumn{3}{c}{Number of Tracks}\\
+        \hline
+        2D&\multicolumn{3}{c}{44}\\
+        3D&\multicolumn{3}{c}{174}\\
+        5D&\multicolumn{3}{c}{4880}\\
 	\hline
 	\end{tabular}
-\end{table*}
+\end{table}
 
 \subsection{Stellar models and input physics}\label{subsec:stellar_model}
 

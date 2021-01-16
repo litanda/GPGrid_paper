@@ -32,9 +32,15 @@
   \mn@doi [\apj] {10.1086/428642}, \href
   {https://ui.adsabs.harvard.edu/#abs/2005ApJ...623..585F} {623, 585}
 
-\bibitem[\protect\citeauthoryear{{GPy}}{{GPy}}{2012}]{gpy2014}
-{GPy} since 2012, {GPy}: A Gaussian process framework in python,
-  \url{http://github.com/SheffieldML/GPy}
+\bibitem[\protect\citeauthoryear{Gardner, Pleiss, Bindel, Weinberger  \&
+  Wilson}{Gardner et~al.}{2018}]{gardner2018gpytorch}
+Gardner J.~R.,  Pleiss G.,  Bindel D.,  Weinberger K.~Q.,   Wilson A.~G.,
+  2018, in Advances in Neural Information Processing Systems.
+
+\bibitem[\protect\citeauthoryear{Hensman, Matthews  \& Ghahramani}{Hensman
+  et~al.}{2014}]{hensman2015scalable}
+Hensman J.,  Matthews A.,   Ghahramani Z.,  2014, arXiv preprint
+  arXiv:1411.2005
 
 \bibitem[\protect\citeauthoryear{{Paquette}, {Pelletier}, {Fontaine}  \&
   {Michaud}}{{Paquette} et~al.}{1986}]{Paquette1986}
@@ -71,10 +77,20 @@
 {Paxton} B.,  et~al., 2019, \mn@doi [\apjs] {10.3847/1538-4365/ab2241}, \href
   {https://ui.adsabs.harvard.edu/abs/2019ApJS..243...10P} {243, 10}
 
+\bibitem[\protect\citeauthoryear{Reddi, Kale  \& Kumar}{Reddi
+  et~al.}{2018}]{47409}
+Reddi S.,  Kale S.,   Kumar S.,  2018, in International Conference on Learning
+  Representations.
+
 \bibitem[\protect\citeauthoryear{{Rogers} \& {Nayfonov}}{{Rogers} \&
   {Nayfonov}}{2002}]{2002ApJ...576.1064R}
 {Rogers} F.~J.,  {Nayfonov} A.,  2002, \mn@doi [\apj] {10.1086/341894}, \href
   {https://ui.adsabs.harvard.edu/#abs/2002ApJ...576.1064R} {576, 1064}
+
+\bibitem[\protect\citeauthoryear{Sutskever, Martens, Dahl  \& Hinton}{Sutskever
+  et~al.}{2013}]{sutskever2013importance}
+Sutskever I.,  Martens J.,  Dahl G.,   Hinton G.,  2013, in International
+  conference on machine learning. pp 1139--1147
 
 \bibitem[\protect\citeauthoryear{{Thoul}, {Bahcall}  \& {Loeb}}{{Thoul}
   et~al.}{1994}]{Thoul94}
@@ -95,6 +111,11 @@
   {Huber} D.,   {Kjeldsen} H.,  2011, \mn@doi [\apj]
   {10.1088/0004-637X/743/2/161}, \href
   {https://ui.adsabs.harvard.edu/abs/2011ApJ...743..161W} {743, 161}
+
+\bibitem[\protect\citeauthoryear{Wilson \& Nickisch}{Wilson \&
+  Nickisch}{2015}]{wilson2015kernel}
+Wilson A.,  Nickisch H.,  2015, in International Conference on Machine
+  Learning. pp 1775--1784
 
 \makeatother
 \end{thebibliography}
