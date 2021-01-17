@@ -10,10 +10,9 @@
 \BOOKMARK [2][-]{subsection.3.5}{Strategy for Large sample}{section.3}% 10
 \BOOKMARK [1][-]{section.4}{Augmenting the MESA Grid}{}% 11
 \BOOKMARK [2][-]{subsection.4.1}{Overall Results}{section.4}% 12
-\BOOKMARK [2][-]{subsection.4.2}{Testing Errors}{section.4}% 13
-\BOOKMARK [2][-]{subsection.4.3}{Systematical Uncertainties of GP Models}{section.4}% 14
-\BOOKMARK [1][-]{section.5}{Discussion}{}% 15
-\BOOKMARK [1][-]{section.6}{Conclusions}{}% 16
-\BOOKMARK [1][-]{section.A1}{Validation and prediction of GPR models }{}% 17
-\BOOKMARK [2][-]{subsection.A1.1}{GPR model with 3-D inputs}{section.A1}% 18
-\BOOKMARK [2][-]{subsection.A1.2}{GPR model with 5-D inputs}{section.A1}% 19
+\BOOKMARK [2][-]{subsection.4.2}{Mapping Systematical Uncertainties across the input parameter space}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Discussion}{}% 14
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 15
+\BOOKMARK [1][-]{section.A1}{Validation and prediction of GPR models }{}% 16
+\BOOKMARK [2][-]{subsection.A1.1}{GPR model with 3-D inputs}{section.A1}% 17
+\BOOKMARK [2][-]{subsection.A1.2}{GPR model with 5-D inputs}{section.A1}% 18

@@ -8,9 +8,9 @@ We firstly train an Exact GP model for the whole grid with 20,000 model, corresp
 %
 We then train GP models with the section scenario. We gradually increase the number of sections and track changes in testing errors. We found that improvements in testing errors becomes not significantly when the section number goes above 10. As it shown in Table~\ref{tab:results}, the 68th and 95th testing errors are at same accuracy levels for sections more than 10. Although the 99.7th errors seem to be better with more sections, this is more like a random error given the change is a small fraction. 
 %
-It turns out that the most efficient sampling rate is around 1\% (10 sections). Above this rate, GP models learn no additional information about the grid. (references about this point?) 
+It turns out that the most efficient sampling rate is around 1\% (10 sections). Above this rate, GP models learn no additional information about the grid.  
 %
-Because less sections means less time and memory consumed for predicting. When take the 10-sections GP model as the final solution. Following analysis are all done with this model.   
+We take the 10-sections GP model as the final solution. Following analysis are all done with this model.   
 
 
 \begin{table*}
@@ -65,11 +65,10 @@ Because less sections means less time and memory consumed for predicting. When t
 	\end{tabular}
 \end{table*}
 
-\subsection{Testing Errors}
 
 We show the testing errors in Figure~\ref{fig:5d_test_vs_input}. 
 %
-Because of the tail feature as described in SectionXXX, 95\% confidential intervals vary in larger dynamic ranges than 68\% confidential intervals.  
+Because of the tail feature as illustrated in Figure~\ref{fig:2dtest}, 95\% confidential intervals vary in larger dynamic ranges than 68\% confidential intervals.  
 %
 Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and $EEP$. Metallicity error strongly depends on $M$, $EEP$, and [Fe/H]$_{\rm init}$, and age error has a significant correlation to $EEP$ and [Fe/H]$_{\rm init}$. However, testing errors do not obviously relate to $Y_{\rm init}$ or $\alpha_{\rm MLT}$. 
 
@@ -79,17 +78,18 @@ Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and $EEP
   \label{fig:5d_test_vs_input}
 \end{figure*}
 
+\subsection{Mapping Systematical Uncertainties across the input parameter space}\label{sec:sys}
 
-\begin{itemize}
-\item E vs output
-\item E vs input 
-\item E for on-grid and off-grid (validating and testing)
-\item E on M-EEP diagram (optional)
-\end{itemize}
-
-
-\subsection{Systematical Uncertainties of GP Models}\label{sec:sys}
-
+Local standard deviations are not uniform and correlate to multiple inputs and hence marginal values in Figure~\ref{fig:5d_test_vs_input} do not properly describe systematical uncertainties of GP model.  
+% 
+Because marginal values do not obviously relate to $Y_{\rm init}$ or $\alpha_{\rm MLT}$. A comprehensive statistical model for systematical uncertainty can be described as a function of $M$, $EEP$, and [Fe/H]$_{\rm init}$. 
+%
+We first examine local error distributions across this 3-demissions input space. This is to investigate wether local testing errors form the Gaussian function (without tails). We divided the input space into equal-size segments. Note that the the choice of the size matters. It needs to be small enough to present the local feature. However, it can not be very small so that there are not enough data points for statistical analysis. 
+%
+We divide the input range into 40 equally spaced segments for $M$, 20 for [Fe/H]$_{\rm init}$, and 25 for $EEP$. The 3D parameter space is hence divided into 20,000 cubes. For each cube, we calculate rolling median value and standard deviation in the 3D space with the data in this cube and other 26 cubes around it. 
+%
+In the computation, we do a statistic test to ensure the local error distribution has no tail effect. Two conditions are used for the test. One is the 68\% CI over the 95\% CI ratio less than 2.5, and the other is the 68\% CI over the 99.7\% ratio less than 4. We use the rolling median value and standard deviation when either of these two conditions is met. 
+%
 
 
 %\section{Modeling stars with GPR models}
@@ -99,18 +99,5 @@ Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and $EEP
 %\subsubsection{The Sun}
 
 %\subsubsection{Six {\em Kepler} Dwarfs and Subgiants}
-
-\begin{itemize}
-\item Accuracy goes down. Because the multiple-demission space size increase while the training dataset has a limitation of 10,000 points.  
-\item We hence need to divide the grid into small chunks and train each chunk separately.  (illustrate how chunks are divided)
-\item  show training and validation results in a fancy way. 
-\end{itemize}
-
-
-
-
-
-
-
 
 
