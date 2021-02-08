@@ -78,13 +78,20 @@ $^{1}$ School of Physics and Astronomy, University of Birmingham, Birmingham, B1
 
 % Abstract of the paper
 \begin{abstract}
-Grid-based modelling is widely used for estimating stellar parameters. However, theoretical model grid is sparse.  This paper demonstrates an application of Gaussian Process Regression (GPR), which transfer a sparse model grid to a continuing function. We trained a GPR model with a model grid to learn the function from 5 independent fundamental inputs (Mass, fractional age, initial metallicity, initial helium fraction, and the mixing-length parameter) to 6 model outputs (age, seismic large separation, effective temperature, surface gravity, radius, and surface metallicity). The GPR function was then validated and the typical standard deviations of GPR predictions are 1\% for the age, 0.5$\mu$Hz for the seismic large separation, 12K for the effective temperature, 0.004dex for the surface gravity, 0.008$R_{\odot}$ for the radius, and 0.008dex for the surface metallicity. This indicates that GPR can be used to augmenting stellar grids and furthered model stars. We lastly applied the GPR function for modelling the Sun-as-a-star. The GPR function gives nicer statistical estimates than grid-based modelling does. 
+Grid-based modelling is widely used for estimating stellar parameters. However, stellar model grid is sparse because of the computational cost. This paper demonstrates an application of Gaussian Process (GP) Regression that turns a sparse model grid to a continuous function. We train GP models to map five fundamental inputs (mass, equivalent evolutionary phase, initial metallicity, initial helium fraction, and the mixing-length parameter) to observable outputs (effective temperature, surface gravity, radius, surface metallicity, and stellar age), aiming to augment the stellar grid. 
+%
+We preliminarily test different training approaches with a small subset of stellar model grid and set up the GP models with the most promising methods. To overcome the limitation of training data size of GP framework, we section the whole grid into 10 segment and train each section separately. 
+%
+An off-grid stellar model dataset is then used to test GP models. Mean differences between GP predictions and testing data are approximately zero for all outputs. The standard deviation of global testing errors is $\sim 2 K$ for effective temperature, $\sim 0.001 dex$ for surface gravity, $\sim 0.002 R_{\odot}$ for radius, $\sim 0.001 dex$ for surface metallicity, and $\sim 0.02 Gyr$ for stellar age. However, we found that local standard deviation is not uniform across the parameter space and it mainly varies with mass, equivalent evolutionary phase, and initial metallicity. We hence train another GP model to describe the systematic uncertainties.      
+%
+We lastly model 100 fake stars to validate the accuracy of GP models. Inferred masses and ages are well consistent with true values within 1 standard deviation. We also note that GP model gives more sensible statistical results than grid-based modelling while estimated stellar parameters because fundamental inputs are continuously sampled. 
+%
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
 % Don't make up new ones.
 \begin{keywords}
-keyword1 -- keyword2 -- keyword3
+Star: Modelling -- Machine Learning -- keywords
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -99,10 +106,6 @@ keyword1 -- keyword2 -- keyword3
 \input{GPmodel.tex}
 
 \input{augmentation.tex}
-
-%\input{results.tex}
-
-\input{discussion.tex}
 
 \input{conclusions.tex}
 

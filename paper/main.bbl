@@ -24,6 +24,16 @@
   {10.1146/annurev.astro.46.060407.145222}, \href
   {https://ui.adsabs.harvard.edu/#abs/2009ARA&A..47..481A} {47, 481}
 
+\bibitem[\protect\citeauthoryear{{Choi}, {Dotter}, {Conroy}, {Cantiello},
+  {Paxton}  \& {Johnson}}{{Choi} et~al.}{2016}]{2016ApJ...823..102C}
+{Choi} J.,  {Dotter} A.,  {Conroy} C.,  {Cantiello} M.,  {Paxton} B.,
+  {Johnson} B.~D.,  2016, \mn@doi [\apj] {10.3847/0004-637X/823/2/102}, \href
+  {https://ui.adsabs.harvard.edu/#abs/2016ApJ...823..102C} {823, 102}
+
+\bibitem[\protect\citeauthoryear{{Dotter}}{{Dotter}}{2016}]{2016ApJS..222....8D}
+{Dotter} A.,  2016, \mn@doi [\apjs] {10.3847/0067-0049/222/1/8}, \href
+  {https://ui.adsabs.harvard.edu/abs/2016ApJS..222....8D} {222, 8}
+
 \bibitem[\protect\citeauthoryear{{Ferguson}, {Alexander}, {Allard}, {Barman},
   {Bodnarik}, {Hauschildt}, {Heffner-Wong}  \& {Tamanai}}{{Ferguson}
   et~al.}{2005}]{2005ApJ...623..585F}
@@ -41,6 +51,12 @@ Gardner J.~R.,  Pleiss G.,  Bindel D.,  Weinberger K.~Q.,   Wilson A.~G.,
   et~al.}{2014}]{hensman2015scalable}
 Hensman J.,  Matthews A.,   Ghahramani Z.,  2014, arXiv preprint
   arXiv:1411.2005
+
+\bibitem[\protect\citeauthoryear{{Hon}, {Stello}  \& {Yu}}{{Hon}
+  et~al.}{2018}]{2018MNRAS.476.3233H}
+{Hon} M.,  {Stello} D.,   {Yu} J.,  2018, \mn@doi [\mnras]
+  {10.1093/mnras/sty483}, \href
+  {https://ui.adsabs.harvard.edu/abs/2018MNRAS.476.3233H} {476, 3233}
 
 \bibitem[\protect\citeauthoryear{{Paquette}, {Pelletier}, {Fontaine}  \&
   {Michaud}}{{Paquette} et~al.}{1986}]{Paquette1986}
@@ -82,6 +98,11 @@ Hensman J.,  Matthews A.,   Ghahramani Z.,  2014, arXiv preprint
 Reddi S.,  Kale S.,   Kumar S.,  2018, in International Conference on Learning
   Representations.
 
+\bibitem[\protect\citeauthoryear{{Rendle} et~al.,}{{Rendle}
+  et~al.}{2019}]{2019MNRAS.484..771R}
+{Rendle} B.~M.,  et~al., 2019, \mn@doi [\mnras] {10.1093/mnras/stz031}, \href
+  {https://ui.adsabs.harvard.edu/abs/2019MNRAS.484..771R} {484, 771}
+
 \bibitem[\protect\citeauthoryear{{Rogers} \& {Nayfonov}}{{Rogers} \&
   {Nayfonov}}{2002}]{2002ApJ...576.1064R}
 {Rogers} F.~J.,  {Nayfonov} A.,  2002, \mn@doi [\apj] {10.1086/341894}, \href
@@ -98,24 +119,19 @@ Sutskever I.,  Martens J.,  Dahl G.,   Hinton G.,  2013, in International
   {10.1086/173695}, \href
   {https://ui.adsabs.harvard.edu/abs/1994ApJ...421..828T} {421, 828}
 
-\bibitem[\protect\citeauthoryear{{Townsend} \& {Teitler}}{{Townsend} \&
-  {Teitler}}{2013}]{2013MNRAS.435.3406T}
-{Townsend} R.~H.~D.,  {Teitler} S.~A.,  2013, \mn@doi [\mnras]
-  {10.1093/mnras/stt1533}, \href
-  {https://ui.adsabs.harvard.edu/#abs/2013MNRAS.435.3406T} {435, 3406}
-
-\bibitem[\protect\citeauthoryear{{White}, {Bedding}, {Stello},
-  {Christensen-Dalsgaard}, {Huber}  \& {Kjeldsen}}{{White}
-  et~al.}{2011}]{2011ApJ...743..161W}
-{White} T.~R.,  {Bedding} T.~R.,  {Stello} D.,  {Christensen-Dalsgaard} J.,
-  {Huber} D.,   {Kjeldsen} H.,  2011, \mn@doi [\apj]
-  {10.1088/0004-637X/743/2/161}, \href
-  {https://ui.adsabs.harvard.edu/abs/2011ApJ...743..161W} {743, 161}
+\bibitem[\protect\citeauthoryear{Williams \& Rasmussen}{Williams \&
+  Rasmussen}{1996}]{williams1996gaussian}
+Williams C.~K.,  Rasmussen C.~E.,  1996
 
 \bibitem[\protect\citeauthoryear{Wilson \& Nickisch}{Wilson \&
   Nickisch}{2015}]{wilson2015kernel}
 Wilson A.,  Nickisch H.,  2015, in International Conference on Machine
   Learning. pp 1775--1784
+
+\bibitem[\protect\citeauthoryear{{Wu} et~al.,}{{Wu}
+  et~al.}{2019}]{2019MNRAS.484.5315W}
+{Wu} Y.,  et~al., 2019, \mn@doi [\mnras] {10.1093/mnras/stz256}, \href
+  {https://ui.adsabs.harvard.edu/abs/2019MNRAS.484.5315W} {484, 5315}
 
 \makeatother
 \end{thebibliography}
