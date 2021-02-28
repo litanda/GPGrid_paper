@@ -1,14 +1,19 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.2}{Theoretical stellar grid}{}% 2
-\BOOKMARK [1][-]{section.3}{Gaussian Process Model}{}% 3
-\BOOKMARK [2][-]{subsection.3.1}{Gaussian Process Application}{section.3}% 4
-\BOOKMARK [2][-]{subsection.3.2}{GP Model Inputs and Outputs}{section.3}% 5
-\BOOKMARK [2][-]{subsection.3.3}{Training Procedure}{section.3}% 6
-\BOOKMARK [2][-]{subsection.3.4}{Preliminary Tests for Setting up the Training}{section.3}% 7
-\BOOKMARK [1][-]{section.4}{Training Results}{}% 8
-\BOOKMARK [2][-]{subsection.4.1}{Overview of Results}{section.4}% 9
-\BOOKMARK [2][-]{subsection.4.2}{Mapping Systematical Uncertainties using another GP model}{section.4}% 10
-\BOOKMARK [1][-]{section.5}{Augmenting the MESA Grid}{}% 11
-\BOOKMARK [2][-]{subsection.5.1}{A GP-Trained Model Set}{section.5}% 12
-\BOOKMARK [2][-]{subsection.5.2}{Modelling fake stars with GP-trained models}{section.5}% 13
-\BOOKMARK [1][-]{section.6}{Discussion and Conclusions}{}% 14
+\BOOKMARK [2][-]{subsection.2.1}{Grid computation}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Equivalent Evolutionary Phase}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Data Selection}{section.2}% 5
+\BOOKMARK [1][-]{section.3}{Gaussian Process Model}{}% 6
+\BOOKMARK [2][-]{subsection.3.1}{Gaussian Process Application}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.2}{Setting up the GP Model}{section.3}% 8
+\BOOKMARK [1][-]{section.4}{Preliminary Studies on Low-Demission Problems}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{1D Problem}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{2D Problem: Investigating testing method}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{3D Problem: Strategy for Large Data Sample}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Augmenting the Stellar Grid}{}% 13
+\BOOKMARK [2][-]{subsection.5.1}{Overview of Results}{section.5}% 14
+\BOOKMARK [2][-]{subsection.5.2}{Mapping Systematical Uncertainties using another GP model}{section.5}% 15
+\BOOKMARK [1][-]{section.6}{Modelling stars with GP-trained models}{}% 16
+\BOOKMARK [2][-]{subsection.6.1}{A GP-Trained Model Set}{section.6}% 17
+\BOOKMARK [2][-]{subsection.6.2}{Modelling Fake Stars with GP-trained Models}{section.6}% 18
+\BOOKMARK [1][-]{section.7}{Discussion and Conclusions}{}% 19

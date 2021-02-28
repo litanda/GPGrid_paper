@@ -31,59 +31,73 @@
 \citation{2018ApJS..234...34P,2019ApJS..243...10P}
 \citation{Thoul94}
 \citation{Paquette1986}
-\citation{gardner2018gpytorch}
-\citation{williams1996gaussian}
+\citation{2016ApJS..222....8D}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Computation of Stellar model grid.}}{2}{table.1}\protected@file@percent }
 \newlabel{tab:grid}{{1}{2}{Computation of Stellar model grid}{table.1}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {2}Theoretical stellar grid}{2}{section.2}\protected@file@percent }
 \newlabel{sec:grid}{{2}{2}{Theoretical stellar grid}{section.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {3}Gaussian Process Model}{2}{section.3}\protected@file@percent }
-\newlabel{sec:gpmodel}{{3}{2}{Gaussian Process Model}{section.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Gaussian Process Application}{2}{subsection.3.1}\protected@file@percent }
-\citation{2016ApJS..222....8D}
-\newlabel{eq:pred}{{9}{3}{Gaussian Process Application}{equation.9}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}GP Model Inputs and Outputs}{3}{subsection.3.2}\protected@file@percent }
-\newlabel{eq:disp}{{12}{3}{GP Model Inputs and Outputs}{equation.12}{}}
-\newlabel{gprmodel}{{14}{3}{GP Model Inputs and Outputs}{equation.14}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Training Procedure}{3}{subsection.3.3}\protected@file@percent }
-\newlabel{workflow}{{3.3}{3}{Training Procedure}{subsection.3.3}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.1}Data Selection}{3}{subsubsection.3.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Surface plots of model effective temperature on the mass-fractional age (left) and mass-EEP (right) diagrams. Models in this figure are from the primary grid with fixed initial metallicity ($\rm  [Fe/H]_{init}$ = 0.0), helium fraction ($Y_{\rm  init}$ = 0.28) and mixing-length parameter ($\alpha _{\rm  MLT}$ = 2.1). It can be seen that the effective temperature changes much smoother on the mass-EEP diagram at the hook and turn-off points.}}{4}{figure.1}\protected@file@percent }
-\newlabel{fig:eep}{{1}{4}{Surface plots of model effective temperature on the mass-fractional age (left) and mass-EEP (right) diagrams. Models in this figure are from the primary grid with fixed initial metallicity ($\rm [Fe/H]_{init}$ = 0.0), helium fraction ($Y_{\rm init}$ = 0.28) and mixing-length parameter ($\alpha _{\rm MLT}$ = 2.1). It can be seen that the effective temperature changes much smoother on the mass-EEP diagram at the hook and turn-off points}{figure.1}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.3.2}Training and Testing GP Models}{4}{subsubsection.3.3.2}\protected@file@percent }
-\newlabel{sec:training}{{3.3.2}{4}{Training and Testing GP Models}{subsubsection.3.3.2}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Preliminary Tests for Setting up the Training}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Grid computation}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Equivalent Evolutionary Phase}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:disp}{{2}{2}{Equivalent Evolutionary Phase}{equation.2}{}}
+\citation{williams1996gaussian}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Surface plots of model effective temperature on the mass-fractional age (left) and mass-EEP (right) diagrams. Models in this figure are from the primary grid with fixed initial metallicity ($\rm  [Fe/H]_{init}$ = 0.0), helium fraction ($Y_{\rm  init}$ = 0.28) and mixing-length parameter ($\alpha _{\rm  MLT}$ = 2.1). It can be seen that the effective temperature changes much smoother on the mass-EEP diagram at the hook and turn-off points.}}{3}{figure.1}\protected@file@percent }
+\newlabel{fig:eep}{{1}{3}{Surface plots of model effective temperature on the mass-fractional age (left) and mass-EEP (right) diagrams. Models in this figure are from the primary grid with fixed initial metallicity ($\rm [Fe/H]_{init}$ = 0.0), helium fraction ($Y_{\rm init}$ = 0.28) and mixing-length parameter ($\alpha _{\rm MLT}$ = 2.1). It can be seen that the effective temperature changes much smoother on the mass-EEP diagram at the hook and turn-off points}{figure.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Data Selection}{3}{subsection.2.3}\protected@file@percent }
+\newlabel{sec:selection}{{2.3}{3}{Data Selection}{subsection.2.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Gaussian Process Model}{3}{section.3}\protected@file@percent }
+\newlabel{sec:gpmodel}{{3}{3}{Gaussian Process Model}{section.3}{}}
+\newlabel{gprmodel}{{4}{3}{Gaussian Process Model}{equation.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Gaussian Process Application}{3}{subsection.3.1}\protected@file@percent }
+\citation{gardner2018gpytorch}
 \citation{sutskever2013importance}
 \citation{47409}
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Top: The 2D GP model for $T_{\rm  eff}$. Bottom: probability distributions of validating errors of the GP model. }}{5}{figure.2}\protected@file@percent }
-\newlabel{fig:2dtest}{{2}{5}{Top: The 2D GP model for $T_{\rm eff}$. Bottom: probability distributions of validating errors of the GP model}{figure.2}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.1}Mean Function}{5}{subsubsection.3.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.2}Likelihood and Loss Function}{5}{subsubsection.3.4.2}\protected@file@percent }
-\newlabel{eq:likelihood}{{15}{5}{Likelihood and Loss Function}{equation.15}{}}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.3}Optimiser}{5}{subsubsection.3.4.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.4}Early stopping}{5}{subsubsection.3.4.4}\protected@file@percent }
+\newlabel{eq:pred}{{12}{4}{Gaussian Process Application}{equation.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Setting up the GP Model}{4}{subsection.3.2}\protected@file@percent }
+\newlabel{sec:set_up}{{3.2}{4}{Setting up the GP Model}{subsection.3.2}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Mean Function}{4}{subsubsection.3.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Likelihood and Loss Function}{4}{subsubsection.3.2.2}\protected@file@percent }
+\newlabel{eq:likelihood}{{15}{4}{Likelihood and Loss Function}{equation.15}{}}
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Optimiser}{4}{subsubsection.3.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Early Stopping}{5}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Kernel Function}{5}{subsubsection.3.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.6}Training Procedure}{5}{subsubsection.3.2.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm  1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc  {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph. }}{5}{figure.2}\protected@file@percent }
+\newlabel{fig:1dgp}{{2}{5}{GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm 1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph}{figure.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Preliminary Studies on Low-Demission Problems}{5}{section.4}\protected@file@percent }
+\newlabel{examples}{{4}{5}{Preliminary Studies on Low-Demission Problems}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}1D Problem}{5}{subsection.4.1}\protected@file@percent }
 \citation{hensman2015scalable}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Top: The 2D GP model for $T_{\rm  eff}$. Bottom: probability distributions of validating errors of the GP model. }}{6}{figure.3}\protected@file@percent }
+\newlabel{fig:2dtest}{{3}{6}{Top: The 2D GP model for $T_{\rm eff}$. Bottom: probability distributions of validating errors of the GP model}{figure.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}2D Problem: Investigating testing method}{6}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}3D Problem: Strategy for Large Data Sample}{6}{subsection.4.3}\protected@file@percent }
 \citation{wilson2015kernel}
 \citation{wilson2015kernel}
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.5}Kernel Function}{6}{subsubsection.3.4.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.4.6}Strategy for Large Data Sample}{6}{subsubsection.3.4.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {4}Training Results}{6}{section.4}\protected@file@percent }
-\newlabel{sec:results}{{4}{6}{Training Results}{section.4}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Top: Testing errors of 3D GP model for $T_{\rm  eff}$ on the $M - EEP$ diagram. Dashes indicates section boundaries. Bottom: examination of the edge effects of the section scenario. Probability distributions of testing errors of all testing data and those near the boundary ($\pm $0.01 EEP) in the upper graph are compared. As it can be seen, testing errors do not raise around the boundary. }}{7}{figure.3}\protected@file@percent }
-\newlabel{fig:3dtest}{{3}{7}{Top: Testing errors of 3D GP model for $T_{\rm eff}$ on the $M - EEP$ diagram. Dashes indicates section boundaries. Bottom: examination of the edge effects of the section scenario. Probability distributions of testing errors of all testing data and those near the boundary ($\pm $0.01 EEP) in the upper graph are compared. As it can be seen, testing errors do not raise around the boundary}{figure.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Overview of Results}{7}{subsection.4.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Mapping Systematical Uncertainties using another GP model}{7}{subsection.4.2}\protected@file@percent }
-\newlabel{sec:sys}{{4.2}{7}{Mapping Systematical Uncertainties using another GP model}{subsection.4.2}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Training and validating errors for GPR Models}}{8}{table.2}\protected@file@percent }
-\newlabel{tab:results}{{2}{8}{Training and validating errors for GPR Models}{table.2}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5}Augmenting the MESA Grid}{8}{section.5}\protected@file@percent }
-\newlabel{sec:augmentation}{{5}{8}{Augmenting the MESA Grid}{section.5}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}A GP-Trained Model Set}{8}{subsection.5.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Residual of GP models for systematic uncertainty}}{8}{table.3}\protected@file@percent }
-\newlabel{tab:sys}{{3}{8}{Residual of GP models for systematic uncertainty}{table.3}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Modelling fake stars with GP-trained models}{8}{subsection.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces  Roll medians and 68/95\% confidential intervals of testing errors against GP model inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm  eff}$, $\qopname  \relax o{log}g$, and $R$ mainly depend on $M$ and $EEP$. Metallicity error strongly depends on $M$, $EEP$, and [Fe/H]$_{\rm  init}$, and age error has a significant correlation to $EEP$ and [Fe/H]$_{\rm  init}$. However, testing errors do not obviously relate to $Y_{\rm  init}$ or $\alpha _{\rm  MLT}$. }}{9}{figure.4}\protected@file@percent }
-\newlabel{fig:5d_test_vs_input}{{4}{9}{Roll medians and 68/95\% confidential intervals of testing errors against GP model inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and $EEP$. Metallicity error strongly depends on $M$, $EEP$, and [Fe/H]$_{\rm init}$, and age error has a significant correlation to $EEP$ and [Fe/H]$_{\rm init}$. However, testing errors do not obviously relate to $Y_{\rm init}$ or $\alpha _{\rm MLT}$}{figure.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Augmenting the Stellar Grid}{7}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{5}{7}{Augmenting the Stellar Grid}{section.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Top: Testing errors of 3D GP model for $T_{\rm  eff}$ on the $M - EEP$ diagram. Dashes indicates section boundaries. Bottom: examination of the edge effects of the section scenario. Probability distributions of testing errors of all testing data and those near the boundary ($\pm $0.01 EEP) in the upper graph are compared. As it can be seen, testing errors do not raise around the boundary. }}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:3dtest}{{4}{7}{Top: Testing errors of 3D GP model for $T_{\rm eff}$ on the $M - EEP$ diagram. Dashes indicates section boundaries. Bottom: examination of the edge effects of the section scenario. Probability distributions of testing errors of all testing data and those near the boundary ($\pm $0.01 EEP) in the upper graph are compared. As it can be seen, testing errors do not raise around the boundary}{figure.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Overview of Results}{8}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Mapping Systematical Uncertainties using another GP model}{8}{subsection.5.2}\protected@file@percent }
+\newlabel{sec:sys}{{5.2}{8}{Mapping Systematical Uncertainties using another GP model}{subsection.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Modelling stars with GP-trained models}{8}{section.6}\protected@file@percent }
+\newlabel{sec:augmentation}{{6}{8}{Modelling stars with GP-trained models}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}A GP-Trained Model Set}{8}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Training and validating errors for GPR Models}}{9}{table.2}\protected@file@percent }
+\newlabel{tab:results}{{2}{9}{Training and validating errors for GPR Models}{table.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces  Roll medians and 68/95\% confidential intervals of testing errors against GP model inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm  eff}$, $\qopname  \relax o{log}g$, and $R$ mainly depend on $M$ and{\it  EEP}. Metallicity error strongly depends on $M$,{\it  EEP}, and {\it  [Fe/H]}$_{\rm  init}$, and age error has a significant correlation to{\it  EEP} and {\it  [Fe/H]}$_{\rm  init}$. However, testing errors do not obviously relate to $Y_{\rm  init}$ or $\alpha _{\rm  MLT}$. }}{9}{figure.5}\protected@file@percent }
+\newlabel{fig:5d_test_vs_input}{{5}{9}{Roll medians and 68/95\% confidential intervals of testing errors against GP model inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and{\it EEP}. Metallicity error strongly depends on $M$,{\it EEP}, and {\it [Fe/H]}$_{\rm init}$, and age error has a significant correlation to{\it EEP} and {\it [Fe/H]}$_{\rm init}$. However, testing errors do not obviously relate to $Y_{\rm init}$ or $\alpha _{\rm MLT}$}{figure.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Local systematic uncertainty (1-$\sigma $) for $T_{\rm  eff}$ on the $M - EEP$ diagram for {\it  [Fe/H]}$_{\rm  init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom.}}{10}{figure.6}\protected@file@percent }
+\newlabel{fig:5d_sys_teff}{{6}{10}{Local systematic uncertainty (1-$\sigma $) for $T_{\rm eff}$ on the $M - EEP$ diagram for {\it [Fe/H]}$_{\rm init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Residual of GP models for systematic uncertainty}}{10}{table.3}\protected@file@percent }
+\newlabel{tab:sys}{{3}{10}{Residual of GP models for systematic uncertainty}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Modelling Fake Stars with GP-trained Models}{10}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion and Conclusions}{10}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{10}{Discussion and Conclusions}{section.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models.}}{11}{figure.7}\protected@file@percent }
+\newlabel{fig:5d_augmentation}{{7}{11}{Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm  eff}$ = 4926$\pm $50K, $\qopname  \relax o{log}g$ = 4.536$\pm $0.005, {\it  [Fe/H]}$_{\rm  surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm  N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm  {\it  [Fe/H]}_{init}$ = 0.403, $Y_{\rm  init}$ = 0.281, $\alpha _{\rm  MLT}$ = 2.356, which are represented by blue dashes.}}{11}{figure.8}\protected@file@percent }
+\newlabel{fig:fit_comparison}{{8}{11}{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm $50K, $\log g$ = 4.536$\pm $0.005, {\it [Fe/H]}$_{\rm surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm {\it [Fe/H]}_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha _{\rm MLT}$ = 2.356, which are represented by blue dashes}{figure.8}{}}
 \bibstyle{mnras}
 \bibdata{ref}
 \bibcite{2009ARA&A..47..481A}{{1}{2009}{{{Asplund} et~al.}}{{{Asplund}, {Grevesse}, {Sauval} \& {Scott}}}}
@@ -92,10 +106,6 @@
 \bibcite{2005ApJ...623..585F}{{4}{2005}{{{Ferguson} et~al.}}{{{Ferguson}, {Alexander}, {Allard}, {Barman}, {Bodnarik}, {Hauschildt}, {Heffner-Wong} \& {Tamanai}}}}
 \bibcite{gardner2018gpytorch}{{5}{2018}{{Gardner et~al.}}{{Gardner, Pleiss, Bindel, Weinberger \& Wilson}}}
 \bibcite{hensman2015scalable}{{6}{2014}{{Hensman et~al.}}{{Hensman, Matthews \& Ghahramani}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Local systematic uncertainty (1-$\sigma $) for $T_{\rm  eff}$ on the $M - EEP$ diagram for [Fe/H]$_{\rm  init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom.}}{10}{figure.5}\protected@file@percent }
-\newlabel{fig:5d_sys_teff}{{5}{10}{Local systematic uncertainty (1-$\sigma $) for $T_{\rm eff}$ on the $M - EEP$ diagram for [Fe/H]$_{\rm init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom}{figure.5}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Discussion and Conclusions}{10}{section.6}\protected@file@percent }
-\newlabel{sec:conclusion}{{6}{10}{Discussion and Conclusions}{section.6}{}}
 \bibcite{2018MNRAS.476.3233H}{{7}{2018}{{{Hon} et~al.}}{{{Hon}, {Stello} \& {Yu}}}}
 \bibcite{Paquette1986}{{8}{1986}{{{Paquette} et~al.}}{{{Paquette}, {Pelletier}, {Fontaine} \& {Michaud}}}}
 \bibcite{2011ApJS..192....3P}{{9}{2011}{{{Paxton} et~al.}}{{{Paxton}, {Bildsten}, {Dotter}, {Herwig}, {Lesaffre} \& {Timmes}}}}
@@ -111,10 +121,6 @@
 \bibcite{williams1996gaussian}{{19}{1996}{{Williams \& Rasmussen}}{{Williams \& Rasmussen}}}
 \bibcite{wilson2015kernel}{{20}{2015}{{Wilson \& Nickisch}}{{Wilson \& Nickisch}}}
 \bibcite{2019MNRAS.484.5315W}{{21}{2019}{{{Wu} et~al.}}{{{Wu} et~al.,}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces  Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models.}}{11}{figure.6}\protected@file@percent }
-\newlabel{fig:5d_augmentation}{{6}{11}{Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models}{figure.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm  eff}$ = 4926$\pm $50K, $\qopname  \relax o{log}g$ = 4.536$\pm $0.005, [Fe/H]$_{\rm  surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm  N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm  [Fe/H]_{init}$ = 0.403, $Y_{\rm  init}$ = 0.281, $\alpha _{\rm  MLT}$ = 2.356, which are represented by blue dashes.}}{11}{figure.7}\protected@file@percent }
-\newlabel{fig:fit_comparison}{{7}{11}{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm $50K, $\log g$ = 4.536$\pm $0.005, [Fe/H]$_{\rm surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm [Fe/H]_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha _{\rm MLT}$ = 2.356, which are represented by blue dashes}{figure.7}{}}
-\newlabel{lastpage}{{6}{11}{Acknowledgements}{section.6}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Differences between true and estimated masses (Top) and ages (Bottom) of 100 fake stars. Count distributions of offsets are demonstrated on the right side.}}{12}{figure.8}\protected@file@percent }
-\newlabel{fig:fake_test}{{8}{12}{Differences between true and estimated masses (Top) and ages (Bottom) of 100 fake stars. Count distributions of offsets are demonstrated on the right side}{figure.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9}{\ignorespaces Differences between true and estimated values over estimated uncertainty of 1000 fake stars. Count distributions of offsets are demonstrated on the right side.}}{12}{figure.9}\protected@file@percent }
+\newlabel{fig:fake_test}{{9}{12}{Differences between true and estimated values over estimated uncertainty of 1000 fake stars. Count distributions of offsets are demonstrated on the right side}{figure.9}{}}
+\newlabel{lastpage}{{7}{12}{Acknowledgements}{section.7}{}}

@@ -1,8 +1,29 @@
 \section{Gaussian Process Model}\label{sec:gpmodel}
 
-GP can be applied as probabilistic models to regression problems. Here we will use the GP model to generalise a grid of stellar models to a continuous and probabilistic function that maps inputs (i.e., initial mass, chemical composition, etc.) to observable quantities (i.e., effective temperature, surface gravity, radius, etc.).  We aim to use the GP model as a non-parametric emulator, that is emulating the comparatively slow calls to models of stellar evolution. 
+GP can be applied as probabilistic models to regression problems. Here we use the GP model to generalise a stellar model grid to a continuous and probabilistic function that maps inputs to observable quantities. 
 %
-We adopt a tool package named \textsc{GPyTorch}, which is a GP framework developed by \citet{gardner2018gpytorch}. It is a Gaussian process library based on an open source machine-learning framework PyTorch (\url{https://pytorch.org}). The package provides significant GPU acceleration, state-of-the-art implementations of the latest algorithmic advances for scalability and flexibility, and easy integration with deep learning frameworks. Source codes and detailed introductions could be found on \url{https://gpytorch.ai}.
+As mentioned in Section~\ref{sec:grid}, our model grid has four independent fundamental inputs, i.e., mass, initial metallicity, initial helium fraction, and mixing-length parameter. Adding the {\it EEP} which describes the evolutionary phase, the GP model contents five inputs. We intend to train GP models that predict effective temperature, surface gravity, radius, surface metallicity, and stellar age. We summary GP model inputs and outputs as below.
+\begin{itemize}
+\item GP model inputs and their dynamic ranges:
+\item[] Mass ($M$ = 0.8 -- 1.2$\rm M_{\odot}$)
+\item[] Equivalent Evolutionary Phase ({\it EEP} = 0 -- 1)
+\item[] Initial metallicity ([Fe/H]$_{\rm init}$ =  -0.5 -- 0.5 dex)
+\item[] Initial helium fraction ($Y_{\rm init}$ = 0.24 -- 0.32)
+\item[] Mixing-length parameter ($\alpha_{\rm MLT}$ = 1.7 -- 2.5)
+\item GPR model outputs: 
+\item[] Effective temperature ($T_{\rm eff}$) 
+\item[] Surface gravity ($\log g$)
+\item[] Radius ($R$)
+%\item[] The large spacing ($\Delta\nu$)  
+\item[] Surface metallicity ([Fe/H]$_{\rm surf}$)
+\item[] Stellar age ($\tau$)
+\end{itemize}
+We aim to use the GP model as a non-parametric emulator, that is emulating the comparatively slow calls to models of stellar evolution.
+This emulator can be described as
+\begin{equation}\label{gprmodel}
+{\rm Outputs} = f(M, EEP, ({\rm Fe/H})_{\rm init}, Y_{\rm init}, \alpha_{\rm MLT}). 
+\end{equation}
+
 
 \subsection{Gaussian Process Application}
 
@@ -55,108 +76,20 @@ and
 
 At point we can make predictions on model properties given a grid of stellar models using equation \ref{eq:pred}.  But these predictions will be poor unless we select sensible values for the form and hyperparameters of the mean function and covariance function.  In the following section we detail a number of kernel functions that will be tested against the data.  We will then discuss the method for determining the values of the hyperparameters to be used.
 
-\subsection{GP Model Inputs and Outputs}
 
-As mentioned in Section~\ref{sec:grid}, our model grid has four independent fundamental inputs, i.e., mass, initial metallicity, initial helium fraction, and mixing-length parameter. Moreover, we need another input to describe the evolutionary phase. The GP model hence contents five input demissions. 
+\subsection{Setting up the GP Model}\label{sec:set_up}
 
-Regarding the evolution index, stellar age is not ideal because its dynamical range varies track by track. The fractional age is an option. However, we find that global parameters (e.g. effective temperature) sharply change as a function of fractional age around the 'hook' and the turn-off point (left panel in Figure~\ref{fig:eep}). It requires a complex and spiky kernel function to fit the curvatures in this area and hence difficult for GP to learn. \citet{2016ApJS..222....8D} has introduced a quantity Equivalent Evolutionary Phase ($EEP$), which numbers evolutionary stages and transform stellar tracks onto a uniform basis. We follow this idea but define $EEP$ in a different way.
-%
-On each evolutionary track, we compute the displacement between model $n$ and model $n-1$ on the $T_{\rm eff} - \log g$ diagram as
-\begin{equation}\label{eq:disp}
-\delta d_{n} = ((T_{\rm eff, n} - T_{\rm eff, n-1}) ^{2} + (\log g _{n} - \log g_{n-1})^{2}))^{f},
-\end{equation}
-and the total displacement of model $n$ from the ZAMS (model 0) can be calculated with
-\begin{equation}
-d_{n} = \sum_{i = 0}^{i = n} \delta d_{i} .
-\end{equation}
-We then normalise $d_{n}$ to the 0 --1 range and define it as $EEP$. On the same evolutionary track, $EEP$ equals to 0 at the ZAMS and 1 on the RGB where $\log$ = 3.6 $dex$. The factor $f$ in Eq. \ref{eq:disp} is adjustable for modulating $EEP$ to avoid obvious gap in the data space, and we find that $f$ = 0.18 gives the best data distribution.
-%
-In Figure~\ref{fig:eep}, we demonstrate how the effective temperature changes with fractional age and $EEP$. It can be seen that the usage of $EEP$ significantly smoothes the sharp features at the 'hook' and the turn-off point.
-We summary GP model inputs and outputs as below.
-\begin{itemize}
-\item GP model inputs and their dynamic ranges:
-\item[] Mass ($M$ = 0.8 -- 1.2$\rm M_{\odot}$)
-\item[] Equivalent Evolutionary Phase ($EEP$ = 0 -- 1)
-\item[] Initial metallicity ([Fe/H]$_{\rm init}$ =  -0.5 -- 0.5 dex)
-\item[] Initial helium fraction ($Y_{\rm init}$ = 0.24 -- 0.32)
-\item[] Mixing-length parameter ($\alpha_{\rm MLT}$ = 1.7 -- 2.5)
-\item GPR model outputs: 
-\item[] Effective temperature ($T_{\rm eff}$) 
-\item[] Surface gravity ($\log g$)
-\item[] Radius ($R$)
-%\item[] The large spacing ($\Delta\nu$)  
-\item[] Surface metallicity ([Fe/H]$_{\rm surf}$)
-\item[] Stellar age ($\tau$)
-\end{itemize}
-Thus, the GP model can be described as 
-\begin{equation}\label{gprmodel}
-{\rm Outputs} = f(M, EEP, ({\rm Fe/H})_{\rm init}, Y_{\rm init}, \alpha_{\rm MLT}). 
-\end{equation}
-
-\begin{figure*}
-        \includegraphics[width=1.\columnwidth]{2d_fage_data.pdf}
-	\includegraphics[width=1.\columnwidth]{2d_EEP_data.pdf}
-     \caption{Surface plots of model effective temperature on the mass-fractional age (left) and mass-EEP (right) diagrams. Models in this figure are from the primary grid with fixed initial metallicity ($\rm [Fe/H]_{init}$ = 0.0), helium fraction ($Y_{\rm init}$ = 0.28) and mixing-length parameter ($\alpha_{\rm MLT}$ = 2.1). It can be seen that the effective temperature changes much smoother on the mass-EEP diagram at the hook and turn-off points.}
-    \label{fig:eep}
-\end{figure*}
-
-\subsection{Training Procedure}\label{workflow}
-  
-\subsubsection{Data Selection}
-
-We use three types of data for training, validating, and testing GP models. 
-%
-Evolutionary tracks in the primary and additional grids (as described in Table \ref{tab:grid}) are training data. Off-grid tracks are divided 50-to-50 as validating and testing data . 
-%Note that validating and testing datasets are not on the same evolutionary tracks so they are independent to each other. 
-%Validating dataset is for validating the GP model in the training process and is mainly used for early stopping, which is a form of regularisation for avoiding overfitting. We choose off-grid models but not on-grid models as validating data because the grid is equally spaced. Without additional information between grid points, an optimiser could either use a smooth function or a periodic function to fit the data and find no obvious differences in the likelihood. We describe how we use validating data in Section \ref{sec:training}. Lastly, testing dataset is independent on the training process and used for evaluating the final GP models. 
-
-There is a limitation of the data size in the GP framework, because the computational and memory complexity exponentially increase with the number of data points. In practice, typical data size for GP is on an order of $10^{4}$. Given that the grid contents $\sim 10,000,000$ stellar models, only a small subset can be used. The sampling method is hence critical.
-%
- A flat sampling is not appropriate, because the evolving step is not uniform for different evolutionary stages due to the \textsc{MESA} step-control strategy. For instance, stellar models are dense at the main-sequence and lower RGB but quite sparse at the subgiant stage. We test a few methods and find that using the displacement ($\delta d_{n}$) defined in Eq.~\ref{eq:disp} as the weight of sampling give a relatively uniform data distribution in the parameter space. 
-%meets the above two requirements. 
-%Firstly, we want the data to uniformly cover the parameter space for the best efficiency. Secondly, we need to highly weight models at phases where sharp changes present, e.g., models around the hook and turn-off points.   
-
-\subsubsection{Training and Testing GP Models}\label{sec:training}
-
-The procedure contents two steps: training and testing.  
-Training is the process that optimises hyperparameters with training dataset and validates GP model with validating dataset. When training is completed, the final GP model is tested by testing dataset to quantify its accuracy.  Details of the training method will be described in the following Section. 
-
-Here we discuss the method for validating and testing a GP model. We do not use a method which estimates a global error, such like Root Mean Square Error (RMSE). Because we find that GP predictions are not at similar accuracy level for differences evolutionary phases.
-%
-We illustrate this with an example in Figure \ref{fig:2dtest}. As it can be seen that, we train a GP model which maps $M$ and $EEP$ to the effective temperature. The kernel function in the area of $M \geq 1.05 {\rm M_{\odot}}$ and $EEP \leq 0.7$ is more complex than that for other regions because of the appearance of the 'hook'. This particular area are relatively difficult to learn and hence poorly predicted by the GP model.
-When there is a subregion in which the GP model performs worse than other areas, the error distribution is not Gaussian-like. We examine the error distribution as shown at the bottom of Figure \ref{fig:2dtest}. Errors of most data follows a Gaussian distribution but about $10\%$ data form long tails on both sides. Thus, a global error estimator like RMSE is not suitable. 
-%
-For other outputs, surface gravity and radius are similar to the case of effective temperature. The surface metallicity is not significantly affected by the hook, but it has a quick raise at the early subgiant phase in high-mass tracks. This is because high-mass tracks maintain shallow convective envelope and hence have strong diffusion effect during the main-sequence stage. At the early subgiant phase, the quick expansion of the surface convective envelope brings back the settling heavy elements to the surface. This results in a sharp raise of the surface metallicity and the GP models have relatively poor prediction at this phase.
-%
-The age predictions are also relatively poor for the old low-mass stellar models. This is because the age vary in a big dynamic range (15 - 50 Gyr) in a small fraction of data points.        
-%
-We examine tail feature in error distribution for each output. The data outside 3 times of standard deviation is around 10\% (8 - 12\% for different outputs).  
-%
-What we need here is a simple method that reflects the general accuracy as well as the worst case.
-For the majority which from a Gaussian function, the 68\% confidential interval is able to reflect their accuracies. For the worst 10\% of the data, we could use the 95\% and 99.7\% confidential intervals to describe the median value and the length of the tail. Thus, we define an Error Index (EI), which is the sum of 68\%, 95\%, and 99.7\% cumulative values of absolute errors, to qualify GP models. For the case in Figure \ref{fig:2dtest}, cumulative values at 68\%, 95\%, and 99.7\% are 1.1, 4.9, and 11.1K, which give an EI equals to 17.1K. 
-
-\begin{figure}
-	\includegraphics[width=1.0\columnwidth]{2d_GPmodel_function.pdf}
-	\includegraphics[width=1.0\columnwidth]{2d_testing_hist_effective_T.pdf}	
-    \caption{Top: The 2D GP model for $T_{\rm eff}$. Bottom: probability distributions of validating errors of the GP model. }  
-    \label{fig:2dtest}
-\end{figure}
-
-
-\subsection{Preliminary Tests for Setting up the Training}
+We adopt a tool package named \textsc{GPyTorch}, which is a GP framework developed by \citet{gardner2018gpytorch}. It is a Gaussian process library based on an open source machine-learning framework PyTorch (\url{https://pytorch.org}). The package provides significant GPU acceleration, state-of-the-art implementations of the latest algorithmic advances for scalability and flexibility, and easy integration with deep learning frameworks. Source codes and detailed introductions could be found on \url{https://gpytorch.ai}.
 
 For training GP models, we need set up mean function, kernel function, likelihood function, loss function, and optimiser. 
-We do preliminary tests and compare different options for the above elements. 
+To find out the best option for each of above elements, we do a number of preliminary tests. 
+These tests are carried out with 2-demission (2D) GP models which map $M$ and {\it EEP} to the five observable outputs (Outputs = $f(M, EEP)$). Training data are selected from the primary grid with fixed [Fe/H]$_{\rm init}$ (0.0), $Y_{\rm init}$ (0.28), and $\alpha_{\rm MLT}$ (2.1). There are 41 evolutionary tracks which content 24,257 data points. We also compute 44 evolutionary tracks with the same [Fe/H]$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$ but random $M$ for the purpose of validating and testing. We use the method mentioned in Section \ref{sec:selection} and sample 20,000 data points for training, 10,000 for validating, and 10,000 for testing. 
 %
-These tests are carried out with 2-demission (2D) GP models which map two inputs $M$ and $EEP$ to observable outputs. The 2D GP models can be described as Outputs = $f(M, EEP)$. 
-%
-Training data are selected with fixed [Fe/H]$_{\rm init}$ (0.0), $Y_{\rm init}$ (0.28), and $\alpha_{\rm MLT}$ (2.1) from the primary grid. There are 41 evolutionary tracks which content 24,257 data points. We also compute 44 evolutionary tracks with the same [Fe/H]$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$ but random $M$ for the purpose of validating and testing. We use the sampling method mentioned in previous section and select 20,000 data points for training, 10,000 for validating, and 10,000 for testing. 
-%
-The \textsc{GpyTorch Exact GP} module is adopted. We start with the \textsc{Simple GP Regression} example (\url{https://docs.gpytorch.ai/en/stable/examples/01_Exact_GPs/Simple_GP_Regression.html}) and develop our own method step by step as follow. 
+We start with the \textsc{Simple GP Regression} example (\url{https://docs.gpytorch.ai/en/stable/examples/01_Exact_GPs/Simple_GP_Regression.html}) and develop our own method step by step as follow. 
 
 \subsubsection{Mean Function}
 
-We first investigate the mean function. As discussed above, the data distribution is generally smooth but also complex in particular areas. Although a GP model does not significantly affected by the choice of mean function because of the flexibility of kernels, we find that using a constant or linear mean function leads to a long time for training and a significant increase of the complexity of kernels. For this reason, we apply a Neural Network mean function which is flexible enough to fit either smooth or curved features. We adopt an architecture including 6 hidden layers and 128 nodes per layer. All layers apply the linear transformation to the incoming data. We apply the element-wise function (Elu) because it give relatively smooth mean functions. ({\bf Can Guy or Alex add some references for NN and Elu here? The referee may ask why the 6x128 architecture is sufficient, so should we mention Alex's paper?})
+We first investigate the mean function. As discussed above, the data distribution is generally smooth but complex in sub-areas. Although a GP model does not significantly affected by the choice of mean function because of the flexibility of kernels, we find that using a constant or a linear mean function leads to a long time for training. For this reason, we apply a Neural Network mean function which is flexible enough to manage both simple and complex features. We adopt an architecture including 6 hidden layers and 128 nodes per layer. All layers apply the linear transformation to the incoming data. We apply the element-wise function (Elu) because it give relatively smooth mean functions. ({\bf Can Guy or Alex add some references for NN and Elu here? The referee may ask why the 6x128 architecture is sufficient, so should we mention Alex's paper?})
 
 \subsubsection{Likelihood and Loss Function}
 
@@ -169,41 +102,93 @@ p(y|f(x)) = f + \epsilon, \epsilon \sim \mathcal{N}(0, \sigma^{2}),
 \end{equation}
 where $\sigma$ is a noise parameter. 
 %
-We use a small and fixed noise parameter and run a few tests. However, the strict noise parameter makes GP models hard to converge. When this noise parameter is set as free, it reduces to a small value anyway in the training progress because it is data-driven. For this reason, we decide not put strict constraint for or prioritise this noise parameter. In practice, we only set up a loose upper limit ($\sigma$  < 0.1) to speed up the training. One thing should be noted that a GP model with a large noise parameter can not be a proper description for the stellar grid even if it has small validating or testing errors. Because of this, we only adopt GP models with $\sigma$ $\lesssim 10^{-4}$.   
+We use a small and fixed noise parameter and run a few tests. However, the strict noise parameter makes GP models hard to converge. When this noise parameter is set as free, it reduces to a small value anyway in the training progress because it is data-driven. For this reason, we decide not put strict constraint for or prioritise this noise parameter. In practice, we only set up a loose upper limit ($\sigma$  < 0.1) to speed up the training. One thing should be noted that a GP model with a large noise parameter is not a proper description for the stellar grid. Because of this, we only adopt GP models with $\sigma$ $\lesssim 10^{-4}$.   
 The loss function is simply the exact marginal likelihood in the logarithmic scale.
 
 \subsubsection{Optimiser}
 
-Afterwards, we run tests to choose an optimiser. We mainly compare between two named SGD and Adam. Here SGD refers to Stochastic Gradient Descent, and Adam is a combination of the advantages of two other extensions of stochastic gradient descent, specifically, Adaptive Gradient Algorithm and Root Mean Square Propagation. 
+Afterwards, we study the optimiser. We mainly compare between two optimiser named SGD and Adam. Here SGD refers to Stochastic Gradient Descent, and Adam is a combination of the advantages of two other extensions of stochastic gradient descent, specifically, Adaptive Gradient Algorithm and Root Mean Square Propagation. 
 %
 The SGD optimiser in the \textsc{GPyTroch} package involves the formula given by \citet{sutskever2013importance}. The formula makes it possible to train using stochastic gradient descent with momentum thanks to a well-designed random initialisation and a particular type of slowly increasing schedule for the momentum parameter. The application of momentum in SGD could improve its efficiency and make it less likely to stuck in local minimums. On the other hand, the Adam optimiser includes the 'AMSGrad' variant developed by \citet{47409} to improve its weakness in the convergence to an optimal solution. With these new developments, the two optimisers give very similar results. We finally choose Adam because it works relatively efficiently and stable.  
 %
 We adaptive learning rate in the training process. Our training starts with a learning rate of 0.01 and decreases by a factor of 2 when the loss value does not reduce in previous 100 iterations.    
 
-\subsubsection{Early stopping}
+\subsubsection{Early Stopping}
 
-We set up an early stopping for tow purpose: avoiding overfitting and terminating the training progress. 
-The early stopping is controlled by the validating EI (introduced in Section~\ref{sec:training}). When an optimal solution is found, the validating errors stop decreasing and then increase when overfitting occurs. In practice, we track the validating EI every iteration and terminate training process when EI does not decrease in previous 300 iterations. 
+We set up an Early Stopping for avoiding overfitting and also determining when to terminate a training progress. 
+When an optimal solution is found, the validating errors stop decreasing and then increase when overfitting occurs. 
+We hence track down the validating error every iteration and terminate training process when the validating error does not decrease in previous 300 iterations. 	
 
 \subsubsection{Kernel Function}
 
-We lastly test kernel functions. We involved four basic kernels in the tests as listed below:
+With the above set up, we test different kernel functions. We involve four basic kernels as listed below:
 \begin{itemize}
 \item RBF: Radial Basis Function kernel (also known as squared exponential kernel)
 \item RQ: Rational Quadratic Kernel (equivalent to adding together many RBF kernels with different lengthscales)
 \item Mat12: Matern 1/2 kernel (equivalent to the Exponential Kernel)
 \item Mat32: Matern 3/2 kernel 
 \end{itemize}
-We apply each basic kernel and a couple of combined kernels (RBF + Mat21, RQ + Mat21, Mat32 + Mat21, RBF + Mat32, RQ + Mat32) to train the 2D GP models. Among these kernels, a combined kernel RBF+Mat21 gives the best fit to the training data, however, it does not give the best predictions for validating and testing data. On the other hand, the Mat32 kernel fits training data reasonably well and it predicts the best for validating and testing data. 
+We apply each basic kernel and a couple of combined kernels (RBF + Mat21, RQ + Mat21, Mat32 + Mat21, RBF + Mat32, RQ + Mat32) to train and validate GP model for each output. Among these kernels, the combined kernel RBF+Mat21 gives the best fit to the training data, however, it does not give the best predictions for validating and testing data. On the other hand, the Mat32 kernel fits training data reasonably well and it predicts the best for validating and testing data. 
 %
-Comparing between the two kernels, the RBF+Mat12 Kernel is a combination of a smooth and a spiky kernel, which has sufficient flexibility to fit all features in the training data. However, the spiky function can loss accuracy for off-grid regions when training data are sparse. 
+Comparing between the two kernels, the RBF+Mat12 Kernel is a combination of a smooth and a spiky kernel, which has sufficient flexibility to fit features of data. However, the spiky function make it less accurate for off-grid regions. 
 %
-The smoothness of Mat32 kernel is somewhere between a spiky (Mat21) and a smooth kernel (RBF). It does not exactly fit some sharp features but the function is relatively smooth across the grid. We hence adopt the Mat32 kernel.  
+The smoothness of Mat32 kernel is somewhere between a spiky (Mat21) and a smooth kernel (RBF). It does not exactly fit some sharp features but it maps the off-grid region with better continuity. We hence adopt the Mat32 kernel for the training. 
 
- \subsubsection{Strategy for Large Data Sample}
+\subsubsection{Training Procedure}
 
-The model grid we aim to train contents about 10,000,000 data points, which is much more than the upper limit of data size (20,000) of an \textsc{Exact GP} model. We hence need a strategy for large data sample. We work on this with 3-demission (3D) GP models, which map $M$, $EEP$, and  [Fe/H]$_{\rm init}$ to observable outputs. The 3D GP model can be described as Outputs $ = f(M, EEP, {\rm [Fe/H]_{init}})$. 
-We select training data in the primary grid with fixed $Y_{\rm init}$ (0.28), and $\alpha_{\rm MLT}$ (2.1). The training dataset contents $\sim$300,000 data points. For validating and testing purposes, we compute another 174 evolutionary tracks with the same input $Y_{\rm init}$ and $\alpha_{\rm MLT}$ but random $M$ and [Fe/H]$_{\rm init}$. Before proceeding with large sample, we train an \textsc{Exact GP} model using 20,000 training data points as a standard reference. 
+We lastly introduce the procedure of training a GP model. The full process includes training, validating, and testing. 
+In the training process, we literately optimise hyperparameters of a GP model to learn the underline function which maps inputs to outputs from on-grid evolutionary tracks (training dataset). In each iteration, the GP model is validated by comparing true and GP predicted values of off-grid tracks (validating dataset). Although the validating dataset is not directly involved in training hyperparameters, it still constructs the GP model to some extend because the optimal solution is the one that best fits the validating dataset. For this reason, the validating dataset does not give a completely independent validation for a GP model. 
+%
+We hence have a testing process at the end for the purpose of estimating the systematic uncertainty of GP. We reserve a half of off-grid tracks as testing dataset and qualify a GP model using the testing error (true value - GP prediction).
+
+
+\section{Preliminary Studies on Low-Demission Problems}\label{examples}
+
+In this section, we present GP applications on 1-, 2-, and 3-demissions (1D, 2D, 3D) problems. We also investigate two key questions before training the 5-demissions (5D) stellar grid: testing method and strategy for large sample. 
+
+\subsection{1D Problem}
+
+We first demonstrate an example of GP application on an 1D problem. We train a GP model to learn the evolution of effective temperature for a $\rm 1.1M_{\odot}$ track. We split the data points on this track into training and testing data by 70-to-30. We train a GP model which maps  {\it EEP} to effective temperatures. We then compare true and GP-predicted effective temperatures of testing data. As it can be seen in Figure \ref{fig:1dgp},  the GP model gives very accurate predictions: residuals are within $\pm$0.5 K. As a comparison, we fit the training data with the quadratic function and use it to predict testing data. We find that the two methods give very similar results. It indicate that GP can be an alternative of classical interpolators on the 1D problem. 
+
+\begin{figure}
+	\includegraphics[width=1.0\columnwidth]{1d-gp.pdf}
+    \caption{GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm 1.1M_{\odot}$ track. The grey line is the evolutionary track computed with \textsc{MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph. }  
+    \label{fig:1dgp}
+\end{figure}
+
+\subsection{2D Problem: Investigating testing method}
+
+We present a 2D example here.  We use the same training, validating, and testing datasets mentioned in Section \ref{sec:set_up} and train GP models which map $M$ and {\it EEP} to observables. We illustrate the GP model for effective temperature in Figure \ref{fig:2dtest}. As it shown that, GP transforms the sparse data into a continuous function and hence is able to predict values for unseen points.
+%
+We also notice that the kernel function in the area of $M \geq 1.05 {\rm M_{\odot}}$ and ${\it EEP} \leq 0.7$ is more complex than that for other regions because of the appearance of the 'hook'. This particular area are relatively difficult to learn and poorly predicted by the GP model. 
+
+\begin{figure}
+	\includegraphics[width=1.0\columnwidth]{2d_GPmodel_function.pdf}
+	\includegraphics[width=1.0\columnwidth]{2d_testing_hist_effective_T.pdf}	
+    \caption{Top: The 2D GP model for $T_{\rm eff}$. Bottom: probability distributions of validating errors of the GP model. }  
+    \label{fig:2dtest}
+\end{figure}
+
+When there is a subregion in which the GP model performs worse than other areas, the probability distribution of testing error is not quite a  Gaussian function. We examine the error distribution as shown at the bottom of Figure \ref{fig:2dtest}. Errors of most data follows a Gaussian distribution but about $10\%$ data form long tails on both sides. 
+%
+We inspect testing errors for other output parameters and find similar results. 
+The cases of surface gravity and radius are similar to the effective temperature. The surface metallicity is not affected by the hook, but the GP predictions are relatively poor at the early subgiant phase in high-mass tracks. This is because high-mass tracks maintain shallow convective envelope and hence have strong diffusion effect during the main-sequence stage. At the early subgiant phase, the quick expansion of the surface convective envelope brings back the settling heavy elements to the surface, leading to a sharp raise of the surface metallicity. 
+%
+We also find that the accuracy of age prediction drops down for very old low-mass stellar models. This is because age values vary in a relatively big dynamic range (15 - 50 Gyr) in a small fraction of data points. Poor age resolution causes poor GP predictions.        
+This is to say, the tail feature is common for all five outputs. This leads to a question of how to quantity the testing error.
+
+For this case, a global error such like Root Mean Square Error (RMSE) is not ideal to quantify the error. Because it does not well reflect the tail feature. What we need here is a method that reflects the general accuracy level as well as the worst case. 
+%
+We examine the error distribution of each output and count data points in the tails (outside the 3 times of full width at half maximum). The amount of these data are around 10\% (8 - 12\% for different outputs). 
+%
+For the majority (90\%) of data points, which from a Gaussian function, the 68\% confidential interval is able to reflect their accuracies. For the worst 10\% of the data, we could use the 95\% and 99.7\% confidential intervals to describe the median value and the length of the tail. Thus, we define an Error Index (EI), which is the sum of 68\%, 95\%, and 99.7\% cumulative values of absolute errors, to qualify GP models. For the case in Figure \ref{fig:2dtest}, cumulative values at 68\%, 95\%, and 99.7\% are 1.1, 4.9, and 11.1K, which give an EI equals to 17.1K. 
+
+\subsection{3D Problem: Strategy for Large Data Sample}
+
+As a further step, we apply GP on a 3D grid and investigate the strategy for large data sample.
+The model grid we aim to train contents about 10,000,000 data points, which is much more than the upper limit of data size (20,000) of an \textsc{Exact GP} model. We work on this with 3-demission (3D) GP models, which map $M$, {\it EEP}, and  [Fe/H]$_{\rm init}$ to observable outputs. 
+%The 3D GP model can be described as Outputs $ = f(M, EEP, {\rm [Fe/H]_{init}})$. 
+We select training data from the primary grid with fixed $Y_{\rm init}$ (0.28), and $\alpha_{\rm MLT}$ (2.1). The training dataset contents $\sim$300,000 data points. For validating and testing purposes, we compute another 174 evolutionary tracks with the same input $Y_{\rm init}$ and $\alpha_{\rm MLT}$ but random $M$ and [Fe/H]$_{\rm init}$. Before proceeding with large sample, we train an \textsc{Exact GP} model using 20,000 training data points as a standard reference. 
 
 We first consider the Stochastic Variational GP (SVGP) approach based on the \textsc{GPyTorch ApproximateGP} module. 
 %We train our data based on the SVGP example on \url{https://docs.gpytorch.ai/en/v1.1.1/examples/04_Variational_and_Approximate_GPs/SVGP_Regression_CUDA.html}. 
@@ -224,38 +209,19 @@ We run a few tests to train a 3D SKI GP model with 100, 000 training data. Compa
 
 
 As mentioned above, the GPU memory captivity limits the actual number of data that induce the kernel function.   
-This limit become critical for the high-demission case. The parameter space exponentially increases with the demission and hence the GP model accuracy inevitable declines. To improve, more training data need to be involved. 
+This limitation becomes critical for the high-demission case. To improve, more training data need to be involved. 
+%The parameter space exponentially increases with the demission and hence the GP model accuracy inevitable declines. 
 %
 A simple way is breaking the grid into sections and train GP models for each section separately. 
 %The downside of this section scenario is that there will not be one GP model that maps the whole grid. However, as long as the goal of this work is augmenting a model grid but not deriving a universal function for stellar evolutions, this scenario is suitable. 
 %Here we test how this section scenario works for 3D GP models. 
-Here we divide the training dataset into 10 equal segments by $EEP$. We train one \textsc{Exact GP} model with 20,000 training data for each section. 
+Here we divide the training dataset into 10 equal segments by {\it EEP}. We train one \textsc{Exact GP} model with 20,000 training data for each section. 
 %We then use the same testing dataset to quantify GP predictions for the five outputs, and 
-With this section scenario, the testing EIs for five output parameters are averagely improved by around 10\%. For instance, the testing EI for $T_{\rm eff}$ decreases from 23.5 to 21.6K (1.7/5.0/14.9K at 68/95/99.7\%). 
+With this section scenario, the testing EIs for five output parameters are averagely improved by around 10\%. For instance, the testing EI for $T_{\rm eff}$ decreases from 23.5 to 21.6K.
+% (1.7/5.0/14.9K at 68/95/99.7\%). 
 %
 
-As expected, the section scenario improves the performance of GP model, but there is a major concern about the edge effect at the boundary between sections. If the GP model works significantly poorly at the section boundaries, it will be difficult to map the systematic errors across the whole parameter space. We examine this as illustrated in Figure~\ref{fig:3dtest}. We inspect absolute testing errors on the $M-EEP$ diagram. No obvious edge effect is found. We also do a statistical comparison between all testing errors and those around section boundaries ($\pm0.01EEP$). As shown in the bottom graph, the density distributions of two samples are very similar and we hence conclude that there is no edge effect. The section scenario is hence adopted in the following study.  
-
-Here we summary our set up for the GP model.
-\begin{itemize}
-\item Model Type: \textsc{Exact GP} with the section scenario 
-\item Kernel: Mat32 %(for all outputs)
-\item Mean Function: Neural Network with 6 linear layers x 128 nodes per layer and element-wise function (Elu) 
-\item Likelihood Function: Gaussian Likelihood Function
-\item Loss Function: Exact marginal likelihood
-\item Optimiser: Adam including AMSGRAD variant
-\item Early Stoping: controlled by the validating EI
-\end{itemize}
-
-
-
-
-
-
-
-     
-
-
+As expected, the section scenario improves the performance of GP model, but there is a major concern about the edge effect at the boundary between sections. If the GP model works significantly poorly at the section boundaries, it will be difficult to map the systematic errors across the whole parameter space. We examine potential edge effects as illustrated in Figure~\ref{fig:3dtest}. We inspect absolute testing errors on the $M-EEP$ diagram. No obvious edge effect is found. We also do a statistical comparison between error values of all data points and those around section boundaries ($\pm0.01EEP$). As shown in the bottom graph, the density distributions of two samples are very similar to each other, indicating no obvious edge effect. We adopt this section scenario to train the stellar grid in the following study.  
 
 
 

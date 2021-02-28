@@ -1,22 +1,33 @@
-\section{Training Results}\label{sec:results}
+\section{Augmenting the Stellar Grid}\label{sec:results}
 
-We train GP models using the method described in Section \ref{sec:gpmodel}. The training data are evolutioanry tracks in both primary and additional girds as mentioned in Table~\ref{tab:grid}. The role of the additional grid is increasing the grid resolution for evolutionary tracks with the 'hook'. 
+We GP models for the 5D stellar grid in this section. The training data are selected from evolutionary tracks in both primary and additional girds as mentioned in Table~\ref{tab:grid}. The role of additional grid is increasing the grid resolution for evolutionary tracks with the 'hook'. 
 %As discussed in the previous section, the kernel function in the 'hook' area are much more complex than other regions , and hence a GP model requires more information to map the feature in this region. 
-The total training data includes $\sim$15,000 evolutionary tracks ($\sim$10,000,000 stellar models). Off-grid tracks are split 50-to-50 for validating (in the training progress) and testing (after the training progress) GP models.
-The section scenario is applied. For each section, we train a GP model for each output parameter. Each training involves 20,000 training data points and 20,000 validating data points. For the testing dataset, we sample 50, 000 data points in the whole $EEP$ range. Note that we do not use models with $\tau \geq$ 20.0 Gyr, [Fe/H]$_{\rm surf} \leq$ -0.6 dex, or $T_{\rm eff} \geq$ 7000$K$ in testing dataset. 
+The total training data includes $\sim$15,000 evolutionary tracks ($\sim$10,000,000 stellar models). Off-grid tracks are split by 50-to-50 for validating (in the training progress) and testing (after the training progress) GP models.
+The section scenario is applied. For each section, we train one \textsc{Exact} GP model for each output parameter with 20,000 training and 20,000 validating data. For the testing purpose, we sample 50,000 data points in the whole{\it EEP} range. Note that we do not use models with $\tau \geq$ 20.0 Gyr, {\it [Fe/H]}$_{\rm surf} \leq$ -0.6 dex, or $T_{\rm eff} \geq$ 7000$K$ in testing dataset. 
+
+Here we summary our set up for training GP models for the stellar grid.
+\begin{itemize}
+\item Model Type: \textsc{Exact GP} with the section scenario 
+\item Kernel: Mat32 %(for all outputs)
+\item Mean Function: Neural Network with 6 linear layers x 128 nodes per layer and element-wise function (Elu) 
+\item Likelihood Function: Gaussian Likelihood Function
+\item Loss Function: Exact marginal likelihood
+\item Optimiser: Adam including AMSGRAD variant
+\item Early Stoping: controlled by the validating {\it EI}
+\end{itemize}
 
 \subsection{Overview of Results}
 
-We start with training one \textsc{Exact GP} model for the whole $EEP$ range as a standard. Testing errors for this model are listed in Table~\ref{tab:results}. Compared with 2D and 3D cases, testing errors remarkably rise with increasing demission. For example, EI for $T_{\rm eff}$ goes up to 46K, which is much higher than that for the 2D (16K) or the 3D model (24K). 
+At the beginning, we train an \textsc{Exact GP} model for the whole {\it EEP} range as a standard reference. Testing errors for this model are listed in Table~\ref{tab:results}. Compared with 2D and 3D cases, testing errors remarkably rise with increasing demission. For example, {\it EI} for $T_{\rm eff}$ goes up to 46K, which is much higher than that for the 2D (16K) or the 3D model (24K). 
 
 We then train GP models with the section scenario. We gradually increase the number of sections and track down the changes in testing errors. 
-We find that testing EI is not significantly improved when the grid are divided by more than 10 sections. We list the testing errors for different cases in Table~\ref{tab:results}. As it shown that, testing EIs for 10-, 20-, and 100-sections cases are very close. It turns out that the 10-sections case is the most efficient strategy and we take this case as the best result. Following analysis are all based on it. 
+We find that testing {\it EI} is not significantly improved when the grid are divided by more than 10 sections. We list the testing errors for different cases in Table~\ref{tab:results}. As it shown that, testing {\it EI}s for 10-, 20-, and 100-sections cases are very close. It turns out that the 10-sections case is the most efficient strategy and we take this case as the best result. We refer this model set as GP-Grid Model here after. Following analysis are all based on it. 
 
 A overview of testing errors can also be seen in Figure~\ref{fig:5d_test_vs_input}, where we demonstrate rolling medians and rolling standard deviations of testing errors as a function of input parameters.
 %
 Median values are approximate along zero in most plots, indicating good agreement between GP predictions and true values.
 %
-The 68\% confidential intervals are generally small and do not significantly vary. However, the 95\% confidential intervals vary in large dynamic ranges and clearly depend on $M$, $EEP$, and $\rm [Fe/H]_{init}$. The long tails in marginal distributions are similar to what is illustrated in Figure~\ref{fig:2dtest}: GP predictions are relatively poor in some particular regions. Because the systematic uncertainty are not uniform through the parameter space, marginal error distributions do not well describe the systematic uncertainties. We hence investigate systematic uncertainty in a local scale. 
+The 68\% confidential intervals are generally small and do not significantly vary. However, the 95\% confidential intervals vary in large dynamic ranges and clearly depend on $M$, {\it EEP}, and $\rm {\it [Fe/H]}_{init}$. The long tails in marginal distributions are similar to what is illustrated in Figure~\ref{fig:2dtest}: GP predictions are relatively poor in some particular regions. Because the systematic uncertainty are not uniform through the parameter space, marginal error distributions do not well describe the systematic uncertainties. We hence investigate systematic uncertainty in a local scale. 
 
 \begin{table*}
 	\centering
@@ -26,7 +37,7 @@ The 68\% confidential intervals are generally small and do not significantly var
 		\hline
 		Model Type&Inputs&$N_{\rm Training}$ &Sampling rate &\multicolumn{5}{c}{Testing Errors (at 68/95/99.7\%)} \\
 		 \hline
-		 \multicolumn{4}{c}{}& $T_{\rm eff}$ &$\log g$  &$R$  &[Fe/H]$_{\rm surf}$   &$\tau$ \\
+		 \multicolumn{4}{c}{}& $T_{\rm eff}$ &$\log g$  &$R$  &{\it [Fe/H]}$_{\rm surf}$   &$\tau$ \\
 		 \multicolumn{4}{c}{}&  (K)& ($10^{-3}$dex) & ($10^{-3}R_{\odot}$)  &  ($10^{-3}$dex)  & ($10^{-2}$Gyr) \\		 
 		 \hline
 		 Exact GP & 2D & 20,000 x 1 &96\% & 1/5/11 & 1/3/8 & 2/6/14 & 0.5/2/12 &  1/3/9 \\
@@ -72,37 +83,37 @@ The 68\% confidential intervals are generally small and do not significantly var
 
 \begin{figure*}
 	\includegraphics[width=2.0\columnwidth]{ 5d-testing_vs_inputs.pdf}
-    \caption{ Roll medians and 68/95\% confidential intervals of testing errors against GP model  inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and $EEP$. Metallicity error strongly depends on $M$, $EEP$, and [Fe/H]$_{\rm init}$, and age error has a significant correlation to $EEP$ and [Fe/H]$_{\rm init}$. However, testing errors do not obviously relate to $Y_{\rm init}$ or $\alpha_{\rm MLT}$. } 
+    \caption{ Roll medians and 68/95\% confidential intervals of testing errors against GP model  inputs. Black solid lines indicate the median value; grey and blue shadowes represent the 68\% and 95\% confidential interval. Testing errors of $T_{\rm eff}$, $\log g$, and $R$ mainly depend on $M$ and{\it EEP}. Metallicity error strongly depends on $M$,{\it EEP}, and {\it [Fe/H]}$_{\rm init}$, and age error has a significant correlation to{\it EEP} and {\it [Fe/H]}$_{\rm init}$. However, testing errors do not obviously relate to $Y_{\rm init}$ or $\alpha_{\rm MLT}$. } 
   \label{fig:5d_test_vs_input}
 \end{figure*}
 %
 
 \subsection{Mapping Systematical Uncertainties using another GP model}\label{sec:sys}
 
-As shown in Figure~\ref{fig:5d_test_vs_input}, systematical uncertainties relate to $M$, $EEP$, and [Fe/H]$_{\rm init}$ but not to $Y_{\rm init}$ or $\alpha_{\rm MLT}$.  Thus, a comprehensive model for the systematical uncertainty can be described as a function of $M$, $EEP$, and [Fe/H]$_{\rm init}$. In the $M$-$EEP$-$\rm [Fe/H]_{init}$ space, we divide this 3D space into equal-size segments and examine local error distributions. 
+As shown in Figure~\ref{fig:5d_test_vs_input}, systematical uncertainties relate to $M$,{\it EEP}, and {\it [Fe/H]}$_{\rm init}$ but not to $Y_{\rm init}$ or $\alpha_{\rm MLT}$.  Thus, a comprehensive model can be described as a function of $M$,{\it EEP}, and {\it [Fe/H]}$_{\rm init}$. In the $M$-$EEP$-$\rm {\it [Fe/H]}_{init}$ space, we divide this 3D space into equal-size segments and examine local error distributions. 
 The choice of segment size matters. It needs to be small enough for only presenting the local feature, but it can not be very small so that there are not enough data points for proper statistical analysis. 
 %
 To find an appropriate size, we apply a statistic test. The purpose of the test is to check wether the local distribution has a tail feature. The condition we apply is either the ratio between 68\% and 95\% confidential intervals less than 2.5, or the ratio between 68\% and 99.7\% confidential intervals less than 4. 
 %
-After several attempts, we decide to divide the input range into 40 equally spaced segments for $M$, 50 for $EEP$, and 20 for [Fe/H]$_{\rm init}$. Hence there are 43,911 (41 x 21 x 51) gird points. We compute a rolling standard deviation for each grid point by using the data in a 3-segments (1.5 previous and 1.5 after) range across each demission. The statistic test shows that $\sim 90\%$ points meeting the above condition. 
+After several attempts, we decide to divide the input range into 40 equally spaced segments for $M$, 50 for {\it EEP}, and 20 for {\it [Fe/H]}$_{\rm init}$. Hence there are 43,911 (41 x 21 x 51) gird points. We compute a rolling standard deviation for each grid point by using the data in a 3-segments (1.5 previous and 1.5 after) range across each demission. The statistic test shows that $\sim90\%$ points meeting the above condition. 
 
-We present local systematic uncertainties for $T_{\rm eff}$ ($\sigma T_{\rm eff}$) on the $M-EEP$ diagram in Figure \ref{fig:5d_sys_teff}. As it can be seen that, local $\sigma T_{\rm eff}$ values are mostly below $\sim$4K in the low-mass regions and raise up when mass is greater than 1.05$\rm M_{\odot}$. More important, there are substructures randomly appear in the parameter space. 
+We present local systematic uncertainties for $T_{\rm eff}$ ($\sigma T_{\rm eff}$) on the $M-{\it EEP}$ diagram in Figure \ref{fig:5d_sys_teff}. As it can be seen that, local $\sigma T_{\rm eff}$ values are mostly below $\sim$4K in the low-mass regions and raise up when mass is greater than 1.05$\rm M_{\odot}$. More important, there are substructures randomly appear in the parameter space. 
 We visually inspect local systematic uncertainties for all output parameters and find similar features. 
 %The substructures are expected because this is the residual of a flexible kernel function. 
-Because of the existence of substructures, it is not convinced to describe the systematic uncertainty with any simple mathematical expressions. We hence use another GP model (GP-SYS model here after) to map three fundamental inputs ($M$, $EEP$, and [Fe/H]$_{\rm init}$) to local systematic uncertainty of each output parameter.   
+Because of the existence of substructures, it is not convinced to describe the systematic uncertainty with any simple mathematical expressions. We hence use another GP model (GP-SYS model here after) to map three fundamental inputs ($M$, {\it EEP}, and {\it [Fe/H]}$_{\rm init}$) to local systematic uncertainty of each output parameter.   
 
 Here we discuss how we set up the GP-SYS model. 
 There are 43,911 data points in total. We randomly select 32,000 data points as the training dataset and use the rest 11,311 data points as the validating dataset. Because the training data size exceeds the 20,000 limit for \textsc{Exact GP}, we use other approach for the large data sample.
 %
-As discussed in Section \ref{sec:gpmodel}, the SVGP framework can be applied for when the kernel function is not very complex. It hence suitable for training the systematic uncertainty. We use 10,000 inducing points which are randomly selected in the 3D space. The training data is split into 10 batches for the SVGP training. 
+As discussed in Section \ref{sec:gpmodel}, the SVGP framework can be applied for large data sample when the kernel function is not very complex. It hence suitable for training the systematic uncertainty. We use 10,000 inducing points which are randomly selected in the 3D space. The training data is split into 10 batches for the SVGP training. 
 %
 We use a constant mean function and the RBF kernel because the data distribution is smooth. The variational evidence lower bound (ELBO) is adopted as the loss function. This approach is designed for when there is too much data for the exact inference. We set up Early Stopping by tracking the RMSE value of validating data. The training progress terminates when the RMSE value stops decreasing for 30 iterations.
 The likelihood function and the optimiser are same as those for training GP-Grid models. 
 Our set up for the GP-SYS model is listed as follow.
 \begin{itemize}
 \item Model Type: SVGP with 10,000 inducing number. 
-\item Model Inputs: $M$, $EEP$, and [Fe/H]$_{\rm init}$
-\item Model Outputs: $\sigma_{T_{\rm eff}}$, $\sigma_{\log g}$, $\sigma_{R}$, $\sigma_{\rm [Fe/H]_{surf}}$, and $\sigma_{\tau}$.
+\item Model Inputs: $M$, {\it EEP}, and {\it [Fe/H]}$_{\rm init}$
+\item Model Outputs: $\sigma_{T_{\rm eff}}$, $\sigma_{\log g}$, $\sigma_{R}$, $\sigma_{\rm {\it [Fe/H]}_{surf}}$, and $\sigma_{\tau}$.
 \item Training dataset: 3200 x 10 data points
 \item Validating dataset: 11,311 data points
 \item Kernel: RBF (for all outputs)
@@ -117,13 +128,12 @@ Our set up for the GP-SYS model is listed as follow.
 \begin{figure}
 	\includegraphics[width=1.0\columnwidth]{5d_sys_teff.pdf}
 	\includegraphics[width=1.0\columnwidth]{5d_sys_effective_T_std_predictions.pdf}
-    \caption{Local systematic uncertainty (1-$\sigma$) for $T_{\rm eff}$ on the $M - EEP$ diagram for [Fe/H]$_{\rm init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom.} 
+    \caption{Local systematic uncertainty (1-$\sigma$) for $T_{\rm eff}$ on the $M - EEP$ diagram for {\it [Fe/H]}$_{\rm init}$ = 0.0. The actual distribution is on the top and GP predictions are presented at the bottom.} 
   \label{fig:5d_sys_teff}
 \end{figure}
 
-We train GP-SYS models with the above method. Final models show good agreement with validating data. For instance, the average validating error for $\sigma_{T_{\rm eff}}$ is only 0.15K. For other output parameters, we summary the results in Table \ref{tab:sys}.
-%
-Figure \ref{fig:5d_sys_teff} includes a comparison between the actual and the GP-trained $\sigma_{T_{\rm eff}}$. It shows that the GP-SYS model well reproduces the $\sigma_{T_{\rm eff}}$ distributions. 
+We train GP-SYS models with the above method. Figure \ref{fig:5d_sys_teff} includes a comparison between the actual and the GP-trained $\sigma_{T_{\rm eff}}$. It shows that the GP-SYS model well reproduces the $\sigma_{T_{\rm eff}}$ distributions. However, it should be noted that the GP-SYS model is only a smooth approximation because the training data resolution is not sufficient enough. We examine validating errors for all five outputs and summary their average values in Table \ref{tab:sys}. For instance, the average validating error for $\sigma_{T_{\rm eff}}$ is only 0.15K. Given that the residuals are much smaller than typical observed uncertainties, they can be ignored.  
+
 
 \begin{table}
 	\centering
@@ -136,7 +146,7 @@ Figure \ref{fig:5d_sys_teff} includes a comparison between the actual and the GP
 		$\sigma_{T_{\rm eff}}$  (K) & 0.15 \\
 		$\sigma_{\log g}$  ($10^{-3}$dex)   & 0.08 \\
 		$\sigma_{R}$ ($10^{-3}R_{\odot}$)   & 0.2 \\
-		$\sigma_{\rm [Fe/H]_{\rm surf}}$ ($10^{-3}$dex) & 0.09 \\
+		$\sigma_{\rm {\it [Fe/H]}_{\rm surf}}$ ($10^{-3}$dex) & 0.09 \\
 		$\sigma_{\tau}$ ($10^{-2}$ Gyr)  & 0.2\\
 		%$\sigma_{\Delta\nu} (\mu Hz)$ & 0.01\\
 		  \hline
@@ -144,16 +154,9 @@ Figure \ref{fig:5d_sys_teff} includes a comparison between the actual and the GP
 \end{table}
 
 
-\section{Augmenting the MESA Grid}\label{sec:augmentation}
+\section{Modelling stars with GP-trained models}\label{sec:augmentation}
 
-\subsection{A GP-Trained Model Set}
-
-Now we have GP-Grid models for predicting observable outputs and GP-SYS models for estimate their local systematical uncertainties. 
-In Figure~\ref{fig:5d_augmentation}, we demonstrate a GP-trained Kiel diagram comparing with the stellar grid. It shows that GP has transformed the sparse model grid into a non-sparse model set. 
-%
-Here we generate a GP-Trained model set to augment the stellar grid. We randomly sample 5,000,000 model data points with a flat distribution on each input demission. We then predict observable outputs with GP-Grid models and systematic uncertainties with GP-SYS models. 
-%
-This GP-trained model set hence includes five fundamental inputs ($M$, $EEP$, [Fe/H]$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$), five outputs, ($T_{\rm eff}$, $\log g$,  $R$,  [Fe/H]$_{\rm surf}$, and  $\tau$), and five systematic uncertainties ($\sigma_{T_{\rm eff}}$, $\sigma_{\log g}$,  $\sigma_{R}$,  $\sigma_{\rm [Fe/H]_{\rm surf}}$, and $\sigma_{\tau}$). This model set can be downloaded at \url{a-place-for-data}. 
+Now we are able to predict observable outputs with the GP-Grid model and estimate the systematical uncertainty for each prediction with the GP-SYS model. We demonstrate a GP-trained Kiel diagram comparing with the stellar grid in Figure~\ref{fig:5d_augmentation}. GP has transformed the sparse model grid into a non-sparse model set. 
 
 \begin{figure*}
 	\includegraphics[width=1.3\columnwidth]{5d-au-mass.pdf}
@@ -168,33 +171,43 @@ This GP-trained model set hence includes five fundamental inputs ($M$, $EEP$, [F
   \label{fig:5d_augmentation}
 \end{figure*}
 
-\subsection{Modelling fake stars with GP-trained models}
+\subsection{A GP-Trained Model Set}
 
-With the GP-trained model set, we model 100 fake stars to examine the accuracy of our method. Fake stars are randomly selected from the off-grid models. We use four observables, i.e., $T_{\rm eff}$, $\log g$, $R$, and [Fe/H]$_{\rm surf}$, as constraints. We apply typical observed uncertainty that is $\pm$50K for $T_{\rm eff}$ (high-resolution spectroscopy), $\pm0.005$dex for $\log g$ (seismology), $3\%$ for $R$ (seismology), and $\pm0.05$dex for [Fe/H]$_{\rm surf}$ (high-resolution spectroscopy). 
-%
-To avoid edge effect, fakes stars are selected in the range of $T_{\rm eff}$ = [4700K, 6800K], $\log g$ = [3.7, 4.6], [Fe/H]$_{\rm surf}$ = [-0.35,0.35], $M$ = [0.85,1.15], $EEP$ = [0.05,0.95], $Y_{\rm init}$ = [0.25,0.31], and $\alpha_{\rm MLT}$ = [1.8,2.4].  
+Here we augment the stellar grid. 
+We randomly sample 5,000,000 model data points with uniform distribution for all inputs. This GP-trained model set hence includes five fundamental inputs ($M$, {\it EEP}, {\it [Fe/H]}$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$), five outputs, ($T_{\rm eff}$, $\log g$,  $R$,  {\it [Fe/H]}$_{\rm surf}$, and  $\tau$), and five systematic uncertainties ($\sigma_{T_{\rm eff}}$, $\sigma_{\log g}$,  $\sigma_{R}$,  $\sigma_{\rm {\it [Fe/H]}_{\rm surf}}$, and $\sigma_{\tau}$). This model set can be downloaded at \url{a-place-for-data}. 
 
-We fit fake stars using the Maximum Likelihood Estimate (MLE) method. Note that the error term in MLE formula contents observed and systematic uncertainties given by GP-SYS models ($\sigma^{2} = \sigma_{obs}^{2} +  \sigma_{sys}^{2} $).
+
+\subsection{Modelling Fake Stars with GP-trained Models}
+
+With the GP-trained model set, we model 1,000 fake stars to examine the accuracy of our method. Fake stars are randomly selected on off-grid tracks. To avoid the edge effect, fakes stars are selected in the range of $T_{\rm eff}$ = [4700K, 6800K], $\log g$ = [3.7, 4.6], {\it [Fe/H]}$_{\rm surf}$ = [-0.35,0.35], $M$ = [0.85,1.15], {\it EEP} = [0.05,0.95], $Y_{\rm init}$ = [0.25,0.31], and $\alpha_{\rm MLT}$ = [1.8,2.4].  
 %
-We present likelihood distributions of inferred stellar parameters for a representative fake star in Figure \ref{fig:fit_comparison}. The results based on grid modelling are also plotted as comparisons. 
+We use four observables, i.e., $T_{\rm eff}$, $\log g$, $R$, and {\it [Fe/H]}$_{\rm surf}$, as constraints. We apply typical observed uncertainty that is $\pm$50K for $T_{\rm eff}$ (high-resolution spectroscopy), $\pm0.005$dex for $\log g$ (seismology), $3\%$ for $R$ (seismology), and $\pm0.05$dex for {\it [Fe/H]}$_{\rm surf}$ (high-resolution spectroscopy). Observed value for each constraint is calculated with true value plus a random noise which follows a Gaussian distribution. For example, we pick a model with $T_{\rm eff}$ = 5000K and generate a random noise of -25K from a Gaussian function whose standard deviation is 50K. The fake observed value is 4975$\pm$50 K.  
+
+
+We fit fake stars using the Maximum Likelihood Estimate (MLE) method with the original stellar grid and the GP-trained models. Note that the error term in MLE formula contents observed and systematic uncertainties given by GP-SYS models ($\sigma^{2} = \sigma_{obs}^{2} +  \sigma_{sys}^{2} $) when fitting to GP-trained models. We make marginal likelihood distribution and use the 16th, 50th, 84th percentiles to estimate a fundamental parameter and its uncertainty. 
 %
-Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm$50K, $\log g$ = 4.536$\pm$0.005, [Fe/H]$_{\rm surf}$ =  0.34$\pm$0.05, and $R$ =  0.829$\pm$0.025$R_{\odot}$. True values of fundamental stellar parameters are $M$ = 0.861 $\rm M_{\odot}$, $\tau$ = 10.8 Gyr, $\rm [Fe/H]_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, and $\alpha_{\rm MLT}$ = 2.356. 
+We present likelihood distributions of inferred stellar parameters for a representative fake star in Figure \ref{fig:fit_comparison}. 
+Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm$50K, $\log g$ = 4.536$\pm$0.005, {\it [Fe/H]}$_{\rm surf}$ =  0.34$\pm$0.05, and $R$ =  0.829$\pm$0.025$R_{\odot}$. True values of fundamental stellar parameters are $M$ = 0.861$\rm M_{\odot}$, $\tau$ = 10.8Gyr, $\rm {\it [Fe/H]}_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, and $\alpha_{\rm MLT}$ = 2.356. 
 %
-Compared with the stellar grid, GP-trained model set has a completed statistical sampling and hence gives more sensible posteriors. The improvement for the age is obvious. It is under-sampled in the model grid and hence the inferred age does not actually converge. The Gird-based modelling infers an age of $7.7^{+3.2}_{-4.2}$Gyr, while GP-based modelling gives $8.3^{+2.6}_{-2.8}$Gyr. Compared with the true value (10.8 Gyr), GP determines a more accurate and precise result than the grid. For initial metallicity, initial helium fraction, and the mixing-length parameter, GP makes it possible to statistically estimate these parameters and inferred $\rm[Fe/H]_{init}$ and $Y_{\rm init}$ well agree with true values. The mixing-length parameter is not constrained because no correlated observable is given. This comparison clearly shows the advantage of GP-based modelling. It overcomes the under-sampling issue of a sparse grid and improve the accuracy and precision of estimates. 
+Compared with the stellar grid, GP-trained model set has a completed statistical sampling and hence gives more sensible posteriors. The improvement for the age is obvious. It is under-sampled in the model grid and hence the inferred age does not actually converge. The Gird-based modelling infers an age of $7.7^{+3.2}_{-4.2}$Gyr, and GP-based modelling gives $8.3^{+2.6}_{-2.8}$Gyr. Compared with the true value (10.8 Gyr), GP determines a more accurate and precise result than the original grid. 
+%
+For initial metallicity, initial helium fraction, and the mixing-length parameter, GP makes it possible to statistically estimate these parameters. In this example, GP determines ${\it [Fe/H]}_{\rm init}$ and $Y_{\rm init}$ values very close to true values. The mixing-length parameter is not constrained because no correlated observable is given. This comparison clearly shows the advantage of GP-based modelling. It clearly improve the sampling of a sparse grid and hence improve the accuracy and precision of estimates. 
 
 \begin{figure*}
 	\includegraphics[width=1.9\columnwidth]{gp_fitting.pdf}
-    \caption{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm$50K, $\log g$ = 4.536$\pm$0.005, [Fe/H]$_{\rm surf}$ =  0.34$\pm$0.05, and $R$ =  0.829$\pm$0.025$R_{\odot}$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot}$, $\tau$ = 10.8 Gyr, $\rm [Fe/H]_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha_{\rm MLT}$ = 2.356, which are represented by blue dashes.} 
+    \caption{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm$50K, $\log g$ = 4.536$\pm$0.005, {\it [Fe/H]}$_{\rm surf}$ =  0.34$\pm$0.05, and $R$ =  0.829$\pm$0.025$R_{\odot}$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot}$, $\tau$ = 10.8 Gyr, $\rm {\it [Fe/H]}_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha_{\rm MLT}$ = 2.356, which are represented by blue dashes.} 
   \label{fig:fit_comparison}
 \end{figure*}
 
-We now examine the accuracy of inferred mass and age of GP-based modelling. This can be done by comparing the offset (truth - estimated value) with the estimated uncertainty. If the offset is average zero and its scatter consists with typical estimated uncertainty, it would indicate that the offset is just the random error.   
+We now examine the accuracy of inferred mass and age of GP-based modelling. We calculate offsets between true and estimated values and divide them by estimated uncertainties for 1,000 fake stars. If offsets form a normal distribution, it would indicate that the fitting is only affected by random noises.  
 %
-We make marginal likelihood distributions for each fake star and measure the 16th, 50th, and 84th percentile values to estimate the mass and the age. The comparison between true and estimated values is demonstrated in Figure \ref{fig:fake_test}. Mass offsets are around zero and the scatter range (0.032$\rm M_{\odot}$) is smaller than the typical estimated uncertainty (0.04$\rm M_{\odot}$). Age differences also has a mean value at approximate zero. The scatter is relatively large compared with the case for mass but still reasonably consistent with the estimated uncertainty: offsets of 96 fake stars are within 1-$\sigma$ (1.6 Gyr) and the rest 4 stars slightly exceeds up to 1.7Gy. The results infer that this GP-based modelling gives reasonable accurate estimates when modelling real stars.  
+We demonstrate this examination in Figure \ref{fig:fake_test}. Mass offsets nicely follow a normal distribution for both the grid and GP-trained models. Age differences fits a normal distribution for GP-trained models, but slightly shift by $\sim$-0.2 for the grid. 
+This trend consists with what is illustrate in Figure \ref{fig:fit_comparison}: the centre of probability distribution of age shifts to lower end because of the under-sampling issue. The results infer that GP-based modelling gives reasonable accurate estimates, and moreover, it fixes the systematic offsets in the original stellar grid.  
 
 \begin{figure*}
-	\includegraphics[width=1.8\columnwidth]{fake-stars-test.pdf}
-    \caption{Differences between true and estimated masses (Top) and ages (Bottom) of 100 fake stars. Count distributions of offsets are demonstrated on the right side.} 
+	%\includegraphics[width=1.8\columnwidth]{fake-stars-test.pdf}
+	\includegraphics[width=1.8\columnwidth]{fake-stars-test-2.pdf}
+    \caption{Differences between true and estimated values over estimated uncertainty of 1000 fake stars. Count distributions of offsets are demonstrated on the right side.} 
   \label{fig:fake_test}
 \end{figure*}
 
