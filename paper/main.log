@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  28 FEB 2021 16:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  6 JUN 2021 13:17
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -655,26 +655,29 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
 (Font)              scaled to size 10.0pt on input line 93.
 (./introduction.tex
+LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
+(Font)              scaled to size 9.0pt on input line 8.
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 8.0pt on input line 13.
+(Font)              scaled to size 8.0pt on input line 15.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 6.2pt on input line 13.
+(Font)              scaled to size 6.2pt on input line 15.
 LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input lin
-e 13.
+e 15.
 
 (/usr/local/texlive/2020/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 13.
+(Font)              scaled to size 8.0pt on input line 15.
  [1{/usr/local/texlive/2020/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
 ]) (./grids.tex
-LaTeX Font Info:    Font shape `OT1/ntxtlf/m/n' will be
-(Font)              scaled to size 9.0pt on input line 5.
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
 (Font)              scaled to size 9.0pt on input line 53.
 LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 
@@ -685,47 +688,48 @@ File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
 (Font)              scaled to size 9.0pt on input line 74.
-LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 9.0pt on input line 82.
-<2d_fage_data.pdf, id=146, 361.35pt x 325.215pt>
-File: 2d_fage_data.pdf Graphic file (type pdf)
-<use 2d_fage_data.pdf>
-Package pdftex.def Info: 2d_fage_data.pdf  used on input line 97.
-(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
-<2d_EEP_data.pdf, id=147, 361.35pt x 325.215pt>
-File: 2d_EEP_data.pdf Graphic file (type pdf)
-<use 2d_EEP_data.pdf>
-Package pdftex.def Info: 2d_EEP_data.pdf  used on input line 98.
-(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 115.
+(Font)              scaled to size 12.0pt on input line 75.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 12.0pt on input line 115.
+(Font)              scaled to size 12.0pt on input line 75.
  [2pdfTeX warning (ext4): destination with the same identifier (name{table.1}) 
 has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.115 
-      ]) (./GPmodel.tex
+l.75 
+     ]
+LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
+(Font)              scaled to size 9.0pt on input line 82.
+<2d_fage_data.pdf, id=195, 361.35pt x 325.215pt>
+File: 2d_fage_data.pdf Graphic file (type pdf)
+<use 2d_fage_data.pdf>
+Package pdftex.def Info: 2d_fage_data.pdf  used on input line 97.
+(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
+<2d_EEP_data.pdf, id=196, 361.35pt x 325.215pt>
+File: 2d_EEP_data.pdf Graphic file (type pdf)
+<use 2d_EEP_data.pdf>
+Package pdftex.def Info: 2d_EEP_data.pdf  used on input line 98.
+(pdftex.def)             Requested size: 240.0pt x 216.00224pt.
+) (./GPmodel.tex
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 9.0pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 7.3pt on input line 30.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
 (Font)              scaled to size 5.5pt on input line 30.
- [3pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
- has been already used, duplicate ignored
+ [3] [4pdfTeX warning (ext4): destination with the same identifier (name{figure
+.1}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.37 \begin{equation}
-                      <./2d_fage_data.pdf> <./2d_EEP_data.pdf
+l.93 
+      <./2d_fage_data.pdf> <./2d_EEP_data.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./2d_EEP_data.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
->] [4]
-<1d-gp.pdf, id=293, 867.24pt x 722.7pt>
+>] [5]
+<1d-gp.pdf, id=338, 867.24pt x 722.7pt>
 File: 1d-gp.pdf Graphic file (type pdf)
 <use 1d-gp.pdf>
 Package pdftex.def Info: 1d-gp.pdf  used on input line 154.
@@ -742,19 +746,12 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 (Font)              scaled to size 7.3pt on input line 163.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 (Font)              scaled to size 5.5pt on input line 163.
- [5pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
- has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.164 
-       <./1d-gp.pdf>]
-<2d_GPmodel_function.pdf, id=358, 794.97pt x 722.7pt>
+<2d_GPmodel_function.pdf, id=341, 794.97pt x 722.7pt>
 File: 2d_GPmodel_function.pdf Graphic file (type pdf)
 <use 2d_GPmodel_function.pdf>
 Package pdftex.def Info: 2d_GPmodel_function.pdf  used on input line 166.
 (pdftex.def)             Requested size: 240.0pt x 218.17908pt.
-<2d_testing_hist_effective_T.pdf, id=359, 867.24pt x 722.7pt>
+<2d_testing_hist_effective_T.pdf, id=342, 867.24pt x 722.7pt>
 File: 2d_testing_hist_effective_T.pdf Graphic file (type pdf)
 <use 2d_testing_hist_effective_T.pdf>
 Package pdftex.def Info: 2d_testing_hist_effective_T.pdf  used on input line 16
@@ -764,71 +761,59 @@ LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 (Font)              scaled to size 8.0pt on input line 168.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/m/it' will be
 (Font)              scaled to size 6.2pt on input line 168.
- [6pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ [6pdfTeX warning (ext4): destination with the same identifier (name{figure.2})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.198 
-       <./2d_GPmodel_function.pdf> <./2d_testing_hist_effective_T.pdf
+l.180 F
+       or this case, a global error such like Root Mean Square Error (RMSE) ...
+pdfTeX warning (ext4): destination with the same identifier (name{figure.3}) ha
+s been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.180 F
+       or this case, a global error such like Root Mean Square Error (RMSE) ...
+ <./1d-gp.pdf> <./2d_GPmodel_function.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./2d_GPmodel_function.pdf): 
+PDF inclusion: multiple pdfs with page group included in a single page
+> <./2d_testing_hist_effective_T.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./2d_testing_hist_effective_
 T.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<3d-testing_teff-10sections.pdf, id=457, 867.24pt x 722.7pt>
+<3d-testing_teff-10sections.pdf, id=489, 867.24pt x 722.7pt>
 File: 3d-testing_teff-10sections.pdf Graphic file (type pdf)
 <use 3d-testing_teff-10sections.pdf>
 Package pdftex.def Info: 3d-testing_teff-10sections.pdf  used on input line 204
 .
 (pdftex.def)             Requested size: 240.0pt x 199.99474pt.
-<3d-testing_teff-hist-10sections.pdf, id=458, 867.24pt x 722.7pt>
+<3d-testing_teff-hist-10sections.pdf, id=490, 867.24pt x 722.7pt>
 File: 3d-testing_teff-hist-10sections.pdf Graphic file (type pdf)
 <use 3d-testing_teff-hist-10sections.pdf>
 Package pdftex.def Info: 3d-testing_teff-hist-10sections.pdf  used on input lin
 e 205.
 (pdftex.def)             Requested size: 240.0pt x 199.99474pt.
-) (./augmentation.tex
-Underfull \vbox (badness 6961) has occurred while \output is active []
-
  [7pdfTeX warning (ext4): destination with the same identifier (name{figure.4})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.22 
-      <./3d-testing_teff-10sections.pdf> <./3d-testing_teff-hist-10sections.pdf
-
+l.223 
+       <./3d-testing_teff-10sections.pdf> <./3d-testing_teff-hist-10sections.pd
+f
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./3d-testing_teff-hist-10sec
 tions.pdf): PDF inclusion: multiple pdfs with page group included in a single p
 age
->]
-<5d-testing_vs_inputs.pdf, id=559, 1806.75pt x 1445.4pt>
+>]) (./augmentation.tex
+<5d-testing_vs_inputs.pdf, id=592, 1806.75pt x 1445.4pt>
 File: 5d-testing_vs_inputs.pdf Graphic file (type pdf)
 <use 5d-testing_vs_inputs.pdf>
 Package pdftex.def Info: 5d-testing_vs_inputs.pdf  used on input line 85.
 (pdftex.def)             Requested size: 480.0pt x 383.9996pt.
-<5d_sys_teff.pdf, id=563, 867.24pt x 722.7pt>
-File: 5d_sys_teff.pdf Graphic file (type pdf)
-<use 5d_sys_teff.pdf>
-Package pdftex.def Info: 5d_sys_teff.pdf  used on input line 129.
-(pdftex.def)             Requested size: 240.0pt x 199.99474pt.
-<5d_sys_effective_T_std_predictions.pdf, id=564, 867.24pt x 722.7pt>
-File: 5d_sys_effective_T_std_predictions.pdf Graphic file (type pdf)
-<use 5d_sys_effective_T_std_predictions.pdf>
-Package pdftex.def Info: 5d_sys_effective_T_std_predictions.pdf  used on input 
-line 130.
-(pdftex.def)             Requested size: 240.0pt x 199.99474pt.
-<5d-au-mass.pdf, id=568, 1445.4pt x 722.7pt>
-File: 5d-au-mass.pdf Graphic file (type pdf)
-<use 5d-au-mass.pdf>
-Package pdftex.def Info: 5d-au-mass.pdf  used on input line 162.
-(pdftex.def)             Requested size: 312.00073pt x 155.99501pt.
-<5d-au-mass-sys.pdf, id=569, 794.97pt x 722.7pt>
-File: 5d-au-mass-sys.pdf Graphic file (type pdf)
-<use 5d-au-mass-sys.pdf>
-Package pdftex.def Info: 5d-au-mass-sys.pdf  used on input line 163.
-(pdftex.def)             Requested size: 167.99927pt x 152.71983pt.
  [8]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -837,81 +822,113 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.178 
-      pdfTeX warning (ext4): destination with the same identifier (name{figure.
-5}) has been already used, duplicate ignored
+l.113 \begin{itemize}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.178 
-       <./5d-testing_vs_inputs.pdf>]
-<gp_fitting.pdf, id=651, 1445.4pt x 722.7pt>
-File: gp_fitting.pdf Graphic file (type pdf)
-<use gp_fitting.pdf>
-Package pdftex.def Info: gp_fitting.pdf  used on input line 197.
-(pdftex.def)             Requested size: 455.99854pt x 227.99355pt.
-<fake-stars-test-2.pdf, id=654, 1445.4pt x 722.7pt>
-File: fake-stars-test-2.pdf Graphic file (type pdf)
-<use fake-stars-test-2.pdf>
-Package pdftex.def Info: fake-stars-test-2.pdf  used on input line 209.
-(pdftex.def)             Requested size: 432.00073pt x 215.99564pt.
-) (./conclusions.tex [10pdfTeX warning (ext4): destination with the same identi
-fier (name{figure.6}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.4 
-    pdfTeX warning (ext4): destination with the same identifier (name{table.3})
+l.113 \begin{itemize}
+                      <./5d-testing_vs_inputs.pdf>]
+<5d_sys_teff.pdf, id=674, 867.24pt x 722.7pt>
+File: 5d_sys_teff.pdf Graphic file (type pdf)
+<use 5d_sys_teff.pdf>
+Package pdftex.def Info: 5d_sys_teff.pdf  used on input line 129.
+(pdftex.def)             Requested size: 240.0pt x 199.99474pt.
+<5d_sys_effective_T_std_predictions.pdf, id=675, 867.24pt x 722.7pt>
+File: 5d_sys_effective_T_std_predictions.pdf Graphic file (type pdf)
+<use 5d_sys_effective_T_std_predictions.pdf>
+Package pdftex.def Info: 5d_sys_effective_T_std_predictions.pdf  used on input 
+line 130.
+(pdftex.def)             Requested size: 240.0pt x 199.99474pt.
+<5d-au-mass.pdf, id=679, 1445.4pt x 722.7pt>
+File: 5d-au-mass.pdf Graphic file (type pdf)
+<use 5d-au-mass.pdf>
+Package pdftex.def Info: 5d-au-mass.pdf  used on input line 162.
+(pdftex.def)             Requested size: 312.00073pt x 155.99501pt.
+<5d-au-mass-sys.pdf, id=680, 794.97pt x 722.7pt>
+File: 5d-au-mass-sys.pdf Graphic file (type pdf)
+<use 5d-au-mass-sys.pdf>
+Package pdftex.def Info: 5d-au-mass-sys.pdf  used on input line 163.
+(pdftex.def)             Requested size: 167.99927pt x 152.71983pt.
+ [10pdfTeX warning (ext4): destination with the same identifier (name{table.3})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.4 
-     <./5d_sys_teff.pdf> <./5d_sys_effective_T_std_predictions.pdf
+l.195 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.195 
+       <./5d_sys_teff.pdf> <./5d_sys_effective_T_std_predictions.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./5d_sys_effective_T_std_pre
 dictions.pdf): PDF inclusion: multiple pdfs with page group included in a singl
 e page
 >]
-Underfull \vbox (badness 6252) has occurred while \output is active []
+<gp_fitting.pdf, id=786, 1445.4pt x 722.7pt>
+File: gp_fitting.pdf Graphic file (type pdf)
+<use gp_fitting.pdf>
+Package pdftex.def Info: gp_fitting.pdf  used on input line 197.
+(pdftex.def)             Requested size: 455.99854pt x 227.99355pt.
+<fake-stars-test-2.pdf, id=789, 1445.4pt x 722.7pt>
+File: fake-stars-test-2.pdf Graphic file (type pdf)
+<use fake-stars-test-2.pdf>
+Package pdftex.def Info: fake-stars-test-2.pdf  used on input line 209.
+(pdftex.def)             Requested size: 432.00073pt x 215.99564pt.
+) (./conclusions.tex [11pdfTeX warning (ext4): destination with the same identi
+fier (name{figure.7}) has been already used, duplicate ignored
 
- [11pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.28 {\bf m
+           ore future works} <./5d-au-mass.pdf> <./5d-au-mass-sys.pdf
+
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./5d-au-mass-sys.pdf): PDF i
+nclusion: multiple pdfs with page group included in a single page
+>]) (./main.bbl
+LaTeX Info: Redefining \VAN on input line 1.
+
+Underfull \vbox (badness 1221) has occurred while \output is active []
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12pdfTeX warning (ext4): destination with the same identifier (name{figure.8}
 ) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.27 
-     pdfTeX warning (ext4): destination with the same identifier (name{figure.8
-}) has been already used, duplicate ignored
+l.59 ...ardner et~al.}{2018}]{gardner2018gpytorch}
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{figure.9}) has been already used, duplicat
+e ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.27 
-      <./5d-au-mass.pdf> <./5d-au-mass-sys.pdf
+l.59 ...ardner et~al.}{2018}]{gardner2018gpytorch}
+                                                   <./gp_fitting.pdf> <./fake-s
+tars-test-2.pdf
 
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./5d-au-mass-sys.pdf): PDF i
-nclusion: multiple pdfs with page group included in a single page
-> <./gp_fitting.pdf
-
-pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./gp_fitting.pdf): PDF inclu
-sion: multiple pdfs with page group included in a single page
->]) (./main.bbl
-LaTeX Info: Redefining \VAN on input line 1.
-
-Underfull \hbox (badness 2158) in paragraph at lines 52--54
+pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./fake-stars-test-2.pdf): PD
+F inclusion: multiple pdfs with page group included in a single page
+>]
+Underfull \hbox (badness 2158) in paragraph at lines 70--72
 []\T1/ntxtlf/m/n/8 Hensman J., Matthews A., Ghahra-mani Z., 2014, arXiv preprin
 t
  []
 
+
+Package hyperref Warning: Suppressing empty link on input line 95.
+
 )
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 140.
- [12pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
-) has been already used, duplicate ignored
+ [13
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.140 \end{document}
-                     <./fake-stars-test-2.pdf>]
+]
 Package atveryend Info: Empty hook `AfterLastShipout' on input line 140.
  (./main.aux)
 Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 140.
@@ -923,19 +940,16 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 0.5pt have occurred.
 
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 140.
  ) 
 Here is how much of TeX's memory you used:
- 10365 strings out of 480608
- 145320 string characters out of 5903630
- 423652 words of memory out of 5000000
- 25888 multiletter control sequences out of 15000+600000
+ 10410 strings out of 480608
+ 146418 string characters out of 5903630
+ 420304 words of memory out of 5000000
+ 25921 multiletter control sequences out of 15000+600000
  647481 words of font info for 190 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,40p,1232b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,15n,40p,1394b,500s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -958,10 +972,10 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/
 local/texlive/2020/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (12 pages, 4712655 bytes).
+Output written on main.pdf (13 pages, 4718295 bytes).
 PDF statistics:
- 1075 PDF objects out of 1200 (max. 8388607)
- 531 compressed objects within 6 object streams
- 88 named destinations out of 1000 (max. 500000)
+ 1128 PDF objects out of 1200 (max. 8388607)
+ 583 compressed objects within 6 object streams
+ 100 named destinations out of 1000 (max. 500000)
  223 words of extra memory for PDF output out of 10000 (max. 10000000)
 

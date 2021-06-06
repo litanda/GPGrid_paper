@@ -24,6 +24,19 @@
   {10.1146/annurev.astro.46.060407.145222}, \href
   {https://ui.adsabs.harvard.edu/#abs/2009ARA&A..47..481A} {47, 481}
 
+\bibitem[\protect\citeauthoryear{Bain}{Bain}{1873}]{bain1873mind}
+Bain A.,  1873, Mind and body: The theories of their relation.
+ Vol. 4, D. Appleton
+
+\bibitem[\protect\citeauthoryear{{Bellinger}, {Angelou}, {Hekker}, {Basu},
+  {Ball}  \& {Guggenberger}}{{Bellinger} et~al.}{2016}]{2016ApJ...830...31B}
+{Bellinger} E.~P.,  {Angelou} G.~C.,  {Hekker} S.,  {Basu} S.,  {Ball} W.~H.,
+  {Guggenberger} E.,  2016, \mn@doi [\apj] {10.3847/0004-637X/830/1/31}, \href
+  {https://ui.adsabs.harvard.edu/abs/2016ApJ...830...31B} {830, 31}
+
+\bibitem[\protect\citeauthoryear{Bishop}{Bishop}{1994}]{bishop1994mixture}
+Bishop C.~M.,  1994
+
 \bibitem[\protect\citeauthoryear{{Choi}, {Dotter}, {Conroy}, {Cantiello},
   {Paxton}  \& {Johnson}}{{Choi} et~al.}{2016}]{2016ApJ...823..102C}
 {Choi} J.,  {Dotter} A.,  {Conroy} C.,  {Cantiello} M.,  {Paxton} B.,
@@ -47,16 +60,44 @@
 Gardner J.~R.,  Pleiss G.,  Bindel D.,  Weinberger K.~Q.,   Wilson A.~G.,
   2018, in Advances in Neural Information Processing Systems.
 
+\bibitem[\protect\citeauthoryear{{Hendriks} \& {Aerts}}{{Hendriks} \&
+  {Aerts}}{2019}]{2019PASP..131j8001H}
+{Hendriks} L.,  {Aerts} C.,  2019, \mn@doi [\pasp] {10.1088/1538-3873/aaeeec},
+  \href {https://ui.adsabs.harvard.edu/abs/2019PASP..131j8001H} {131, 108001}
+
 \bibitem[\protect\citeauthoryear{Hensman, Matthews  \& Ghahramani}{Hensman
   et~al.}{2014}]{hensman2015scalable}
 Hensman J.,  Matthews A.,   Ghahramani Z.,  2014, arXiv preprint
   arXiv:1411.2005
+
+\bibitem[\protect\citeauthoryear{Ho}{Ho}{1995}]{ho1995random}
+Ho T.~K.,  1995, in Proceedings of 3rd international conference on document
+  analysis and recognition. pp 278--282
 
 \bibitem[\protect\citeauthoryear{{Hon}, {Stello}  \& {Yu}}{{Hon}
   et~al.}{2018}]{2018MNRAS.476.3233H}
 {Hon} M.,  {Stello} D.,   {Yu} J.,  2018, \mn@doi [\mnras]
   {10.1093/mnras/sty483}, \href
   {https://ui.adsabs.harvard.edu/abs/2018MNRAS.476.3233H} {476, 3233}
+
+\bibitem[\protect\citeauthoryear{{Hon}, {Bellinger}, {Hekker}, {Stello}  \&
+  {Kuszlewicz}}{{Hon} et~al.}{2020}]{2020MNRAS.499.2445H}
+{Hon} M.,  {Bellinger} E.~P.,  {Hekker} S.,  {Stello} D.,   {Kuszlewicz} J.~S.,
+   2020, \mn@doi [\mnras] {10.1093/mnras/staa2853}, \href
+  {https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.2445H} {499, 2445}
+
+\bibitem[\protect\citeauthoryear{James}{James}{1890}]{james1890principles}
+James W.,  1890, The principles of psychology. New York, NY: Holt \& Co
+
+\bibitem[\protect\citeauthoryear{{Lyttle} et~al.,}{{Lyttle}
+  et~al.}{2021}]{2021MNRAS.tmp.1343L}
+{Lyttle} A.~J.,  et~al., 2021, \mn@doi [\mnras] {10.1093/mnras/stab1368}, \href
+  {https://ui.adsabs.harvard.edu/abs/2021MNRAS.tmp.1343L} {}
+
+\bibitem[\protect\citeauthoryear{{Mombarg}, {Van Reeth}  \& {Aerts}}{{Mombarg}
+  et~al.}{2021}]{2021arXiv210313394M}
+{Mombarg} J. S.~G.,  {Van Reeth} T.,   {Aerts} C.,  2021, arXiv e-prints, \href
+  {https://ui.adsabs.harvard.edu/abs/2021arXiv210313394M} {p. arXiv:2103.13394}
 
 \bibitem[\protect\citeauthoryear{{Paquette}, {Pelletier}, {Fontaine}  \&
   {Michaud}}{{Paquette} et~al.}{1986}]{Paquette1986}
@@ -108,6 +149,11 @@ Reddi S.,  Kale S.,   Kumar S.,  2018, in International Conference on Learning
 {Rogers} F.~J.,  {Nayfonov} A.,  2002, \mn@doi [\apj] {10.1086/341894}, \href
   {https://ui.adsabs.harvard.edu/#abs/2002ApJ...576.1064R} {576, 1064}
 
+\bibitem[\protect\citeauthoryear{Sch{\"o}lkopf, Smola  \&
+  M{\"u}ller}{Sch{\"o}lkopf et~al.}{1997}]{scholkopf1997kernel}
+Sch{\"o}lkopf B.,  Smola A.,   M{\"u}ller K.-R.,  1997, in International
+  conference on artificial neural networks. pp 583--588
+
 \bibitem[\protect\citeauthoryear{Sutskever, Martens, Dahl  \& Hinton}{Sutskever
   et~al.}{2013}]{sutskever2013importance}
 Sutskever I.,  Martens J.,  Dahl G.,   Hinton G.,  2013, in International
@@ -118,6 +164,12 @@ Sutskever I.,  Martens J.,  Dahl G.,   Hinton G.,  2013, in International
 {Thoul} A.~A.,  {Bahcall} J.~N.,   {Loeb} A.,  1994, \mn@doi [\apj]
   {10.1086/173695}, \href
   {https://ui.adsabs.harvard.edu/abs/1994ApJ...421..828T} {421, 828}
+
+\bibitem[\protect\citeauthoryear{{Verma}, {Hanasoge}, {Bhattacharya}, {Antia}
+  \& {Krishnamurthi}}{{Verma} et~al.}{2016}]{2016MNRAS.461.4206V}
+{Verma} K.,  {Hanasoge} S.,  {Bhattacharya} J.,  {Antia} H.~M.,
+  {Krishnamurthi} G.,  2016, \mn@doi [\mnras] {10.1093/mnras/stw1621}, \href
+  {https://ui.adsabs.harvard.edu/abs/2016MNRAS.461.4206V} {461, 4206}
 
 \bibitem[\protect\citeauthoryear{Williams \& Rasmussen}{Williams \&
   Rasmussen}{1996}]{williams1996gaussian}
