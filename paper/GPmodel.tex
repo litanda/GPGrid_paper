@@ -37,27 +37,33 @@ We start with a grid of stellar models containing $N$ models with a label we wan
 \begin{equation}
 {\bf y}({\bf x}) \sim \mathcal{GP}\left( m({\bf x}),  k({\bf x}, {\bf x'})\right),
 \end{equation}
-where $m({\bf x})$ is some mean function, and $k({\bf x}, {\bf x'})$ is some covariance function that could generate the covariance matrix $\Sigma$.  The mean function controls the deterministic part of the regression and the covariance function controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the more familiar covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
+where $m({\bf x})$ is some mean function, and $k({\bf x}, {\bf x'})$ is some covariance function that could generate the covariance matrix $\bf \Sigma$.  The mean function controls the deterministic part of the regression and the covariance function controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the more familiar covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
 \begin{equation}
 {\bf \Sigma}_{n, m} = k({\bf x}_{n}, {\bf x}_{m},  \theta),
 \end{equation}
 where the inputs ${\bf x}_{i}$ are $D$-dimensional vectors and the output is a scalar covariance.
+
+{\bf Tanda - does Gpy use a white noise term here too?}
 
 \subsubsection{The likelihood}
 Conceptually we value the GP because of it's ability to marginalise over many functions $\bf f$ and return a marginal likelihood,
 \begin{equation}
 p({\bf y} | {\bf X}) = \int p({\bf y} | {\bf f}, {\bf X}) p({\bf f} | {\bf X}) \, {\rm d}{\bf f}.
 \end{equation}
-This integral could be evaluated.  However, by noting that a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the marginal probability of our data $\bf y$ is also the joint likelihood of a multivariate normal distirbution,
+This integral could be evaluated.  However, by noting that a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the marginal probability of our data $\bf y$ is also the joint likelihood of a multivariate normal distribution,
 \begin{equation}
 p({\bf y} | {\bf X}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}),
 \end{equation}
 which can be straightforward to evaluate.  Thus the marginal log likelihood ... 
 
+{\bf TODO : add equation}
+
+{\bf TODO : Comment on O() for det and inverse}
+
 \subsubsection{Making predictions}
 If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$ the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by
 \begin{equation}
-p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} {\bf X} \\ {\bf X_{\star}} \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
+p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} m({\bf X}) \\ m({\bf X_{\star}}) \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
 \end{equation}
 where the covariance matrices $\bf \Sigma$ and $\bf K$ are computed using the kernel function so that
 \begin{equation}
