@@ -27,22 +27,34 @@ This emulator can be described as
 
 \subsection{Gaussian Process Application}
 
-We start with a grid of stellar models containing $N$ models with a label we want to learn, for example model effective temperature, which we will denote with the general symbol $\bf y$, and a set of input labels $\bf X$ (e.g., mass, age, and metallicity).  We can use a GP to make predictions of the effective temperature (or $y$) for additional input values given by $\bf X_{\star}$.  The vector $\bf y$ is arranged ${\bf y} = \left(y_{i}, ... ,y_{N} \right)^{T}$ where the subscript label references the stellar model.  The input labels are arranged into a $N \times D$ matrix where $D$ is the number of input dimensions (e.g., $D=3$ for mass, age, and metallicity) so that ${\bf X} = ({\bf x}_{1}, ..., {\bf x}_{N})^{T}$ where ${\bf x_{i}} = (x_{1, i}, ..., x_{D, i})^{T}$.  The matrix of additional inputs $\bf X_{\star}$ has the same form as $\bf X$ but size $N_{\star} \times D$.
+In our application to grids of stellar models,  a GP has a number of desirable properties.  While a GP is a stochastic process, the distribution of a GP can be considered as a distribution of functions with a continuous domain.  In fact,  the marginal likelihood considered in function space is equal to the likelihood of the data given some function values,  multiplied by the prior on those function values marginalised over all function values \cite{williams1996gaussian}.  That is to say that, the GP allows for the analytical evaluation of a fit over many different functions (perhaps an infinite number) weighted by some concept of a prior and the agreement with the data.   In addition,  while the marginal likelihood will be assessed on discrete data,  predictions can be made using linear algebra for new data in the continuous domain, but crucially again marginalised over these many different functional forms.  It is possible to see how this might be useful for generalising (or emulating or augmenting) a discrete grid of stellar models in order to obtain predictions in the continuous domain.
 
-\citet{williams1996gaussian}, from which our description below is based, define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms, GP's ({\bf Guy, please check " 's "}) may be written as
+In this section we will look at the required mathematics to be able to implement a GP for our application to grids of stellar models.  We start with a series of definitions before dealing with the marginal likelihood and the posterior predictive distributions. 
+
+We start with a grid of stellar models containing $N$ models with a label we want to learn, for example model effective temperature, which we will denote with the general symbol $\bf y$, and a set of input labels $\bf X$ (e.g., mass, age, and metallicity).  We can use a GP to make predictions of the effective temperature (labelled $y$) for additional input values given by $\bf X_{\star}$.  The vector $\bf y$ is arranged ${\bf y} = \left(y_{i}, ... ,y_{N} \right)^{T}$ where the subscript label references the stellar model.  The input labels are arranged into a $N \times D$ matrix where $D$ is the number of input dimensions (e.g., $D=3$ for mass, age, and metallicity) so that ${\bf X} = ({\bf x}_{1}, ..., {\bf x}_{N})^{T}$ where ${\bf x_{i}} = (x_{1, i}, ..., x_{D, i})^{T}$.  The matrix of additional inputs $\bf X_{\star}$ has the same form as $\bf X$ but size $N_{\star} \times D$.
+
+\citet{williams1996gaussian}, from which our description below is based,  define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms,  a GP may be written so that our labels are random variables drawn from our GP distribution, 
 \begin{equation}
-y({\bf x}) \sim \mathcal{GP}\left( m({\bf x}), {\bf \Sigma}\right),
+{\bf y}({\bf x}) \sim \mathcal{GP}\left( m({\bf x}),  k({\bf x}, {\bf x'})\right),
 \end{equation}
-where $m({\bf x})$ is some mean function, and ${\bf \Sigma}$ is some covariance matrix.  The mean function controls the deterministic part of the regression and the covariance controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
+where $m({\bf x})$ is some mean function, and $k({\bf x}, {\bf x'})$ is some covariance function that could generate the covariance matrix $\Sigma$.  The mean function controls the deterministic part of the regression and the covariance function controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the more familiar covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
 \begin{equation}
-{\bf \Sigma}_{n, m} = k({\bf x}_{n}, {\bf x}_{m}),
+{\bf \Sigma}_{n, m} = k({\bf x}_{n}, {\bf x}_{m},  \theta),
 \end{equation}
 where the inputs ${\bf x}_{i}$ are $D$-dimensional vectors and the output is a scalar covariance.
 
-As a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the joint probability of our data $\bf y$ is
+\subsubsection{The likelihood}
+Conceptually we value the GP because of it's ability to marginalise over many functions $\bf f$ and return a marginal likelihood,
 \begin{equation}
-p({\bf y} | {\bf X, \phi, \theta}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}).
+p({\bf y} | {\bf X}) = \int p({\bf y} | {\bf f}, {\bf X}) p({\bf f} | {\bf X}) \, {\rm d}{\bf f}.
 \end{equation}
+This integral could be evaluated.  However, by noting that a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the marginal probability of our data $\bf y$ is also the joint likelihood of a multivariate normal distirbution,
+\begin{equation}
+p({\bf y} | {\bf X}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}),
+\end{equation}
+which can be straightforward to evaluate.  Thus the marginal log likelihood ... 
+
+\subsubsection{Making predictions}
 If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$ the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by
 \begin{equation}
 p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} {\bf X} \\ {\bf X_{\star}} \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
