@@ -43,7 +43,9 @@ where $m({\bf x})$ is some mean function, and $k({\bf x}, {\bf x'})$ is some cov
 \end{equation}
 where the inputs ${\bf x}_{i}$ are $D$-dimensional vectors and the output is a scalar covariance.
 
-{\bf Tanda - does Gpy use a white noise term here too?}
+{\bf Tanda - does Gpy use a white noise term here too? }
+
+{\bf Guy, there is a white noise in the likelihood function and it is a free parameter. As mentioned in section 3.2.2, 'this noise parameter is set as free and it reduces to a small value in the training progress.'}
 
 \subsubsection{The likelihood}
 Conceptually we value the GP because of it's ability to marginalise over many functions $\bf f$ and return a marginal likelihood,
@@ -66,6 +68,9 @@ If we want to obtain predictive distributions for the output $\bf y_{\star}$ giv
 p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} m({\bf X}) \\ m({\bf X_{\star}}) \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
 \end{equation}
 where the covariance matrices $\bf \Sigma$ and $\bf K$ are computed using the kernel function so that
+
+{\bf Guy- can we name $\bf \Sigma$ and $\bf K$ in some way? I feel that a name helps readers to remember what the parameter is.}
+
 \begin{equation}
 {\bf \Sigma}_{n, m} = k({\bf X}_{n}, \, {\bf X}_{m}),
 \end{equation}
