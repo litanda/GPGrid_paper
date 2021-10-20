@@ -1,16 +1,19 @@
 \section{Gaussian Process Model}\label{sec:gpmodel}
-
-GP can be applied as probabilistic models to regression problems. Here we use the GP model to generalise a stellar model grid to a continuous and probabilistic function that maps inputs to observable quantities. 
+A GP can be applied as a probabilistic model to a regression problem.  Here we use the GP model to generalise a stellar model grid to a continuous and probabilistic function that maps inputs to observable quantities.   This will allow us to predict observable quantities that are off (or even outside) the grid of stellar models with the prediction including uncertainty. 
 %
-As mentioned in Section~\ref{sec:grid}, our model grid has four independent fundamental inputs, i.e., mass, initial metallicity, initial helium fraction, and mixing-length parameter. Adding the {\it EEP} which describes the evolutionary phase, the GP model contents five inputs. We intend to train GP models that predict effective temperature, surface gravity, radius, surface metallicity, and stellar age. We summary GP model inputs and outputs as below.
+As mentioned in Section~\ref{sec:grid}, our model grid has four independent fundamental inputs, i.e., mass, initial metallicity, initial helium fraction, and mixing-length parameter. Adding the {\it EEP} which describes the evolutionary phase, the GP model contents five inputs.  We intend to train GP models that predict effective temperature, surface gravity, radius, surface metallicity, and stellar age. We summarise GP model inputs and outputs as below.
+
+GP model inputs and their dynamic ranges:
 \begin{itemize}
-\item GP model inputs and their dynamic ranges:
 \item[] Mass ($M$ = 0.8 -- 1.2$\rm M_{\odot}$)
 \item[] Equivalent Evolutionary Phase ({\it EEP} = 0 -- 1)
 \item[] Initial metallicity ([Fe/H]$_{\rm init}$ =  -0.5 -- 0.5 dex)
 \item[] Initial helium fraction ($Y_{\rm init}$ = 0.24 -- 0.32)
 \item[] Mixing-length parameter ($\alpha_{\rm MLT}$ = 1.7 -- 2.5)
-\item GPR model outputs: 
+\end{itemize}
+
+And the GR model outputs: 
+\begin{itemize}
 \item[] Effective temperature ($T_{\rm eff}$) 
 \item[] Surface gravity ($\log g$)
 \item[] Radius ($R$)
@@ -18,12 +21,24 @@ As mentioned in Section~\ref{sec:grid}, our model grid has four independent fund
 \item[] Surface metallicity ([Fe/H]$_{\rm surf}$)
 \item[] Stellar age ($\tau$)
 \end{itemize}
+
 We aim to use the GP model as a non-parametric emulator, that is emulating the comparatively slow calls to models of stellar evolution.
-This emulator can be described as
+This emulator can be described as a function approximation problem where the function is,
 \begin{equation}\label{gprmodel}
 {\rm Outputs} = f(M, EEP, ({\rm Fe/H})_{\rm init}, Y_{\rm init}, \alpha_{\rm MLT}). 
 \end{equation}
+{\bf Tanda - is there one independent GP for each of the outputs?  If yes,  suggest ... 
 
+In fact, the way we have implemented the GP as function approximation means that we have used one GP for each of the outputs so that,  
+\begin{equation}\label{gprmodel1}
+{T_{\rm eff}} = f(M, EEP, ({\rm Fe/H})_{\rm init}, Y_{\rm init}, \alpha_{\rm MLT}),
+\end{equation}
+and 
+\begin{equation}\label{gprmodel1}
+{R} = g(M, EEP, ({\rm Fe/H})_{\rm init}, Y_{\rm init}, \alpha_{\rm MLT}),
+\end{equation}
+and so on for all outputs.
+}
 
 \subsection{Gaussian Process Application}
 
@@ -31,9 +46,9 @@ In our application to grids of stellar models,  a GP has a number of desirable p
 
 In this section we will look at the required mathematics to be able to implement a GP for our application to grids of stellar models.  We start with a series of definitions before dealing with the marginal likelihood and the posterior predictive distributions. 
 
-We start with a grid of stellar models containing $N$ models with a label we want to learn, for example model effective temperature, which we will denote with the general symbol $\bf y$, and a set of input labels $\bf X$ (e.g., mass, age, and metallicity).  We can use a GP to make predictions of the effective temperature (labelled $y$) for additional input values given by $\bf X_{\star}$.  The vector $\bf y$ is arranged ${\bf y} = \left(y_{i}, ... ,y_{N} \right)^{T}$ where the subscript label references the stellar model.  The input labels are arranged into a $N \times D$ matrix where $D$ is the number of input dimensions (e.g., $D=3$ for mass, age, and metallicity) so that ${\bf X} = ({\bf x}_{1}, ..., {\bf x}_{N})^{T}$ where ${\bf x_{i}} = (x_{1, i}, ..., x_{D, i})^{T}$.  The matrix of additional inputs $\bf X_{\star}$ has the same form as $\bf X$ but size $N_{\star} \times D$.
+We start with a grid of stellar models containing $N$ models with a label we want to learn, for example model effective temperature, which we will denote with the general symbol $\bf y$, and a set of on-grid inputs $\bf X$ (e.g., mass,  EEP,  metallicity,  ...).  We can use a GP to make predictions of the effective temperature (labelled $y$) for additional off-grid input values given by $\bf X_{\star}$.  The vector $\bf y$ is arranged ${\bf y} = \left(y_{i}, ... ,y_{N} \right)^{T}$ where the subscript label references the stellar model.  The input labels are arranged into a $N \times D$ matrix where $D$ is the number of input dimensions (e.g., $D=3$ for mass, EEP, and metallicity) so that ${\bf X} = ({\bf x}_{1}, ..., {\bf x}_{N})^{T}$ where ${\bf x_{i}} = (x_{1, i}, ..., x_{D, i})^{T}$.  The matrix of additional inputs $\bf X_{\star}$ has the same form as $\bf X$ but size $N_{\star} \times D$.
 
-\citet{williams1996gaussian}, from which our description below is based,  define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms,  a GP may be written so that our labels are random variables drawn from our GP distribution, 
+\citet{williams1996gaussian}, from which our description below is based,  define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms,  a GP may be written so that our on grid labels are random variables drawn from our GP distribution, 
 \begin{equation}
 {\bf y}({\bf X}) \sim \mathcal{GP}\left( m({\bf X}),  {\bf \Sigma}\right),
 \end{equation}
@@ -50,14 +65,14 @@ In addition to the covariance defined by the kernel function, we include additio
 \begin{equation}
 {\bf \Sigma} = {\bf K}({\bf X}, {\bf X},  \theta) + \sigma_{w}^{2} \mathcal{I},
 \end{equation}
-where $\sigma_{w}^2$ is another hyperparameter to learnt in training. 
+where $\sigma_{w}^2$ is another hyperparameter to be learnt in training. 
 
 \subsubsection{The likelihood}
 Conceptually we value the GP because of it's ability to marginalise over many functions $\bf f$ and return a marginal likelihood,
 \begin{equation}
-p({\bf y} | {\bf X}) = \int p({\bf y} | {\bf f}, {\bf X}) p({\bf f} | {\bf X}) \, {\rm d}{\bf f}.
+p({\bf y} | {\bf X}) = \int p({\bf y} | {\bf f}, {\bf X}) p({\bf f} | {\bf X}) \, {\rm d}{\bf f},
 \end{equation}
-This integral could be evaluated.  However, by noting that a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the marginal probability of our data $\bf y$ is also the joint likelihood of a multivariate normal distribution,
+noting that this function space marginal likelihood is weighted by the probability of the data given the function and the probability of the function.  This integral could be evaluated.  However, by noting that a GP is a collection of random variables, where any finite number of which have a joint Gaussian distribution, the marginal probability of our data $\bf y$ is also the joint likelihood of a multivariate normal distribution,
 \begin{equation}
 p({\bf y} | {\bf X}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}),
 \end{equation}
@@ -68,13 +83,11 @@ p({\bf y} | {\bf X}) = (2 \pi)^{k/2} {\rm det} ({\bf \Sigma})^{-0.5} \exp \left(
 which can be evaluated without integrating over all possible function space.   While this marginal likelihood expression is clearly more computationally feasible that the integral over functional space it not without it's limitations.  Because it is necessary to calculate the determinant and the inverse of the covariance matrix, typically applied algorithms,  make this a $\mathcal{O}(N^3)$ or $\mathcal{O}(N^2 \log N)$ operation.  This naturally limits the size of the data set for which the likelihood,  and optimisations of the likelihood, can be applied.  
 
 \subsubsection{Making predictions}
-If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$ the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by
+If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$,  the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by
 \begin{equation}
 p \left( \begin{bmatrix} {\bf y} \\ {\bf y_{\star}} \end{bmatrix} \right) = \mathcal{N} \left( \begin{bmatrix} m({\bf X}) \\ m({\bf X_{\star}}) \end{bmatrix} , \begin{bmatrix} {\bf \Sigma} & {\bf K_{\star} }\\ {\bf K_{\star}}^{T} & {\bf K_{\star \star}} \end{bmatrix}  \right), 
 \end{equation}
-where the covariance matrices $\bf \Sigma$ and $\bf K$ are computed using the kernel function so that
-
-{\bf Guy- can we name $\bf \Sigma$ and $\bf K$ in some way? I feel that a name helps readers to remember what the parameter is.}
+where the covariance matrices $\bf \Sigma$ and $\bf K$ are computed using the kernel function so that,
 
 \begin{equation}
 {\bf \Sigma}_{n, m} = k({\bf X}_{n}, \, {\bf X}_{m}),
@@ -102,7 +115,7 @@ and
 {\bf C} = {\bf K}_{\star \star} - {\bf K}_{\star}^{T} \, {\bf \Sigma}^{-1} \, {\bf K_{\star}}.
 \end{equation}
 
-At point we can make predictions on model properties given a grid of stellar models using equation \ref{eq:pred}.  But these predictions will be poor unless we select sensible values for the form and hyperparameters of the mean function and covariance function.  In the following section we detail a number of kernel functions that will be tested against the data.  We will then discuss the method for determining the values of the hyperparameters to be used.
+At point we can make predictions on model properties given a grid of stellar models using equation \ref{eq:pred}.  But these predictions will likely be poor unless we select sensible values for the form and hyperparameters of the mean function and covariance function.  In the following section we detail a number of kernel functions that will be tested against the data.  We will then discuss the method for determining the values of the hyperparameters to be used.
 
 
 \subsection{Setting up the GP Model}\label{sec:set_up}
@@ -117,25 +130,24 @@ We start with the \textsc{Simple GP Regression} example (\url{https://docs.gpyto
 
 \subsubsection{Mean Function}
 
-We first investigate the mean function. As discussed above, the data distribution is generally smooth but complex in sub-areas. Although a GP model does not significantly affected by the choice of mean function because of the flexibility of kernels, we find that using a constant or a linear mean function leads to a long time for training. For this reason, we apply a Neural Network mean function which is flexible enough to manage both simple and complex features. We adopt an architecture including 6 hidden layers and 128 nodes per layer. All layers apply the linear transformation to the incoming data. We apply the element-wise function (Elu) because it give relatively smooth mean functions. ({\bf Can Guy or Alex add some references for NN and Elu here? The referee may ask why the 6x128 architecture is sufficient, so should we mention Alex's paper?})
+We first investigate the mean function. As discussed above, the data distribution is generally smooth but complex in some rejions of parameter space (e.g., the sub-giant hook).  Although a GP model can cope with different mean functions,  because of the flexibility of kernels, we find that using a constant or a linear mean function leads to a long time for training. For this reason, we apply a Neural Network mean function which is flexible enough to manage both simple and complex features. We adopt an architecture including 6 hidden layers and 128 nodes per layer. All layers apply the linear transformation to the incoming data. We apply the element-wise function (Elu) because it give relatively smooth mean functions. ({\bf Can Guy or Alex add some references for NN and Elu here? The referee may ask why the 6x128 architecture is sufficient, so should we mention Alex's paper?})
 
 \subsubsection{Likelihood and Loss Function}
 
-We then work on the likelihood function and the loss function. Our training object is a theoretical model grid. There is hence no observed uncertainty for each data point, but a tiny random uncertainty exists due to the approximations in the \textsc{MESA} numerical method. The noise model can be assumed as a Gaussian function with a very small deviation. 
+We then trained the model using the negative logarithm {base 10?} of the likelihood function above as the loss function.  Our training dataset is a theoretical model grid,  hence there is no observed uncertainty for each data point, but a tiny random uncertainty exists due to the approximations in the \textsc{MESA} numerical method. We model this using $\sigma_{w}$.  This noise model is then assumed to be a Gaussian function with a very small variance.  
 %   
-A likelihood specifies the mapping from latent function values $f(X)$ to observed labels $y$.
+A likelihood specifies the mapping from input values $f(X)$ to observed labels $y$.
 We adopt the the standard likelihood for regression which assumes a standard homoskedastic noise model whose conditional distribution is
 \begin{equation}\label{eq:likelihood}
 p(y|f(x)) = f + \epsilon, \epsilon \sim \mathcal{N}(0, \sigma^{2}),
 \end{equation}
 where $\sigma$ is a noise parameter. 
 %
-We use a small and fixed noise parameter and run a few tests. However, the strict noise parameter makes GP models hard to converge. When this noise parameter is set as free, it reduces to a small value anyway in the training progress because it is data-driven. For this reason, we decide not put strict constraint for or prioritise this noise parameter. In practice, we only set up a loose upper limit ($\sigma$  < 0.1) to speed up the training. One thing should be noted that a GP model with a large noise parameter is not a proper description for the stellar grid. Because of this, we only adopt GP models with $\sigma$ $\lesssim 10^{-4}$.   
-The loss function is simply the exact marginal likelihood in the logarithmic scale.
+We used a small and fixed noise parameter and run a few tests.  However, the strict noise parameter makes GP models hard to converge. When this noise parameter is set as free, it reduces to a small value anyway in the training progress because it is data-driven.  For this reason, we did not put strict constraint for or prioritise this noise parameter.  In practice, we only set up a loose upper limit ($\sigma$  < 0.1) to speed up the training. One thing should be noted that a GP model with a large noise parameter is not a proper description for the stellar grid. Because of this, we only adopt GP models with $\sigma$ $\lesssim 10^{-4}$.   
 
 \subsubsection{Optimiser}
 
-Afterwards, we study the optimiser. We mainly compare between two optimiser named SGD and Adam. Here SGD refers to Stochastic Gradient Descent, and Adam is a combination of the advantages of two other extensions of stochastic gradient descent, specifically, Adaptive Gradient Algorithm and Root Mean Square Propagation. 
+We compared two optimisers named SGD and Adam. Here SGD refers to Stochastic Gradient Descent, and Adam is a combination of the advantages of two other extensions of stochastic gradient descent, specifically, Adaptive Gradient Algorithm and Root Mean Square Propagation. 
 %
 The SGD optimiser in the \textsc{GPyTroch} package involves the formula given by \citet{sutskever2013importance}. The formula makes it possible to train using stochastic gradient descent with momentum thanks to a well-designed random initialisation and a particular type of slowly increasing schedule for the momentum parameter. The application of momentum in SGD could improve its efficiency and make it less likely to stuck in local minimums. On the other hand, the Adam optimiser includes the 'AMSGrad' variant developed by \citet{47409} to improve its weakness in the convergence to an optimal solution. With these new developments, the two optimisers give very similar results. We finally choose Adam because it works relatively efficiently and stable.  
 %
