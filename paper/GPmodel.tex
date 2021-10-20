@@ -35,17 +35,22 @@ We start with a grid of stellar models containing $N$ models with a label we wan
 
 \citet{williams1996gaussian}, from which our description below is based,  define a GP as a collection of random variables, where any finite number of which have a joint Gaussian distribution.  In general terms,  a GP may be written so that our labels are random variables drawn from our GP distribution, 
 \begin{equation}
-{\bf y}({\bf x}) \sim \mathcal{GP}\left( m({\bf x}),  k({\bf x}, {\bf x'})\right),
+{\bf y}({\bf X}) \sim \mathcal{GP}\left( m({\bf X}),  {\bf \Sigma}\right),
 \end{equation}
-where $m({\bf x})$ is some mean function, and $k({\bf x}, {\bf x'})$ is some covariance function that could generate the covariance matrix $\bf \Sigma$.  The mean function controls the deterministic part of the regression and the covariance function controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the more familiar covariance matrix is defined by the covariance function or {\it kernel function} $k$ which has hyperparameters $\theta$ and is given by,
+where $m({\bf X})$ is some mean function, and $\bf \Sigma$ is some covariance matrix.  The mean function controls the deterministic part of the regression and the covariance function controls the stochastic part.  The mean function defined here could be any deterministic function and we will label the additional parameters, or hyperparameters, $\phi$.  Each element of the more familiar covariance matrix is defined by the covariance function or {\it kernel function} $\bf K$ which has hyperparameters $\theta$ and is given by,
 \begin{equation}
-{\bf \Sigma}_{n, m} = k({\bf x}_{n}, {\bf x}_{m},  \theta),
+{\bf \Sigma} = {\bf K}({\bf X}, {\bf X},  \theta),
 \end{equation}
-where the inputs ${\bf x}_{i}$ are $D$-dimensional vectors and the output is a scalar covariance.
-
-{\bf Tanda - does Gpy use a white noise term here too? }
-
-{\bf Guy, there is a white noise in the likelihood function and it is a free parameter. As mentioned in section 3.2.2, 'this noise parameter is set as free and it reduces to a small value in the training progress.'}
+or 
+\begin{equation}
+{\bf \Sigma}_{n, m} = k({\bf X}_{n}, {\bf X}_{m},  \theta),
+\end{equation}
+where the inputs ${\bf X}_{n}$ and ${\bf X}_{n}$ are $D$-dimensional vectors and the output is a scalar covariance.
+In addition to the covariance defined by the kernel function, we include additional white noise in the covariance matrix by adding an identity matrix $\mathcal{I}$ multiplied by a scalar value $\sigma_{w}^2$, so that, 
+\begin{equation}
+{\bf \Sigma} = {\bf K}({\bf X}, {\bf X},  \theta) + \sigma_{w}^{2} \mathcal{I},
+\end{equation}
+where $\sigma_{w}^2$ is another hyperparameter to learnt in training. 
 
 \subsubsection{The likelihood}
 Conceptually we value the GP because of it's ability to marginalise over many functions $\bf f$ and return a marginal likelihood,
@@ -56,11 +61,11 @@ This integral could be evaluated.  However, by noting that a GP is a collection 
 \begin{equation}
 p({\bf y} | {\bf X}) = \mathcal{N}(m({\bf X}), {\bf \Sigma}),
 \end{equation}
-which can be straightforward to evaluate.  Thus the marginal log likelihood ... 
-
-{\bf TODO : add equation}
-
-{\bf TODO : Comment on O() for det and inverse}
+which can be straightforward to evaluate.  Thus the marginal likelihood is,
+\begin{equation}
+p({\bf y} | {\bf X}) = (2 \pi)^{k/2} {\rm det} ({\bf \Sigma})^{-0.5} \exp \left(\frac{-1}{2} ({\bf X} - m({\bf X}))^{T} \, {\bf \Sigma}^{-1} \, ({\bf X} - m({\bf X})) \right),
+\end{equation}
+which can be evaluated without integrating over all possible function space.   While this marginal likelihood expression is clearly more computationally feasible that the integral over functional space it not without it's limitations.  Because it is necessary to calculate the determinant and the inverse of the covariance matrix, typically applied algorithms,  make this a $\mathcal{O}(N^3)$ or $\mathcal{O}(N^2 \log N)$ operation.  This naturally limits the size of the data set for which the likelihood,  and optimisations of the likelihood, can be applied.  
 
 \subsubsection{Making predictions}
 If we want to obtain predictive distributions for the output $\bf y_{\star}$ given the inputs $\bf X_{\star}$ the joint probability distribution of $\bf y$ and $\bf y_{\star}$ is Gaussian and given by

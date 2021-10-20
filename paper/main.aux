@@ -64,21 +64,21 @@
 \citation{gardner2018gpytorch}
 \citation{sutskever2013importance}
 \citation{47409}
-\newlabel{eq:pred}{{13}{5}{Making predictions}{equation.13}{}}
+\newlabel{eq:pred}{{16}{5}{Making predictions}{equation.16}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Setting up the GP Model}{5}{subsection.3.2}\protected@file@percent }
 \newlabel{sec:set_up}{{3.2}{5}{Setting up the GP Model}{subsection.3.2}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.1}Mean Function}{5}{subsubsection.3.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.2}Likelihood and Loss Function}{5}{subsubsection.3.2.2}\protected@file@percent }
-\newlabel{eq:likelihood}{{16}{5}{Likelihood and Loss Function}{equation.16}{}}
+\newlabel{eq:likelihood}{{19}{5}{Likelihood and Loss Function}{equation.19}{}}
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.3}Optimiser}{5}{subsubsection.3.2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Early Stopping}{5}{subsubsection.3.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.4}Early Stopping}{6}{subsubsection.3.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.5}Kernel Function}{6}{subsubsection.3.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsubsection}{\numberline {3.2.6}Training Procedure}{6}{subsubsection.3.2.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm  1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc  {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph. }}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:1dgp}{{2}{6}{GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm 1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph}{figure.2}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4}Preliminary Studies on Low-Demission Problems}{6}{section.4}\protected@file@percent }
 \newlabel{examples}{{4}{6}{Preliminary Studies on Low-Demission Problems}{section.4}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}1D Problem}{6}{subsection.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm  1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc  {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph. }}{6}{figure.2}\protected@file@percent }
-\newlabel{fig:1dgp}{{2}{6}{GP application on 1D problem. Models on this track are split into training and testing data by 70-to-30, Top: the evolution of effective temperature for a $\rm 1.1M_{\odot }$ track. The grey line is the evolutionary track computed with \textsc {MESA}; blue and red circles indicate predictions for the testing data from the quadratic interpolator and the GP model. Bottom: residuals of predictions in the top graph}{figure.2}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2}2D Problem: Investigating testing method}{6}{subsection.4.2}\protected@file@percent }
 \citation{hensman2015scalable}
 \citation{wilson2015kernel}
@@ -110,16 +110,16 @@
 \bibstyle{mnras}
 \bibdata{ref}
 \bibcite{2009ARA&A..47..481A}{{1}{2009}{{{Asplund} et~al.}}{{{Asplund}, {Grevesse}, {Sauval} \& {Scott}}}}
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models.}}{12}{figure.7}\protected@file@percent }
+\newlabel{fig:5d_augmentation}{{7}{12}{Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models}{figure.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm  eff}$ = 4926$\pm $50K, $\qopname  \relax o{log}g$ = 4.536$\pm $0.005, {\it  [Fe/H]}$_{\rm  surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm  N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm  {\it  [Fe/H]}_{init}$ = 0.403, $Y_{\rm  init}$ = 0.281, $\alpha _{\rm  MLT}$ = 2.356, which are represented by blue dashes.}}{12}{figure.8}\protected@file@percent }
+\newlabel{fig:fit_comparison}{{8}{12}{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm $50K, $\log g$ = 4.536$\pm $0.005, {\it [Fe/H]}$_{\rm surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm {\it [Fe/H]}_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha _{\rm MLT}$ = 2.356, which are represented by blue dashes}{figure.8}{}}
 \bibcite{bain1873mind}{{2}{1873}{{Bain}}{{Bain}}}
 \bibcite{2016ApJ...830...31B}{{3}{2016}{{{Bellinger} et~al.}}{{{Bellinger}, {Angelou}, {Hekker}, {Basu}, {Ball} \& {Guggenberger}}}}
 \bibcite{bishop1994mixture}{{4}{1994}{{Bishop}}{{Bishop}}}
 \bibcite{2016ApJ...823..102C}{{5}{2016}{{{Choi} et~al.}}{{{Choi}, {Dotter}, {Conroy}, {Cantiello}, {Paxton} \& {Johnson}}}}
 \bibcite{2016ApJS..222....8D}{{6}{2016}{{{Dotter}}}{{{Dotter}}}}
 \bibcite{2005ApJ...623..585F}{{7}{2005}{{{Ferguson} et~al.}}{{{Ferguson}, {Alexander}, {Allard}, {Barman}, {Bodnarik}, {Hauschildt}, {Heffner-Wong} \& {Tamanai}}}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces  Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models.}}{12}{figure.7}\protected@file@percent }
-\newlabel{fig:5d_augmentation}{{7}{12}{Left: a GP-trained Kiel diagram compared with the stellar grid. Right: GP-predicted systematical uncertainties for all GP-trained models}{figure.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm  eff}$ = 4926$\pm $50K, $\qopname  \relax o{log}g$ = 4.536$\pm $0.005, {\it  [Fe/H]}$_{\rm  surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm  N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm  {\it  [Fe/H]}_{init}$ = 0.403, $Y_{\rm  init}$ = 0.281, $\alpha _{\rm  MLT}$ = 2.356, which are represented by blue dashes.}}{12}{figure.8}\protected@file@percent }
-\newlabel{fig:fit_comparison}{{8}{12}{Probability distributions of estimated fundamental parameters from grid-based (Top) and GP-based modelling (Bottom) for a fake star. Observed constraints for this fake star are $T_{\rm eff}$ = 4926$\pm $50K, $\log g$ = 4.536$\pm $0.005, {\it [Fe/H]}$_{\rm surf}$ = 0.34$\pm $0.05, and $R$ = 0.829$\pm $0.025$R_{\odot }$. True values of fundamental parameters are $M$ = 0.861 $\rm N_{\odot }$, $\tau $ = 10.8 Gyr, $\rm {\it [Fe/H]}_{init}$ = 0.403, $Y_{\rm init}$ = 0.281, $\alpha _{\rm MLT}$ = 2.356, which are represented by blue dashes}{figure.8}{}}
 \bibcite{gardner2018gpytorch}{{8}{2018}{{Gardner et~al.}}{{Gardner, Pleiss, Bindel, Weinberger \& Wilson}}}
 \bibcite{2019PASP..131j8001H}{{9}{2019}{{{Hendriks} \& {Aerts}}}{{{Hendriks} \& {Aerts}}}}
 \bibcite{hensman2015scalable}{{10}{2014}{{Hensman et~al.}}{{Hensman, Matthews \& Ghahramani}}}
