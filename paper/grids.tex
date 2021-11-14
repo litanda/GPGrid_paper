@@ -1,16 +1,20 @@
-\section{Theoretical stellar grid}\label{sec:grid}
+\section{Representative Model Grid}\label{sec:grid}
 
 \subsection{Grid computation}
 
-We compute a stellar model grid as the training dataset. We aim to cover stars with approximate solar mass on the main-sequence and the subgiant phases. The mass range is set up as 0.8 -- 1.2$\rm M_{\odot}$. The computation of evolutionary tracks starts at the Hayashi line and terminates at the base of red-giant branch (RGB) where $\log g$ = 3.6 dex. Note that we only use models after the zero-age-main-sequence (ZAMS). We define ZAMS as the point where core-hydrogen burning contributes over 99.9\% of the total luminosity. 
+We compute a stellar model grid as the training dataset. We aim to cover stars with approximate solar mass on the main-sequence and the subgiant phases. We consider four independent fundamental inputs which are stellar mass ($M$), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]$_{\rm init}$), and the mixing-length parameter ($\alpha_{\rm MLT}$). 
 %
-The stellar gird considers four independent fundamental inputs which are stellar mass ($M$), initial helium fraction ($Y_{\rm init}$), initial metallicity ([Fe/H]$_{\rm init}$), and the mixing-length parameter ($\alpha_{\rm MLT}$). 
+We calculated three model dataset for different purposes. The primary dataset is a standard model grid with uniform mass step. This model grid is used for all preliminary tests and also for the final training. 
 %
-We calculated three model grids. First, a primary grid covers the whole input range. Uniform grid step is applied for $M$, $Y_{\rm init}$, $\alpha_{\rm MLT}$, and we use tow different grid steps for [Fe/H]$_{\rm init}$ below and above 0.2 dex.  Second, an additional grid is computed for $M$ > 1.05$\rm M_{\odot}$. Grid points of this grid are in between of the primary grid to increase the resolution for tracks with the 'hook'. 
-Third, we compute off-grid models with random fundamental input values as an independent dataset for validating and testing GP models. 
+We also calculate an additional dataset to increase the grid resolution for $M$ > 1.05$\rm M_{\odot}$. Because we find that the `hook' feature (where global parameters sharply vary) is relatively hard to train. This dataset is only used in the final training. 
+Details of parameter ranges and steps of the two grid are listed in Table \ref{tab:grid}. 
+%
+For validating and testing GP predictions, we computed off-grid models with randomly sampled fundamental inputs. 
+%
 %4,880 tracks with input parameters that are randomly sampled in the grid ranges for validating GPR models. The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity. We also saved structural models for computing theoretical oscillation models.
 %
-Details of the computation are listed in Table \ref{tab:grid}. 
+The computation of evolutionary tracks starts at the Hayashi line and terminates at the base of red-giant branch (RGB) where $\log g$ = 3.6 dex. Note that we only use models after the zero-age-main-sequence (ZAMS), which is defined as the point where core-hydrogen burning contributes over 99.9\% of the total luminosity. 
+%
 
 \begin{table}
 	\centering
@@ -18,7 +22,7 @@ Details of the computation are listed in Table \ref{tab:grid}.
 	\label{tab:grid}
 	\begin{tabular}{llll} % four columns, alignment for each
 		\hline
-		\multicolumn{3}{c}{Primary Grid}\\
+		\multicolumn{3}{c}{Primary dataset}\\
 		\hline
 		Input Parameter & Range & Increment \\
         \hline
@@ -27,7 +31,7 @@ Details of the computation are listed in Table \ref{tab:grid}.
         	$Y_{\rm init}$ & 0.24 -- 0.32 & 0.02\\
         $\alpha_{\rm{MLT}}$  & 1.7 -- 2.5&  0.2\\
         \hline
-       \multicolumn{3}{c}{Additional Grid}\\
+       \multicolumn{3}{c}{Additional dataset}\\
 	\hline
 	Input Parameter & Range & Increment \\
         \hline
@@ -35,19 +39,20 @@ Details of the computation are listed in Table \ref{tab:grid}.
         $\rm{[Fe/H]}$ (dex) & 0.25 -- 0.45 & 0.1\\
         	$Y_{\rm init}$ & 0.25 -- 0.31 & 0.02\\
         $\alpha_{\rm{MLT}}$  & 1.8-- 2.4&  0.2\\
-        \hline
-        \multicolumn{3}{c}{Off-grid Models}\\
-        \hline
-        \multicolumn{3}{c}{Input Parameters} &N\\
-        \hline
-         \multicolumn{3}{l}{Random $M$, [Fe/H]$_{\rm init}$ = 0.0, $Y_{\rm init}$ = 0.28, $\alpha_{\rm MLT}$ = 2.1 } & 44\\
-        \multicolumn{3}{l}{Random $M$ and [Fe/H]$_{\rm init}$, $Y_{\rm init}$ = 0.28, $\alpha_{\rm MLT}$ = 2.1 }&174\\
-        \multicolumn{3}{l}{Random $M$, [Fe/H]$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$}&4880\\
+ %       \hline
+ %       \multicolumn{3}{c}{Off-grid dataset}\\
+%        \hline
+%        \multicolumn{3}{c}{Input Parameters} &N\\
+%       \hline
+%        Randomly sampled 
+%         \multicolumn{3}{l}{Random $M$, [Fe/H]$_{\rm init}$ = 0.0, $Y_{\rm init}$ = 0.28, $\alpha_{\rm MLT}$ = 2.1 } & 44\\
+%        \multicolumn{3}{l}{Random $M$ and [Fe/H]$_{\rm init}$, $Y_{\rm init}$ = 0.28, $\alpha_{\rm MLT}$ = 2.1 }&174\\
+%        \multicolumn{3}{l}{Random $M$, [Fe/H]$_{\rm init}$, $Y_{\rm init}$, and $\alpha_{\rm MLT}$}&4880\\
 	\hline
 	\end{tabular}
 \end{table}
 
-%\subsection{Stellar models and input physics}\label{subsec:stellar_model}
+\subsection{Input physics}\label{subsec:stellar_model}
 
 We use the stellar code Modules for Experiments in Stellar Astrophysics
 (\textsc{MESA}, version 12115) to construct stellar grids. 
@@ -69,8 +74,7 @@ The mixing-length theory is implemented and the convection is adjusted by the mi
 We also apply the \textsc{MESA} predictive mixing scheme \citep{2018ApJS..234...34P,2019ApJS..243...10P}, which improves model structures at the convective boundary.  
 Atomic diffusion of helium and heavy elements was also taken into account. MESA calculates particle diffusion and gravitational settling by solving Burger's equations using the method and diffusion coefficients of \citet{Thoul94}. 
 %We considered 8 classes of species (H1, He3, He4, C12, N14, O16, Ne20, and Mg24) We considered 8 classes of species (H1, He3, He4, C12, N14, O16, Ne20, and Mg24)
-We consider eight elements (${}^1{\rm H}, {}^3{\rm He}, {}^4{\rm He}, {}^{12}{\rm C}, {}^{14}{\rm N}, {}^{16}{\rm O}, {}^{20}{\rm Ne}$, and ${}^{24}{\rm Mg}$)
-for diffusion calculations, and have the charge calculated by the MESA ionization module, which estimates the typical ionic charge as a function of $T$, $\rho$, and free electrons per nucleon from \citet{Paquette1986}.
+We consider eight elements (${}^1{\rm H}, {}^3{\rm He}, {}^4{\rm He}, {}^{12}{\rm C}, {}^{14}{\rm N}, {}^{16}{\rm O}, {}^{20}{\rm Ne}$, and ${}^{24}{\rm Mg}$) for diffusion calculations, and have the charge calculated by the MESA ionization module, which estimates the typical ionic charge as a function of $T$, $\rho$, and free electrons per nucleon from \citet{Paquette1986}.
 The \textsc{MESA} inlist used for the computation is available on \url{https://github.com/litanda/mesa_inlist}.  
 
 %\subsection{Oscillation models and seismic $\Delta \nu$}\label{subsec:seismo_model}
@@ -79,19 +83,23 @@ The \textsc{MESA} inlist used for the computation is available on \url{https://g
 
 \subsection{Equivalent Evolutionary Phase}
 
-For training GP models, we need to convert stellar age, whose dynamical range varies track by track, into a uniform range. The fractional age is an option. However, we find that global parameters (e.g. effective temperature) sharply change with the fractional age around the 'hook' and the turn-off point (left panel in Figure~\ref{fig:eep}). It requires a complex and spiky kernel function to fit the curvatures in this area and hence difficult for GP to learn. \citet{2016ApJS..222....8D} has introduced a quantity Equivalent Evolutionary Phase ({\it EEP}), which numbers evolutionary stages and transform stellar tracks onto a uniform basis. We follow this idea but define {\it EEP} in a different way.
+Apart from the four independent model inputs, i.e., mass, metallicity, helium fraction, and the mixing-length parameter, stellar age is the fifth fundamental input. However, the dynamical range of age varies track by track. This makes GP models hard to map from age to global parameters. 
 %
-On each evolutionary track, we compute the displacement between model $n$ and model $n-1$ on the $T_{\rm eff} - \log g$ diagram as
+We need a uniform input to replace the age. The fractional age is an option but we find that global parameters (e.g. effective temperature) sharply change with the fractional age around the 'hook' and the turn-off point (as shown in the left panel in Figure~\ref{fig:eep}). It requires a complex and spiky kernel function to fit the curvatures in this area and hence difficult for GP to learn. \citet{2016ApJS..222....8D} has introduced a quantity Equivalent Evolutionary Phase ({\it EEP}), which numbers evolutionary stages and transform stellar tracks onto a uniform basis. We follow this idea but define {\it EEP} in a different way to make global parameters change relatively smoothly.
+%
+On each evolutionary track, we compute the displacement between consecutive models on the $T_{\rm eff} - \log g$ diagram. For instance, the displacement between model $n$ and model $n-1$ can be calculated as
 \begin{equation}\label{eq:disp}
-\delta d_{n} = ((T_{\rm eff, n} - T_{\rm eff, n-1}) ^{2} + (\log g _{n} - \log g_{n-1})^{2}))^{f},
+\delta d_{n} = ((T_{\rm eff, n} - T_{\rm eff, n-1}) ^{2} + (\log g _{n} - \log g_{n-1})^{2}))^{c},
 \end{equation}
-and the total displacement of model $n$ from the ZAMS (model 0) can be calculated with
+where $c$ is an adjusted parameter to scale the displacement. 
+%
+The total displacement of model $n$ from the ZAMS (model 0) can be calculated with
 \begin{equation}
 d_{n} = \sum_{i = 0}^{i = n} \delta d_{i} .
 \end{equation}
-We then normalise $d_{n}$ to the 0 --1 range and define it as {\it EEP}. On the same evolutionary track, {\it EEP} equals to 0 at the ZAMS and 1 on the RGB where $\log$ = 3.6 $dex$. The factor $f$ in Eq. \ref{eq:disp} is adjustable for modulating {\it EEP} to avoid obvious gap in the data space, and we find that $f$ = 0.18 gives the best data distribution.
+We then normalise $d_{n}$ to the 0 --1 range and define it as {\it EEP}. On an evolutionary track, {\it EEP} equals to 0 at the ZAMS and 1 on the RGB where $\log$ = 3.6 $dex$. The factor $f$ in Eq. \ref{eq:disp} is introduced for modulating {\it EEP} to avoid obvious data gap in the parameter space, and we find that $c$ = 0.18 gives the most uniform data distribution.
 %
-In Figure~\ref{fig:eep}, we demonstrate how the effective temperature changes with fractional age and {\it EEP}. It can be seen that the usage of {\it EEP} significantly smoothes the sharp features at the 'hook' and the turn-off point.
+In Figure~\ref{fig:eep}, we demonstrate how the effective temperature changes with fractional age and {\it EEP}. It can be seen that {\it EEP} is a better choice than the fractional age because global parameters change smoother around the 'hook' and the turn-off point.
 
 \begin{figure*}
         \includegraphics[width=1.\columnwidth]{2d_fage_data.pdf}
@@ -100,16 +108,16 @@ In Figure~\ref{fig:eep}, we demonstrate how the effective temperature changes wi
     \label{fig:eep}
 \end{figure*}
 
-\subsection{Data Selection}\label{sec:selection}
+\subsection{Sampling method}\label{sec:selection}
 
-We need three types of data for training, validating, and testing GP models. 
+%We need three types of data for training, validating, and testing GP models. 
 %
-Evolutionary tracks in the primary and additional grids are the training data. Off-grid tracks are divided 50-to-50 as validating and testing data . 
+%Evolutionary tracks in the primary and additional grids are the training data. Off-grid tracks are divided 50-to-50 as validating and testing data . 
 %Note that validating and testing datasets are not on the same evolutionary tracks so they are independent to each other. 
 %Validating dataset is for validating the GP model in the training process and is mainly used for early stopping, which is a form of regularisation for avoiding overfitting. We choose off-grid models but not on-grid models as validating data because the grid is equally spaced. Without additional information between grid points, an optimiser could either use a smooth function or a periodic function to fit the data and find no obvious differences in the likelihood. We describe how we use validating data in Section \ref{sec:training}. Lastly, testing dataset is independent on the training process and used for evaluating the final GP models. 
-There is a limitation of the data size in the GP framework, because the computational and memory complexity exponentially increase with the number of data points. In practice, the typical data size is on an order of $10^{4}$. Given that the grid contents $\sim 10,000,000$ stellar models, only a small subset can be used. The sampling method is hence critical.
+There is a limitation of the data size in the GP framework, because the computational and memory complexity exponentially increase with the number of data points. In practice, the typical data size is on an order of $10^{4}$. Given that the grid contents $\sim 10,000,000$ stellar models, only a small subset can be used for training. The sampling method is hence critical.
 %
- A flat sampling is not appropriate, because the evolving step is not uniform at different evolutionary stages due to the \textsc{MESA} step-control strategy. For instance, stellar models are dense at the main-sequence and lower RGB but quite sparse at the subgiant stage. We test a few methods and find that using the displacement ($\delta d_{n}$) defined in Eq.~\ref{eq:disp} as the weight of sampling give a relatively uniform data distribution. 
+ A flat sampling is not appropriate, because the evolving step is not uniform at different evolutionary stages due to the \textsc{MESA} step-control strategy. For instance, stellar models are dense at the main-sequence and lower RGB but quite sparse at the subgiant stage. We test a few methods and find that using the displacement ($\delta d_{n}$) defined in Eq.~\ref{eq:disp} as the weight to sample models on an evolutionary track gives a relatively uniform data distribution at different evolutionary stages. 
 %meets the above two requirements. 
 %Firstly, we want the data to uniformly cover the parameter space for the best efficiency. Secondly, we need to highly weight models at phases where sharp changes present, e.g., models around the hook and turn-off points.   
 

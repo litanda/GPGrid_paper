@@ -78,20 +78,20 @@ $^{1}$ School of Physics and Astronomy, University of Birmingham, Birmingham, B1
 
 % Abstract of the paper
 \begin{abstract}
-Grid-based modelling is widely used for estimating stellar parameters. However, stellar model grid is sparse because of the computational cost. This paper demonstrates an application of Gaussian Process (GP) Regression that turns a sparse model grid to a continuous function. We train GP models to map five fundamental inputs (mass, equivalent evolutionary phase, initial metallicity, initial helium fraction, and the mixing-length parameter) to observable outputs (effective temperature, surface gravity, radius, surface metallicity, and stellar age). 
+Grid-based modelling is widely used for estimating stellar parameters. However, stellar model grid is sparse because of the computational cost. This paper demonstrates an application of the Gaussian Process (GP) Regression that turns a sparse model grid onto a continuous function. We train GP models to map five fundamental inputs (mass, equivalent evolutionary phase, initial metallicity, initial helium fraction, and the mixing-length parameter) to observable outputs (effective temperature, surface gravity, radius, surface metallicity, and stellar age). To overcome the limitation of training data size in the GP framework, we break up the model grid by the evolutionary stage, train each sub-section separately, and lastly combine multiple GP models. 
 %
-We preliminarily test different approaches with a small subset of data and set up the training with the most promising methods. To overcome the limitation of training data size in the GP framework, we section the whole grid and train each section separately. 
+%We preliminarily test different approaches with a small subset of data and set up the training with the most promising methods. The median testing error is $\sim$2K for effective temperature, $\sim 0.001$dex for surface gravity, $\sim$ 0.002$\rm R_{\odot}$ for radius, $\sim 0.001$dex for surface metallicity, and $\sim$0.02Gyr for stellar age. 
 %
-An off-grid stellar model dataset is then used to test GP predictions. We find no obvious systematic offsets for all five outputs. The median testing error is $\sim$2K for effective temperature, $\sim 0.001$dex for surface gravity, $\sim$ 0.002$\rm R_{\odot}$ for radius, $\sim 0.001$dex for surface metallicity, and $\sim$0.02Gyr for stellar age. However, we find that local systematic uncertainty is not uniform across the parameter space and it mainly varies with mass, equivalent evolutionary phase, and initial metallicity. We hence train another GP model to describe the systematic uncertainties.      
+We test the GP predictions for the five outputs using off-grid stellar models and find no obvious systematic offsets, indicating good accuracy in predictions. However, we notice that the systematic uncertainties are not uniform across the parameter space because learned models are less precise around the hook and turn-off points where global parameters quickly vary. We solve this by training another GP model to describe systematic uncertainties. 
 %
-We lastly use 100 fake stars to validate the accuracy of GP for modelling stars. GP-determined masses and ages are well consistent with true values within one standard deviation. We also note that GP models give sensible statistical sampling which overcomes the under-sampling issue in the grid-based modelling. 
+As a further validation, we apply these GP models to characterise 100 fake stars. Inferred masses and ages determined with GP models well recover true values within one standard deviation. We also notice that GP-based stellar ages are more precise than those estimated with the original grid because of the fully sampling of fundamental inputs.   
 %
 \end{abstract}
 
 % Select between one and six entries from the list of approved keywords.
 % Don't make up new ones.
 \begin{keywords}
-Star: Modelling -- Machine Learning -- keywords
+Star: Modelling -- Machine Learning -- Gaussian Process
 \end{keywords}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -112,6 +112,8 @@ Star: Modelling -- Machine Learning -- keywords
 \section*{Acknowledgements}
 
 Development of GPyTorch is supported by funding from the Bill and Melinda Gates Foundation, the National Science Foundation, and SAP.
+
+\input{appendix.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

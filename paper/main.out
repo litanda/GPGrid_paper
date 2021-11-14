@@ -1,19 +1,26 @@
 \BOOKMARK [1][-]{section.1}{Introduction}{}% 1
-\BOOKMARK [1][-]{section.2}{Theoretical stellar grid}{}% 2
+\BOOKMARK [1][-]{section.2}{Representative Model Grid}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Grid computation}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Equivalent Evolutionary Phase}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.3}{Data Selection}{section.2}% 5
-\BOOKMARK [1][-]{section.3}{Gaussian Process Model}{}% 6
-\BOOKMARK [2][-]{subsection.3.1}{Gaussian Process Application}{section.3}% 7
-\BOOKMARK [2][-]{subsection.3.2}{Setting up the GP Model}{section.3}% 8
-\BOOKMARK [1][-]{section.4}{Preliminary Studies on Low-Demission Problems}{}% 9
-\BOOKMARK [2][-]{subsection.4.1}{1D Problem}{section.4}% 10
-\BOOKMARK [2][-]{subsection.4.2}{2D Problem: Investigating testing method}{section.4}% 11
-\BOOKMARK [2][-]{subsection.4.3}{3D Problem: Strategy for Large Data Sample}{section.4}% 12
-\BOOKMARK [1][-]{section.5}{Augmenting the Stellar Grid}{}% 13
-\BOOKMARK [2][-]{subsection.5.1}{Overview of Results}{section.5}% 14
-\BOOKMARK [2][-]{subsection.5.2}{Mapping Systematical Uncertainties using another GP model}{section.5}% 15
-\BOOKMARK [1][-]{section.6}{Modelling stars with GP-trained models}{}% 16
-\BOOKMARK [2][-]{subsection.6.1}{A GP-Trained Model Set}{section.6}% 17
-\BOOKMARK [2][-]{subsection.6.2}{Modelling Fake Stars with GP-trained Models}{section.6}% 18
-\BOOKMARK [1][-]{section.7}{Discussion and Conclusions}{}% 19
+\BOOKMARK [2][-]{subsection.2.2}{Input physics}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{Equivalent Evolutionary Phase}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{Sampling method}{section.2}% 6
+\BOOKMARK [1][-]{section.3}{Gaussian Process Model}{}% 7
+\BOOKMARK [2][-]{subsection.3.1}{Gaussian Process Application}{section.3}% 8
+\BOOKMARK [2][-]{subsection.3.2}{Setup of GP Models}{section.3}% 9
+\BOOKMARK [1][-]{section.4}{Preliminary Studies}{}% 10
+\BOOKMARK [2][-]{subsection.4.1}{1D Problem}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.2}{2D Problem}{section.4}% 12
+\BOOKMARK [2][-]{subsection.4.3}{3D Problem: Strategy for Large Data Sample}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Augmenting the Stellar Grid}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Overview of Results}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Mapping Systematic Uncertainties}{section.5}% 16
+\BOOKMARK [1][-]{section.6}{Modelling stars with GP predictions}{}% 17
+\BOOKMARK [2][-]{subsection.6.1}{Augmenting the model grid}{section.6}% 18
+\BOOKMARK [2][-]{subsection.6.2}{GP-based Modelling for 1,000 Fake Stars}{section.6}% 19
+\BOOKMARK [1][-]{section.7}{Discussion and Conclusions \(work with Guy\)}{}% 20
+\BOOKMARK [1][-]{section.A1}{Setup of GP model training}{}% 21
+\BOOKMARK [2][-]{subsection.A1.1}{Mean Function}{section.A1}% 22
+\BOOKMARK [2][-]{subsection.A1.2}{Likelihood and Loss Function}{section.A1}% 23
+\BOOKMARK [2][-]{subsection.A1.3}{Optimiser}{section.A1}% 24
+\BOOKMARK [2][-]{subsection.A1.4}{Early Stopping}{section.A1}% 25
+\BOOKMARK [1][-]{section.A2}{State-of-the-art implement for large dataset}{}% 26
