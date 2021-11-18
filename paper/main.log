@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  14 NOV 2021 21:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.5.31)  18 NOV 2021 10:07
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -868,11 +868,11 @@ File: 5d-au-mass-sys.pdf Graphic file (type pdf)
 <use 5d-au-mass-sys.pdf>
 Package pdftex.def Info: 5d-au-mass-sys.pdf  used on input line 180.
 (pdftex.def)             Requested size: 167.99927pt x 152.71983pt.
-<gp_fitting.pdf, id=634, 1445.4pt x 722.7pt>
+<gp_fitting.pdf, id=634, 1445.4pt x 1084.05pt>
 File: gp_fitting.pdf Graphic file (type pdf)
 <use gp_fitting.pdf>
 Package pdftex.def Info: gp_fitting.pdf  used on input line 208.
-(pdftex.def)             Requested size: 455.99854pt x 227.99355pt.
+(pdftex.def)             Requested size: 455.99854pt x 341.99034pt.
  [9]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -906,19 +906,24 @@ l.10
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./5d_sys_effective_T_std_pre
 dictions.pdf): PDF inclusion: multiple pdfs with page group included in a singl
 e page
->] [12pdfTeX warning (ext4): destination with the same identifier (name{figure.
-7}) has been already used, duplicate ignored
+>]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [12pdfTeX warning (ext4): destination with the same identifier (name{figure.7}
+) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.31 
-     pdfTeX warning (ext4): destination with the same identifier (name{figure.8
-}) has been already used, duplicate ignored
+l.17 \begin{equation}
+                     \label{eq:likelihood}pdfTeX warning (ext4): destination wi
+th the same identifier (name{figure.8}) has been already used, duplicate ignore
+d
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.31 
-      <./5d-au-mass.pdf> <./5d-au-mass-sys.pdf
+l.17 \begin{equation}
+                     \label{eq:likelihood} <./5d-au-mass.pdf> <./5d-au-mass-sys
+.pdf
 
 pdfTeX warning: /Library/TeX/texbin/pdflatex (file ./5d-au-mass-sys.pdf): PDF i
 nclusion: multiple pdfs with page group included in a single page
@@ -932,22 +937,19 @@ Underfull \hbox (badness 10000) in paragraph at lines 42--45
  and _
  []
 
+[13pdfTeX warning (ext4): destination with the same identifier (name{figure.9})
+ has been already used, duplicate ignored
 
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.45 
+      <./fake-stars-test-2.pdf>]
 Underfull \hbox (badness 1616) in paragraph at lines 46--49
 \T1/ntxtt/m/n/9 02 _ Scalable _ Exact _ GPs / KISSGP _ Regression . html$[][] \
 T1/ntxtlf/m/n/9 to de-
  []
 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [13pdfTeX warning (ext4): destination with the same identifier (name{figure.9}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.49 
-      <./fake-stars-test-2.pdf>]) (./main.bbl
+) (./main.bbl
 LaTeX Info: Redefining \VAN on input line 1.
 
 Underfull \hbox (badness 2158) in paragraph at lines 70--72
@@ -980,11 +982,11 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 142.
 Here is how much of TeX's memory you used:
  10424 strings out of 480608
  146581 string characters out of 5903630
- 426335 words of memory out of 5000000
+ 426337 words of memory out of 5000000
  25926 multiletter control sequences out of 15000+600000
  639739 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,15n,40p,1564b,375s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,15n,40p,1564b,384s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exi
 st, replaced by a fixed one
 
@@ -1007,7 +1009,7 @@ b></usr/local/texlive/2020/texmf-dist/fonts/type1/public/newtx/txsys.pfb></usr/
 local/texlive/2020/texmf-dist/fonts/type1/public/newtx/ztmb.pfb></usr/local/tex
 live/2020/texmf-dist/fonts/type1/public/newtx/ztmr.pfb></usr/local/texlive/2020
 /texmf-dist/fonts/type1/public/newtx/ztmri.pfb>
-Output written on main.pdf (14 pages, 4731178 bytes).
+Output written on main.pdf (14 pages, 4781322 bytes).
 PDF statistics:
  1184 PDF objects out of 1200 (max. 8388607)
  637 compressed objects within 7 object streams
