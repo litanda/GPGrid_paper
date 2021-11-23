@@ -1,38 +1,7 @@
-\section{Discussion and Conclusions (work with Guy)}\label{sec:conclusion}
+\section{Conclusions}\label{sec:conclusion}
 
-In this work, we apply a machine-learning algorithm that involves a Gaussian process to augment a stellar grid. We train GP models for the stellar grid and obtain continuous functions that map fundamental inputs to observable outputs on a good accuracy level. We also train another set of GP models which describe the local systematic uncertainty of each output parameter. A GP-trained model set is then generated and we use it to model fake stars. The GP-based modelling is obviously advanced in modelling individual stars compared with the gird-based modelling because it provides continuous sampling. We lastly test GP-determined masses and ages by comparing them with true values and find good consistence. 
+In this work, we apply a machine-learning algorithm that involves a Gaussian process as an interpolator to augment a stellar grid. We train GP models to convert a sparse model grid into continuous functions, which map fundamental inputs to observable quantities. We find good precision and accuracy in GP-based interpolations when testing them with off-grid models. A GP-trained model dataset is then generated and we use it to model 100 fake stars. Comparing with the original sparse grid, GP-based models provide full sampling across the parameter space and hence improve the accuracy and the precision of parameter estimate, particularly for the stellar age.
 
-1. summary of what paper is done.
-/what we did
-/how it works
-/consequence, we have better accuracy reflects the truth of uncertainty. 
+The application of GP's make it efficient to generate a statistically-sound model dataset based on a spare model grid. It works well for high-demission case (up to 5D in this work) and this can be a big advantage compared with traditional interpolators. The implementation of the GP is crucial for the success of a particular case. We hence do a number of preliminary studies to choose the best mean function, kernel, and optimiser.  A limitation of the training step for the GP is the size of the training data set and the requirement to perform matrix inversion and calculate the matrix determinant. For training a normal GP model, the practical training data size upper limit is around 20,000 which is apparently not big enough for the high-demission grid including $\sim$10,000,000 models. To overcome this issue, we section the training data according to their evolutionary stage ({\it EEP}) and train GP models for each section. This section scenario significantly improves overall accuracy of GP predictions and we find no edge effects at the boundary of sections. When inspecting the systematic uncertainty of GP models, we notice that GP predictions are very over-confident in the high-demission problem: the uncertainties given by GP models are mostly smaller than testing errors by an order of magnitude. Because of this,  we use the testing errors to estimate systematic uncertainties across the parameter space. Eventually, we provide a GP-based model dataset including 5,000,000 models with randomly sampled fundamental inputs.
 
-
-2. Details of the GP/ comments on the application of GP: kernels, mean function/ training and prediction/uncertainty issue/how we fix that/
-
-3. with the trained GP, we augment sparse grid. We fit stars. We get better age estimates, for other parameters, which are known to be sparse, can be properly characterised thank to the fully sampling. 
-
-%\subsubsection*{Advantages}
-%GP is a very efficient tool to augment a stellar grid instead of computing massive evolutionary tracks. For the case in this study, we train 10 GP-Grid models and 1 GP-SYS model for each output parameter and hence 55 GP models in total. The training process takes approximate one hour per GP model on a NVidia Tesla V100 graphics processing unit (GPU). 
-%
-%We also show that GP is able to manage the augmentation in high-demissions data (5 demissions in this work), which is very difficult for the interpolation approach.
-%
-%Moreover, the section scenario overcomes the limitation of training data size (20,000 for this case) and offers flexibility to apply GP on stellar grids with different size. 
-%
-%When modelling individual stars, GP significantly improves the sampling especially for initial metallicity, helium fraction, and the mixing-length parameter, which are always well spaced in a stellar grid. 
-%
-
-%{\bf Any more points?}    
-
-%\subsubsection*{Limitations}
-%GP is efficient for training global parameters but not for training the stellar structure. It hence not able to replace a stellar model. To obtain comprehensive stellar model, an optimal path would be using GP to constrain the range of fundamental parameters and then computing models with stellar code in that range.
-%
-
-%{\bf add more limitations}  
-
-%\subsubsection*{Future works}
-
-%This work presents an application of GP on augmenting the whole grid. However, this method is not efficient when modelling a single star. Our future work is developing a fast tool that only trains a small set of models in the grid around a star. This trained-GP model can be easily sticked with an Markov chain Monte Carlo simulator for a delicate bayesian analysis. 
-%
-
-%{\bf more future works} 
+We use GP-based models to characterise 1,000 fake stars to examine whether truths of stellar properties can be recovered. We find that GP-based masses and ages are consistent with the injected truth values. The uncertainties are dominated by observational noise, saying that, the systematic uncertainty due to the GP approximation does not obviously affect the modelling interferences. Comparing with the probability distributions of original sparse grid, GP models are fully sampled in the input range and hence improve the accuracy and precision of inferred parameters. The improvement is remarkable for the stellar age (could you add some numbers here?). Moreover, the continuous sampling makes it possible to properly estimate some fundamental parameters which are sparse in the grid, e.g., the helium fraction. These results indicate that the method demonstrated in this work is reliable and efficient for interpolating an established model grid and it can improve the modelling solutions because of the statistically-sound sampling. 

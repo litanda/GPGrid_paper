@@ -17,7 +17,7 @@
 \BOOKMARK [1][-]{section.6}{Modelling stars with GP predictions}{}% 17
 \BOOKMARK [2][-]{subsection.6.1}{Augmenting the model grid}{section.6}% 18
 \BOOKMARK [2][-]{subsection.6.2}{GP-based Modelling for 1,000 Fake Stars}{section.6}% 19
-\BOOKMARK [1][-]{section.7}{Discussion and Conclusions \(work with Guy\)}{}% 20
+\BOOKMARK [1][-]{section.7}{Conclusions}{}% 20
 \BOOKMARK [1][-]{section.A1}{Setup of GP model training}{}% 21
 \BOOKMARK [2][-]{subsection.A1.1}{Mean Function}{section.A1}% 22
 \BOOKMARK [2][-]{subsection.A1.2}{Likelihood and Loss Function}{section.A1}% 23
