@@ -17,16 +17,16 @@
   {mn@eprint@\@tempb}{\@tempb:\@tempc}{\expandafter \expandafter \csname
   mn@eprint@\@tempb\endcsname \expandafter{\@tempc}}}
 
+\bibitem[\protect\citeauthoryear{Anzai}{Anzai}{2012}]{anzai2012pattern}
+Anzai Y.,  2012, Pattern recognition and machine learning.
+Elsevier
+
 \bibitem[\protect\citeauthoryear{{Asplund}, {Grevesse}, {Sauval}  \&
   {Scott}}{{Asplund} et~al.}{2009}]{2009ARA&A..47..481A}
 {Asplund} M.,  {Grevesse} N.,  {Sauval} A.~J.,   {Scott} P.,  2009, \mn@doi
   [Annual Review of Astronomy and Astrophysics]
   {10.1146/annurev.astro.46.060407.145222}, \href
   {https://ui.adsabs.harvard.edu/#abs/2009ARA&A..47..481A} {47, 481}
-
-\bibitem[\protect\citeauthoryear{Bain}{Bain}{1873}]{bain1873mind}
-Bain A.,  1873, Mind and body: The theories of their relation.
- Vol. 4, D. Appleton
 
 \bibitem[\protect\citeauthoryear{{Bellinger}, {Angelou}, {Hekker}, {Basu},
   {Ball}  \& {Guggenberger}}{{Bellinger} et~al.}{2016}]{2016ApJ...830...31B}
@@ -42,6 +42,12 @@ Bishop C.~M.,  1994
 {Choi} J.,  {Dotter} A.,  {Conroy} C.,  {Cantiello} M.,  {Paxton} B.,
   {Johnson} B.~D.,  2016, \mn@doi [\apj] {10.3847/0004-637X/823/2/102}, \href
   {https://ui.adsabs.harvard.edu/#abs/2016ApJ...823..102C} {823, 102}
+
+\bibitem[\protect\citeauthoryear{{Clevert}, {Unterthiner}  \&
+  {Hochreiter}}{{Clevert} et~al.}{2015}]{2015arXiv151107289C}
+{Clevert} D.-A.,  {Unterthiner} T.,   {Hochreiter} S.,  2015, arXiv e-prints,
+  \href {https://ui.adsabs.harvard.edu/abs/2015arXiv151107289C} {p.
+  arXiv:1511.07289}
 
 \bibitem[\protect\citeauthoryear{{Dotter}}{{Dotter}}{2016}]{2016ApJS..222....8D}
 {Dotter} A.,  2016, \mn@doi [\apjs] {10.3847/0067-0049/222/1/8}, \href
@@ -59,6 +65,11 @@ Bishop C.~M.,  1994
   Wilson}{Gardner et~al.}{2018}]{gardner2018gpytorch}
 Gardner J.~R.,  Pleiss G.,  Bindel D.,  Weinberger K.~Q.,   Wilson A.~G.,
   2018, in Advances in Neural Information Processing Systems.
+
+\bibitem[\protect\citeauthoryear{Goodfellow, Bengio  \& Courville}{Goodfellow
+  et~al.}{2016}]{goodfellow2016deep}
+Goodfellow I.,  Bengio Y.,   Courville A.,  2016, Deep learning.
+MIT press
 
 \bibitem[\protect\citeauthoryear{{Hendriks} \& {Aerts}}{{Hendriks} \&
   {Aerts}}{2019}]{2019PASP..131j8001H}
@@ -86,8 +97,10 @@ Ho T.~K.,  1995, in Proceedings of 3rd international conference on document
    2020, \mn@doi [\mnras] {10.1093/mnras/staa2853}, \href
   {https://ui.adsabs.harvard.edu/abs/2020MNRAS.499.2445H} {499, 2445}
 
-\bibitem[\protect\citeauthoryear{James}{James}{1890}]{james1890principles}
-James W.,  1890, The principles of psychology. New York, NY: Holt \& Co
+\bibitem[\protect\citeauthoryear{{Kingma} \& {Ba}}{{Kingma} \&
+  {Ba}}{2014}]{kingma2017adam}
+{Kingma} D.~P.,  {Ba} J.,  2014, arXiv e-prints, \href
+  {https://ui.adsabs.harvard.edu/abs/2014arXiv1412.6980K} {p. arXiv:1412.6980}
 
 \bibitem[\protect\citeauthoryear{{Lyttle} et~al.,}{{Lyttle}
   et~al.}{2021}]{2021MNRAS.tmp.1343L}
@@ -98,6 +111,12 @@ James W.,  1890, The principles of psychology. New York, NY: Holt \& Co
   et~al.}{2021}]{2021arXiv210313394M}
 {Mombarg} J. S.~G.,  {Van Reeth} T.,   {Aerts} C.,  2021, arXiv e-prints, \href
   {https://ui.adsabs.harvard.edu/abs/2021arXiv210313394M} {p. arXiv:2103.13394}
+
+\bibitem[\protect\citeauthoryear{{Morel} \& {Th{\'e}venin}}{{Morel} \&
+  {Th{\'e}venin}}{2002}]{2002A&A...390..611M}
+{Morel} P.,  {Th{\'e}venin} F.,  2002, \mn@doi [\aap]
+  {10.1051/0004-6361:20020768}, \href
+  {https://ui.adsabs.harvard.edu/abs/2002A&A...390..611M} {390, 611}
 
 \bibitem[\protect\citeauthoryear{{Paquette}, {Pelletier}, {Fontaine}  \&
   {Michaud}}{{Paquette} et~al.}{1986}]{Paquette1986}

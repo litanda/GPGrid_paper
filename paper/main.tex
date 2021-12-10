@@ -39,6 +39,9 @@
 
 %%%%% AUTHORS - PLACE YOUR OWN COMMANDS HERE %%%%%
 
+\usepackage{lineno}
+\linenumbers
+
 % Please keep new commands to a minimum, and use \newcommand not \def to avoid
 % overwriting existing commands. Example:
 %\newcommand{\pcm}{\,cm$^{-2}$}	% per cm-squared
@@ -49,16 +52,17 @@
 
 % Title of the paper, and the short title which is used in the headers.
 % Keep the title short and informative.
-\title[Modelling stars with GP]{Modelling stars with Gaussian Process Regression -- I:  Augmenting Stellar Model Grid}
+\title[Modelling stars with GP]{Modelling stars with Gaussian Process Regression: Augmenting Stellar Model Grid}
 
 % The list of authors, and the short list which is used in the headers.
 % If you need two or more lines of authors, add an extra line using \newauthor
 \author[T. Li et al.]{
-Tanda Li,$^{1}$\thanks{E-mail: t.li.2@bham.ac.uk}
-Guy R. Davies,$^{1}$\thanks{E-mail: G.R.Davies@bham.ac.uk}
-Alex Lyttle,$^{1}$
-Lindsey Carboneau,$^{1}$
-and A. N. Others$^{1}$
+Tanda Li$^{1}$\thanks{E-mail: t.li.2@bham.ac.uk},
+Guy R. Davies$^{1}$\thanks{E-mail: G.R.Davies@bham.ac.uk},
+Alex Lyttle$^{1}$,
+Warrick Ball$^{1}$,
+Lindsey Carboneau$^{1}$,
+and A. N. Others
 \\
 % List of institutions
 $^{1}$ School of Physics and Astronomy, University of Birmingham, Birmingham, B15 2TT, United Kingdom\\
@@ -85,7 +89,7 @@ Grid-based modelling is widely used for estimating stellar parameters. However, 
 %
 We test the GP predictions for the five outputs using off-grid stellar models and find no obvious systematic offsets, indicating good accuracy in predictions. %However, we notice that the systematic uncertainties are not uniform across the parameter space because learned models are less precise around the hook and turn-off points where global parameters quickly vary. We solve this by training another GP model to describe systematic uncertainties. 
 %
-As a further validation, we apply these GP models to characterise 100 fake stars. Inferred masses and ages determined with GP models well recover true values within one standard deviation. 
+As a further validation, we apply these GP models to characterise 1,000 fake stars. Inferred masses and ages determined with GP models well recover true values within one standard deviation. 
 An important consequence of using GP-based interpolation is that stellar ages are more precise than those estimated with the original sparse grid because of the full sampling of fundamental inputs.
 %
 \end{abstract}
@@ -112,8 +116,8 @@ Star: Modelling -- Machine Learning -- Gaussian Process
 \input{conclusions.tex}
 
 \section*{Acknowledgements}
-
-Development of GPyTorch is supported by funding from the Bill and Melinda Gates Foundation, the National Science Foundation, and SAP.
+This work has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (CartographY GA. 804752).
+Development of \textsc{GPyTorch} is supported by funding from the Bill and Melinda Gates Foundation, the National Science Foundation, and SAP.
 
 \input{appendix.tex}
 

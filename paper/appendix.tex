@@ -6,7 +6,9 @@ This section includes detailed discussions about the selections of mean function
 
 \subsection{Mean Function}
 
-We first investigate the mean function. As discussed above, the data distribution is generally smooth but complex in some regions of parameter space (e.g., the sub-giant hook).  Although a GP model can cope with different mean functions,  because of the flexibility of kernels, we find that using a constant or a linear mean function leads to a long time for training. For this reason, we apply a Neural Network mean function which is flexible enough to manage both simple and complex features. We adopt an architecture including 6 hidden layers and 128 nodes per layer. All layers apply the linear transformation to the incoming data. We apply the element-wise function (Elu) because it give relatively smooth mean functions. ({\bf Can Guy or Alex add some references for NN and Elu here? The referee may ask why the 6x128 architecture is sufficient, so should we mention Alex's paper?})
+We first investigate the mean function. As discussed above, the data distribution is generally smooth but complex in some regions of parameter space (e.g., the sub-giant hook).  Although the choice of mean function is not crucial for training GP models, we find that using a constant or a linear mean function leads to a significantly long training time. Hence, we apply a neural network mean function which is flexible enough to manage both simple and complex features to accelerate the training. We adopt an architecture based on that of  \citet{2021MNRAS.tmp.1343L} comprising 6 hidden layers and 128 nodes per layer. All layers are fully-connected and the output of each layer, except for the last, is transformed by the Exponential Linear Unit (ELU) activation function \cite{2015arXiv151107289C}. The ELU activation function provides a smooth function from inputs to outputs, which is preferred over its more common, faster counterpart, the Rectified Linear Unit (RELU).
+
+
 
 \subsection{Likelihood and Loss Function}
 
@@ -14,6 +16,7 @@ Our training dataset is a theoretical model grid,  hence there is no observed un
 %   
 A likelihood specifies the mapping from input values $f(X)$ to observed labels $y$.
 We adopt the the standard likelihood for regression which assumes a standard homoskedastic noise model whose conditional distribution is
+
 \begin{equation}\label{eq:likelihood}
 p(y|f(x)) = f + \epsilon, \epsilon \sim \mathcal{N}(0, \sigma^{2}),
 \end{equation}
@@ -29,11 +32,6 @@ The SGD optimiser in the \textsc{GPyTroch} package involves the formula given by
 %
 We adaptive learning rate in the training process. Our training starts with a learning rate of 0.01 and decreases by a factor of 2 when the loss value does not reduce in previous 100 iterations.    
 
-\subsection{Early Stopping}
-
-We set up an Early Stopping for avoiding overfitting and also determining when to terminate a training progress. 
-When an optimal solution is found, the validating errors stop decreasing and then increase when overfitting occurs. 
-We hence track down the validating error every iteration and terminate training process when the validating error does not decrease in previous 300 iterations. 	
 
 \section{State-of-the-art implement for large dataset}\label{app:B}
 
@@ -46,6 +44,8 @@ SVGP is an approximate scheme rely on the use of a series of inducing points whi
 We also investigate another approach designed for large dataset named Structured Kernel Interpolation (SKI GP). SKI GP was introduced by \citet{wilson2015kernel}. It produces kernel approximations for fast computations through kernel interpolation and is a great way to scale a GP up to very large datasets (100,000+ data points).
 We follow the example on \url{https://docs.gpytorch.ai/en/stable/examples/02_Scalable_Exact_GPs/KISSGP_Regression.html} to develop our script. 
 We run a few tests to train a 3D SKI GP model with 100, 000 training data. Compare with the Normal GP and SVGP, its testing errors for $T_{\rm eff}$ are slightly improved to 2.0, 6.1, and 14.8K (EI = 22.9K). However, the further test on the 5-demission data is not ideal: a SKI GP model using 100, 000 training data performs much worse than a normal model with only 20,000 training data. The poor behaviour consists with what has been discussed by \citet{wilson2015kernel}: the SKI GP poorly scale to data with high dimensions, since the cost of creating the grid grows exponentially in the amount of data. We attempt to make some additional approximations with the \textsc{GpyTorch AdditiveStructureKernel} module. It makes the base kernel to act as one-dimension kernels on each data dimension and the final kernel matrix will be a sum of these 1D kernel matrices. However, the testing errors are not significantly improved. 
+
+%\section{Modelling 1,000 fake model stars}\label{app:C}
 
 %\begin{figure}
 %	\includegraphics[width=1.0\columnwidth]{fake-stars-on-hrd.pdf}
