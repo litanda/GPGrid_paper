@@ -7,13 +7,13 @@ We compute a stellar model grid as the training dataset. We aim to cover stars w
 We calculated three model dataset for different purposes. The primary dataset is a standard model grid with uniform mass step. This model grid is used for all preliminary tests and also for the final training. 
 %
 We also calculate an additional dataset to increase the grid resolution for $M$ > 1.05$\rm M_{\odot}$. Because we find that the blue hook feature (where global parameters sharply vary) is relatively hard to train. This dataset is only used in the final training. 
-Details of parameter ranges and steps of the two grid are listed in Table \ref{tab:grid}. 
+Details of parameter ranges and steps of the two grids are listed in Table \ref{tab:grid}. 
 %
-For validating and testing GP predictions, we computed off-grid models with randomly sampled fundamental inputs. 
+For validating and testing GP predictions, we computed off-grid models with randomly sampled fundamental inputs as a third dataset. 
 %
 %4,880 tracks with input parameters that are randomly sampled in the grid ranges for validating GPR models. The evolution time step was mainly controlled by the set-up tolerances on changes in surface effective temperature and luminosity. We also saved structural models for computing theoretical oscillation models.
 %
-The computation of evolutionary tracks starts at the Hayashi line with pre-main-sequence central temperature at 300,000K and terminates at the base of red-giant branch (RGB) where $\log g$ = 3.6 dex. Note that we only use models after the zero-age-main-sequence (ZAMS), which is defined as the point where core-hydrogen burning contributes over 99.9\% of the total luminosity. 
+The computation of evolutionary tracks starts at the Hayashi line with pre-main-sequence central temperature at 300,000K and terminates at the base of red-giant branch (RGB) where $\log g$ = 3.6dex. Note that we only use models after the zero-age-main-sequence (ZAMS), which is defined as the point where core-hydrogen burning contributes over 99.9\% of the total luminosity. 
 %
 
 \begin{table}
@@ -96,7 +96,7 @@ The total displacement of model $n$ from the ZAMS (model 0) can be calculated wi
 \begin{equation}
 d_{n} = \sum_{i = 1}^{i = n} \delta d_{i} .
 \end{equation}
-We then normalise $d_{n}$ to the 0 --1 range and define it as {\it EEP}. On an evolutionary track, {\it EEP} equals to 0 at the ZAMS and 1 on the RGB where $\log$ = 3.6 dex. The factor $c$ in Eq. \ref{eq:disp} is introduced for modulating {\it EEP} to avoid obvious data gap in the parameter space, and we find that $c$ = 0.18 gives the most uniform data distribution.
+We then normalise $d_{n}$ to the 0 --1 range and define it as {\it EEP}. On an evolutionary track, {\it EEP} equals to 0 at the ZAMS and 1 on the RGB where $\log$ = 3.6 dex. The factor $c$ in Eq. \ref{eq:disp} is introduced for modulating {\it EEP} because the track step on the $\log T_{\rm eff} - \log g$ diagram is not uniform. To avoid obvious data gaps, we test some cases and find that $c$ = 0.18 gives the most uniform data distribution.
 %
 In Figure~\ref{fig:eep}, we demonstrate how the effective temperature changes with fractional age and {\it EEP}. It can be seen that {\it EEP} is a better choice than the fractional age because global parameters change smoother around the blue hook and the turn-off point.
 

@@ -62,10 +62,12 @@ Guy R. Davies$^{1}$\thanks{E-mail: G.R.Davies@bham.ac.uk},
 Alex Lyttle$^{1}$,
 Warrick Ball$^{1}$,
 Lindsey Carboneau$^{1}$,
-and A. N. Others
+\newauthor
+Rafael A. Garc\'ia$^{2}$,
 \\
 % List of institutions
 $^{1}$ School of Physics and Astronomy, University of Birmingham, Birmingham, B15 2TT, United Kingdom\\
+$^{2}$ AIM, CEA, CNRS, Universit\'e Paris-Saclay, Universit\'e Paris Diderot, Sorbonne Paris Cit\'e, F-91191 Gif-sur-Yvette, France
 }
 
 % These dates will be filled out by the publisher
@@ -82,7 +84,7 @@ $^{1}$ School of Physics and Astronomy, University of Birmingham, Birmingham, B1
 
 % Abstract of the paper
 \begin{abstract}
-Grid-based modelling is widely used for estimating stellar parameters. However, stellar model grid is sparse because of the computational cost. This paper demonstrates an application of the Gaussian Process (GP) Regression that turns a sparse model grid onto a continuous function. We train GP models to map five fundamental inputs (mass, equivalent evolutionary phase, initial metallicity, initial helium fraction, and the mixing-length parameter) to observable outputs (effective temperature, surface gravity, radius, surface metallicity, and stellar age). 
+Grid-based modelling is widely used for estimating stellar parameters. However, stellar model grid is sparse because of the computational cost. This paper demonstrates an application of a machine-learning algorithm using the Gaussian Process (GP) Regression that turns a sparse model grid onto a continuous function. We train GP models to map five fundamental inputs (mass, equivalent evolutionary phase, initial metallicity, initial helium fraction, and the mixing-length parameter) to observable outputs (effective temperature, surface gravity, radius, surface metallicity, and stellar age). 
 %To overcome the limitation of training data size in the GP framework, we break up the model grid by the evolutionary stage, train each sub-section separately, and lastly combine multiple GP models. 
 %
 %We preliminarily test different approaches with a small subset of data and set up the training with the most promising methods. The median testing error is $\sim$2K for effective temperature, $\sim 0.001$dex for surface gravity, $\sim$ 0.002$\rm R_{\odot}$ for radius, $\sim 0.001$dex for surface metallicity, and $\sim$0.02Gyr for stellar age. 
@@ -116,7 +118,7 @@ Star: Modelling -- Machine Learning -- Gaussian Process
 \input{conclusions.tex}
 
 \section*{Acknowledgements}
-This work has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (CartographY GA. 804752).
+This work has received funding from the European Research Council (ERC) under the European Union’s Horizon 2020 research and innovation programme (CartographY GA. 804752). R.A.G. Acknowledges funding from the PLATO CNES grant.
 Development of \textsc{GPyTorch} is supported by funding from the Bill and Melinda Gates Foundation, the National Science Foundation, and SAP.
 
 \input{appendix.tex}
